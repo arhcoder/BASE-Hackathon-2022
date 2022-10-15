@@ -1,0 +1,49 @@
+# BASE Documentation
+/Resources
+
+# Illustrator files
+*.ai
+
+# All virtual enviroments
+**/venv/
+
+# Enviroment files
+*.env
+
+# For Node JS
+# Logs
+/Backend/logs
+*.log
+/Backend/npm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+/Backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Bower dependency directory (https://bower.io/)
+/Backend/bower_components
+
+# node-waf configuration
+*.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+/Backend/build/Release
+
+# Dependency directories
+/Backend/node_modules/
+/Backend/jspm_packages/
+
+
+# Optional npm cache directory
+/Backend/.npm
+
+# Output of "npm pack"
+*.tgz
+
+# Serverless directories
+/Backend/.serverless/
