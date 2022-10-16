@@ -1,182 +1,209 @@
-compradorRandom,claveProducto,precioUnitario,nombreProveedor
-"Comprador Random 223","026748",147,"Proveedor Random 905"
-"Comprador Random 919","654321",337,"Proveedor Random 748"
-"Comprador Random 455","026748",44,"Proveedor Random 927"
-"Comprador Random 846","624538",398,"Proveedor Random 898"
-"Comprador Random 893","026748",242,"Proveedor Random 150"
-"Comprador Random 982","026748",249,"Proveedor Random 97"
-"Comprador Random 730","026748",231,"Proveedor Random 137"
-"Comprador Random 758","654321",291,"Proveedor Random 407"
-"Comprador Random 365","492563",391,"Proveedor Random 586"
-"Comprador Random 370","123456",128,"Proveedor Random 271"
-"Comprador Random 177","346290",77,"Proveedor Random 767"
-"Comprador Random 292","123456",2,"Proveedor Random 427"
-"Comprador Random 386","346290",55,"Proveedor Random 258"
-"Comprador Random 448","123456",71,"Proveedor Random 295"
-"Comprador Random 210","346290",139,"Proveedor Random 157"
-"Comprador Random 110","624538",40,"Proveedor Random 703"
-"Comprador Random 763","082564",174,"Proveedor Random 146"
-"Comprador Random 816","654321",82,"Proveedor Random 792"
-"Comprador Random 850","654321",78,"Proveedor Random 610"
-"Comprador Random 602","017894",124,"Proveedor Random 5"
-"Comprador Random 142","082564",349,"Proveedor Random 638"
-"Comprador Random 164","123456",348,"Proveedor Random 477"
-"Comprador Random 196","654321",29,"Proveedor Random 293"
-"Comprador Random 160","082564",47,"Proveedor Random 270"
-"Comprador Random 409","026748",369,"Proveedor Random 519"
-"Comprador Random 107","017945",298,"Proveedor Random 366"
-"Comprador Random 823","492563",349,"Proveedor Random 527"
-"Comprador Random 857","346290",15,"Proveedor Random 355"
-"Comprador Random 698","468396",64,"Proveedor Random 842"
-"Comprador Random 796","346290",346,"Proveedor Random 497"
-"Comprador Random 300","082564",56,"Proveedor Random 81"
-"Comprador Random 197","082564",195,"Proveedor Random 169"
-"Comprador Random 660","492563",133,"Proveedor Random 437"
-"Comprador Random 385","123456",320,"Proveedor Random 129"
-"Comprador Random 937","123456",260,"Proveedor Random 874"
-"Comprador Random 882","468396",257,"Proveedor Random 481"
-"Comprador Random 637","624538",277,"Proveedor Random 384"
-"Comprador Random 742","624538",136,"Proveedor Random 825"
-"Comprador Random 154","123456",398,"Proveedor Random 881"
-"Comprador Random 679","017945",177,"Proveedor Random 994"
-"Comprador Random 315","468396",48,"Proveedor Random 510"
-"Comprador Random 975","624538",329,"Proveedor Random 594"
-"Comprador Random 219","654321",87,"Proveedor Random 662"
-"Comprador Random 66","026748",122,"Proveedor Random 806"
-"Comprador Random 97","017894",1,"Proveedor Random 566"
-"Comprador Random 46","468396",375,"Proveedor Random 17"
-"Comprador Random 322","123456",184,"Proveedor Random 797"
-"Comprador Random 69","017894",126,"Proveedor Random 41"
-"Comprador Random 48","624538",121,"Proveedor Random 158"
-"Comprador Random 367","123456",335,"Proveedor Random 27"
-"Comprador Random 837","123456",333,"Proveedor Random 402"
-"Comprador Random 735","654321",271,"Proveedor Random 14"
-"Comprador Random 912","492563",124,"Proveedor Random 510"
-"Comprador Random 362","654321",62,"Proveedor Random 134"
-"Comprador Random 177","654321",81,"Proveedor Random 979"
-"Comprador Random 525","654321",273,"Proveedor Random 97"
-"Comprador Random 683","468396",354,"Proveedor Random 867"
-"Comprador Random 228","017945",309,"Proveedor Random 521"
-"Comprador Random 661","017894",361,"Proveedor Random 391"
-"Comprador Random 100","123456",335,"Proveedor Random 198"
-"Comprador Random 582","082564",97,"Proveedor Random 897"
-"Comprador Random 700","624538",263,"Proveedor Random 668"
-"Comprador Random 88","017894",362,"Proveedor Random 745"
-"Comprador Random 37","492563",209,"Proveedor Random 818"
-"Comprador Random 965","017894",368,"Proveedor Random 321"
-"Comprador Random 493","346290",300,"Proveedor Random 373"
-"Comprador Random 749","017945",190,"Proveedor Random 264"
-"Comprador Random 659","468396",231,"Proveedor Random 465"
-"Comprador Random 864","017945",143,"Proveedor Random 274"
-"Comprador Random 938","654321",231,"Proveedor Random 606"
-"Comprador Random 473","654321",390,"Proveedor Random 731"
-"Comprador Random 352","654321",203,"Proveedor Random 196"
-"Comprador Random 558","654321",361,"Proveedor Random 471"
-"Comprador Random 654","017894",26,"Proveedor Random 997"
-"Comprador Random 807","346290",150,"Proveedor Random 435"
-"Comprador Random 837","492563",98,"Proveedor Random 501"
-"Comprador Random 958","468396",378,"Proveedor Random 983"
-"Comprador Random 942","624538",59,"Proveedor Random 243"
-"Comprador Random 663","468396",244,"Proveedor Random 988"
-"Comprador Random 897","017894",240,"Proveedor Random 588"
-"Comprador Random 605","492563",144,"Proveedor Random 385"
-"Comprador Random 735","346290",45,"Proveedor Random 179"
-"Comprador Random 585","468396",104,"Proveedor Random 869"
-"Comprador Random 226","017945",379,"Proveedor Random 943"
-"Comprador Random 600","026748",170,"Proveedor Random 694"
-"Comprador Random 773","654321",366,"Proveedor Random 544"
-"Comprador Random 572","492563",223,"Proveedor Random 469"
-"Comprador Random 811","082564",12,"Proveedor Random 86"
-"Comprador Random 940","492563",124,"Proveedor Random 972"
-"Comprador Random 16","346290",254,"Proveedor Random 985"
-"Comprador Random 571","017945",306,"Proveedor Random 424"
-"Comprador Random 939","017945",386,"Proveedor Random 735"
-"Comprador Random 512","017894",388,"Proveedor Random 505"
-"Comprador Random 409","624538",166,"Proveedor Random 554"
-"Comprador Random 45","017894",139,"Proveedor Random 737"
-"Comprador Random 56","624538",276,"Proveedor Random 120"
-"Comprador Random 277","123456",66,"Proveedor Random 555"
-"Comprador Random 845","026748",284,"Proveedor Random 396"
-"Comprador Random 978","654321",207,"Proveedor Random 889"
-"Comprador Random 841","654321",64,"Proveedor Random 600"
-"Comprador Random 525","082564",164,"Proveedor Random 823"
-"Comprador Random 206","654321",334,"Proveedor Random 33"
-"Comprador Random 539","123456",68,"Proveedor Random 248"
-"Comprador Random 774","492563",20,"Proveedor Random 838"
-"Comprador Random 986","492563",342,"Proveedor Random 351"
-"Comprador Random 385","123456",74,"Proveedor Random 27"
-"Comprador Random 660","624538",230,"Proveedor Random 728"
-"Comprador Random 890","654321",15,"Proveedor Random 785"
-"Comprador Random 871","017894",33,"Proveedor Random 673"
-"Comprador Random 848","017945",375,"Proveedor Random 934"
-"Comprador Random 168","017945",380,"Proveedor Random 906"
-"Comprador Random 567","017894",140,"Proveedor Random 790"
-"Comprador Random 633","123456",247,"Proveedor Random 458"
-"Comprador Random 556","017894",230,"Proveedor Random 921"
-"Comprador Random 196","492563",124,"Proveedor Random 961"
-"Comprador Random 828","123456",369,"Proveedor Random 225"
-"Comprador Random 9","468396",390,"Proveedor Random 476"
-"Comprador Random 888","654321",12,"Proveedor Random 160"
-"Comprador Random 845","624538",175,"Proveedor Random 833"
-"Comprador Random 701","123456",329,"Proveedor Random 336"
-"Comprador Random 171","624538",393,"Proveedor Random 35"
-"Comprador Random 524","654321",284,"Proveedor Random 635"
-"Comprador Random 471","026748",235,"Proveedor Random 787"
-"Comprador Random 727","654321",190,"Proveedor Random 391"
-"Comprador Random 20","346290",260,"Proveedor Random 843"
-"Comprador Random 792","624538",400,"Proveedor Random 143"
-"Comprador Random 980","082564",375,"Proveedor Random 289"
-"Comprador Random 454","654321",5,"Proveedor Random 999"
-"Comprador Random 417","082564",228,"Proveedor Random 861"
-"Comprador Random 562","017945",255,"Proveedor Random 913"
-"Comprador Random 190","624538",52,"Proveedor Random 942"
-"Comprador Random 901","468396",385,"Proveedor Random 309"
-"Comprador Random 368","346290",152,"Proveedor Random 954"
-"Comprador Random 732","492563",340,"Proveedor Random 970"
-"Comprador Random 994","624538",354,"Proveedor Random 751"
-"Comprador Random 149","624538",117,"Proveedor Random 100"
-"Comprador Random 326","346290",28,"Proveedor Random 996"
-"Comprador Random 661","492563",144,"Proveedor Random 619"
-"Comprador Random 959","082564",377,"Proveedor Random 954"
-"Comprador Random 851","123456",30,"Proveedor Random 687"
-"Comprador Random 390","624538",85,"Proveedor Random 551"
-"Comprador Random 328","017945",34,"Proveedor Random 630"
-"Comprador Random 714","492563",201,"Proveedor Random 259"
-"Comprador Random 848","017894",400,"Proveedor Random 141"
-"Comprador Random 117","492563",269,"Proveedor Random 313"
-"Comprador Random 438","017945",339,"Proveedor Random 876"
-"Comprador Random 700","026748",109,"Proveedor Random 652"
-"Comprador Random 243","346290",321,"Proveedor Random 55"
-"Comprador Random 852","468396",359,"Proveedor Random 410"
-"Comprador Random 784","026748",82,"Proveedor Random 765"
-"Comprador Random 42","492563",158,"Proveedor Random 798"
-"Comprador Random 958","346290",294,"Proveedor Random 989"
-"Comprador Random 612","082564",207,"Proveedor Random 377"
-"Comprador Random 966","017945",224,"Proveedor Random 504"
-"Comprador Random 80","346290",128,"Proveedor Random 875"
-"Comprador Random 278","017894",2,"Proveedor Random 624"
-"Comprador Random 496","026748",31,"Proveedor Random 652"
-"Comprador Random 5","624538",257,"Proveedor Random 639"
-"Comprador Random 178","654321",183,"Proveedor Random 595"
-"Comprador Random 388","468396",62,"Proveedor Random 893"
-"Comprador Random 799","654321",183,"Proveedor Random 235"
-"Comprador Random 761","654321",326,"Proveedor Random 669"
-"Comprador Random 682","492563",115,"Proveedor Random 314"
-"Comprador Random 297","492563",288,"Proveedor Random 634"
-"Comprador Random 609","123456",382,"Proveedor Random 972"
-"Comprador Random 840","624538",352,"Proveedor Random 9"
-"Comprador Random 379","026748",310,"Proveedor Random 528"
-"Comprador Random 313","026748",86,"Proveedor Random 513"
-"Comprador Random 793","468396",355,"Proveedor Random 137"
-"Comprador Random 219","346290",50,"Proveedor Random 794"
-"Comprador Random 849","082564",250,"Proveedor Random 955"
-"Comprador Random 293","017945",140,"Proveedor Random 256"
-"Comprador Random 203","082564",88,"Proveedor Random 441"
-"Comprador Random 457","492563",4,"Proveedor Random 101"
-"Comprador Random 632","017894",56,"Proveedor Random 889"
-"Comprador Random 340","654321",400,"Proveedor Random 681"
-"Comprador Random 542","017945",7,"Proveedor Random 798"
-"Comprador Random 43","123456",160,"Proveedor Random 267"
-"Comprador Random 719","624538",245,"Proveedor Random 166"
-"Comprador Random 580","017945",80,"Proveedor Random 266"
-"Comprador Random 339","017945",302,"Proveedor Random 337"
+idCliente,claveProducto,precioUnitario,nombreProveedor
+'123456','082564',18,'Proveedor Random 443'
+'123456','123456',347,'Proveedor Random 910'
+'123456','017894',367,'Proveedor Random 273'
+'123456','346290',298,'Proveedor Random 697'
+'123456','492563',252,'Proveedor Random 328'
+'123456','026748',125,'Proveedor Random 789'
+'123456','492563',108,'Proveedor Random 298'
+'123456','624538',373,'Proveedor Random 122'
+'123456','082564',294,'Proveedor Random 795'
+'123456','624538',286,'Proveedor Random 589'
+'123456','468396',18,'Proveedor Random 986'
+'123456','123456',75,'Proveedor Random 328'
+'123456','654321',121,'Proveedor Random 170'
+'123456','123456',125,'Proveedor Random 438'
+'123456','468396',164,'Proveedor Random 846'
+'123456','082564',207,'Proveedor Random 916'
+'123456','468396',210,'Proveedor Random 345'
+'123456','082564',370,'Proveedor Random 377'
+'123456','026748',66,'Proveedor Random 954'
+'123456','654321',198,'Proveedor Random 461'
+'123456','082564',392,'Proveedor Random 863'
+'123456','468396',294,'Proveedor Random 107'
+'123456','017945',295,'Proveedor Random 402'
+'123456','017945',224,'Proveedor Random 49'
+'123456','017894',324,'Proveedor Random 519'
+'123456','468396',350,'Proveedor Random 219'
+'123456','026748',24,'Proveedor Random 93'
+'123456','123456',263,'Proveedor Random 5'
+'123456','654321',373,'Proveedor Random 55'
+'123456','624538',385,'Proveedor Random 233'
+'123456','654321',216,'Proveedor Random 593'
+'123456','082564',154,'Proveedor Random 56'
+'123456','017894',116,'Proveedor Random 385'
+'123456','654321',103,'Proveedor Random 937'
+'123456','468396',375,'Proveedor Random 487'
+'123456','017945',332,'Proveedor Random 912'
+'123456','017945',305,'Proveedor Random 298'
+'123456','017894',302,'Proveedor Random 575'
+'123456','082564',16,'Proveedor Random 138'
+'123456','346290',360,'Proveedor Random 128'
+'123456','468396',322,'Proveedor Random 68'
+'123456','017894',279,'Proveedor Random 834'
+'123456','017945',196,'Proveedor Random 738'
+'123456','468396',326,'Proveedor Random 792'
+'123456','017945',378,'Proveedor Random 436'
+'123456','654321',215,'Proveedor Random 967'
+'123456','346290',250,'Proveedor Random 391'
+'123456','654321',319,'Proveedor Random 704'
+'123456','346290',137,'Proveedor Random 901'
+'123456','492563',196,'Proveedor Random 64'
+'123456','026748',37,'Proveedor Random 760'
+'123456','654321',73,'Proveedor Random 644'
+'123456','624538',399,'Proveedor Random 780'
+'123456','017945',63,'Proveedor Random 729'
+'123456','082564',363,'Proveedor Random 426'
+'123456','123456',352,'Proveedor Random 714'
+'123456','468396',359,'Proveedor Random 873'
+'123456','017894',377,'Proveedor Random 973'
+'123456','017945',174,'Proveedor Random 520'
+'123456','468396',116,'Proveedor Random 81'
+'123456','624538',320,'Proveedor Random 144'
+'248124','346290',207,'Proveedor Random 974'
+'248124','123456',98,'Proveedor Random 9'
+'248124','123456',372,'Proveedor Random 50'
+'248124','468396',43,'Proveedor Random 56'
+'248124','082564',239,'Proveedor Random 684'
+'248124','654321',203,'Proveedor Random 763'
+'248124','654321',355,'Proveedor Random 309'
+'248124','017894',28,'Proveedor Random 204'
+'248124','654321',137,'Proveedor Random 149'
+'248124','346290',326,'Proveedor Random 922'
+'248124','346290',181,'Proveedor Random 230'
+'248124','123456',56,'Proveedor Random 937'
+'248124','017945',44,'Proveedor Random 937'
+'248124','624538',182,'Proveedor Random 311'
+'248124','468396',70,'Proveedor Random 306'
+'248124','654321',81,'Proveedor Random 398'
+'248124','082564',130,'Proveedor Random 551'
+'248124','026748',329,'Proveedor Random 263'
+'248124','654321',131,'Proveedor Random 462'
+'248124','026748',359,'Proveedor Random 29'
+'248124','654321',78,'Proveedor Random 77'
+'248124','017945',272,'Proveedor Random 940'
+'248124','654321',247,'Proveedor Random 866'
+'248124','082564',309,'Proveedor Random 240'
+'248124','082564',311,'Proveedor Random 882'
+'248124','654321',376,'Proveedor Random 943'
+'248124','624538',118,'Proveedor Random 135'
+'248124','654321',4,'Proveedor Random 139'
+'248124','026748',186,'Proveedor Random 914'
+'248124','017894',133,'Proveedor Random 170'
+'248124','346290',37,'Proveedor Random 209'
+'248124','346290',14,'Proveedor Random 523'
+'248124','017945',82,'Proveedor Random 604'
+'248124','026748',37,'Proveedor Random 333'
+'248124','492563',107,'Proveedor Random 57'
+'248124','492563',360,'Proveedor Random 48'
+'248124','082564',42,'Proveedor Random 492'
+'248124','082564',171,'Proveedor Random 435'
+'248124','492563',251,'Proveedor Random 611'
+'248124','654321',91,'Proveedor Random 384'
+'248124','026748',126,'Proveedor Random 79'
+'248124','624538',290,'Proveedor Random 381'
+'248124','346290',291,'Proveedor Random 428'
+'248124','492563',113,'Proveedor Random 917'
+'248124','123456',392,'Proveedor Random 734'
+'248124','026748',34,'Proveedor Random 563'
+'248124','624538',73,'Proveedor Random 848'
+'248124','026748',105,'Proveedor Random 367'
+'248124','123456',353,'Proveedor Random 81'
+'280178','017945',386,'Proveedor Random 620'
+'280178','624538',208,'Proveedor Random 390'
+'280178','492563',308,'Proveedor Random 841'
+'280178','346290',244,'Proveedor Random 229'
+'280178','017894',384,'Proveedor Random 404'
+'280178','123456',344,'Proveedor Random 324'
+'280178','017945',251,'Proveedor Random 591'
+'280178','123456',43,'Proveedor Random 196'
+'280178','017945',175,'Proveedor Random 784'
+'280178','654321',9,'Proveedor Random 995'
+'280178','346290',46,'Proveedor Random 720'
+'280178','082564',155,'Proveedor Random 395'
+'280178','346290',20,'Proveedor Random 723'
+'280178','082564',361,'Proveedor Random 896'
+'280178','017945',185,'Proveedor Random 429'
+'280178','082564',173,'Proveedor Random 463'
+'280178','492563',260,'Proveedor Random 437'
+'280178','017894',4,'Proveedor Random 540'
+'280178','082564',378,'Proveedor Random 111'
+'280178','654321',337,'Proveedor Random 24'
+'280178','492563',223,'Proveedor Random 364'
+'280178','017894',155,'Proveedor Random 649'
+'280178','654321',282,'Proveedor Random 786'
+'280178','017894',252,'Proveedor Random 602'
+'280178','123456',106,'Proveedor Random 784'
+'280178','654321',375,'Proveedor Random 809'
+'280178','624538',336,'Proveedor Random 586'
+'280178','017894',236,'Proveedor Random 901'
+'280178','492563',324,'Proveedor Random 389'
+'280178','492563',25,'Proveedor Random 126'
+'280178','026748',176,'Proveedor Random 785'
+'280178','346290',121,'Proveedor Random 641'
+'280178','123456',256,'Proveedor Random 254'
+'280178','123456',144,'Proveedor Random 801'
+'280178','082564',389,'Proveedor Random 441'
+'280178','654321',347,'Proveedor Random 529'
+'280178','017945',243,'Proveedor Random 61'
+'280178','492563',163,'Proveedor Random 751'
+'280178','624538',97,'Proveedor Random 872'
+'280178','346290',358,'Proveedor Random 611'
+'280178','082564',224,'Proveedor Random 877'
+'280178','624538',86,'Proveedor Random 728'
+'280178','123456',325,'Proveedor Random 660'
+'448724','017945',120,'Proveedor Random 187'
+'448724','468396',60,'Proveedor Random 324'
+'448724','346290',38,'Proveedor Random 103'
+'448724','468396',175,'Proveedor Random 707'
+'448724','017894',318,'Proveedor Random 600'
+'448724','654321',387,'Proveedor Random 810'
+'448724','492563',347,'Proveedor Random 858'
+'448724','624538',218,'Proveedor Random 609'
+'448724','017945',172,'Proveedor Random 9'
+'448724','017945',63,'Proveedor Random 51'
+'448724','017945',389,'Proveedor Random 504'
+'448724','624538',270,'Proveedor Random 545'
+'448724','017894',220,'Proveedor Random 839'
+'448724','654321',302,'Proveedor Random 897'
+'448724','654321',149,'Proveedor Random 905'
+'448724','346290',366,'Proveedor Random 149'
+'448724','026748',272,'Proveedor Random 176'
+'448724','654321',257,'Proveedor Random 62'
+'448724','017945',122,'Proveedor Random 240'
+'448724','123456',160,'Proveedor Random 475'
+'448724','123456',230,'Proveedor Random 914'
+'448724','026748',216,'Proveedor Random 908'
+'448724','017945',300,'Proveedor Random 233'
+'448724','654321',59,'Proveedor Random 286'
+'448724','017945',222,'Proveedor Random 67'
+'448724','017945',45,'Proveedor Random 520'
+'448724','492563',149,'Proveedor Random 582'
+'448724','026748',314,'Proveedor Random 127'
+'448724','492563',284,'Proveedor Random 521'
+'448724','492563',260,'Proveedor Random 398'
+'448724','017894',264,'Proveedor Random 198'
+'448724','017945',220,'Proveedor Random 782'
+'448724','017894',88,'Proveedor Random 876'
+'448724','123456',49,'Proveedor Random 20'
+'448724','346290',78,'Proveedor Random 683'
+'448724','017945',396,'Proveedor Random 42'
+'448724','082564',262,'Proveedor Random 412'
+'448724','017894',371,'Proveedor Random 995'
+'448724','026748',180,'Proveedor Random 769'
+'448724','346290',18,'Proveedor Random 205'
+'448724','026748',278,'Proveedor Random 426'
+'448724','026748',176,'Proveedor Random 957'
+'448724','017894',171,'Proveedor Random 149'
+'448724','082564',255,'Proveedor Random 24'
+'448724','082564',363,'Proveedor Random 203'
+'448724','468396',112,'Proveedor Random 497'
+'448724','492563',235,'Proveedor Random 117'
+'448724','346290',181,'Proveedor Random 354'
+'448724','492563',305,'Proveedor Random 581'
+'448724','654321',267,'Proveedor Random 248'
+'448724','654321',46,'Proveedor Random 364'
+'448724','624538',382,'Proveedor Random 295'
+'448724','017945',127,'Proveedor Random 111'
+'448724','654321',166,'Proveedor Random 960'
+'448724','624538',199,'Proveedor Random 1'

@@ -17,6 +17,13 @@
 
 '''
 
+import pandas as pd
+
 def intelligentSuggestor(clientID):
 
-    
+    # Encuentra los productos que compra la empresa:
+    purchasesFile = pd.read_csv("global-purchases.csv", header=0, usecols=[0,1,2,3])
+    print(purchasesFile.query(f"idCliente == \'{clientID}\'"))
+
+if __name__ == "__main__":
+    intelligentSuggestor("448724")
