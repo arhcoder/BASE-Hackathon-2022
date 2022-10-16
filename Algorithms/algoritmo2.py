@@ -29,9 +29,9 @@ csvPath =('global-purchases.csv') #ubicacion .csv de global-purchases.csv
 archivoCSV = pd.read_csv(csvPath, header=0, usecols=[0,1,2]) #convierte global-purchases.csv a data frame
 
 
-archivoCSV_groupBy = archivoCSV[['claveProducto',' precioUnitario']].groupby(by='claveProducto', as_index=False).min() #extrae solo precioUnitario minimo por claveProducto
+archivoCSV_groupBy = archivoCSV[['claveProducto','precioUnitario']].groupby(by='claveProducto', as_index=False).min() #extrae solo precioUnitario minimo por claveProducto
 
-archivoCSV_merge = pd.merge(archivoCSV_groupBy,archivoCSV,on=['claveProducto',' precioUnitario'],how='left') #obtiene nombreProveedor para cada precioUnitario menor por claveProducto
+archivoCSV_merge = pd.merge(archivoCSV_groupBy,archivoCSV,on=['claveProducto','precioUnitario'],how='left') #obtiene nombreProveedor para cada precioUnitario menor por claveProducto
 
 providersCSVPath = ('best-providers.csv') #ubicacion .csv de best-providers.csv
 archivoCSV_merge.to_csv(providersCSVPath, index=False) #envia archivoCSV_merge al best-providers.csv
