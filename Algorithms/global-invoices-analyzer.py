@@ -43,7 +43,7 @@ def getAllPurchases():
 
     # Formato del CSV:
     archivo = open("global-purchases.csv", "w")
-    archivo.write("claveProducto, precioUnitario, nombreProveedor")
+    archivo.write("compradorRandom,claveProducto,precioUnitario,nombreProveedor")
     archivo.close()
 
     # Obtiene de todas las empresas clientes el dato que nos
@@ -78,23 +78,27 @@ def getAllPurchases():
 
             for _ in range(0, cantidadProductos):
 
+                compradorRandom = "Comprador Random "+str(random.randint(1, 1000))
                 claveRandom = clavesRandom[random.randint(0, len(clavesRandom)-1)]
                 precioRandom = random.randint(1, 400)
-                nombreRandom = "Proveedor Random "+str(random.randint(1, 1000))
+                proveedorRandom = "Proveedor Random "+str(random.randint(1, 1000))
 
-                # productoRandom = {
+                # productoRandom =
+				# {
+                #     "compradorRandom": compradorRandom
                 #     "claveProducto": claveRandom,
                 #     "precioUnitario": precioRandom,
-                #     "nombreProveedor": nombreRandom
+                #     "proveedorRandom": proveedorRandom
                 # }
                 # productos.append(productoRandom)
                 
                 # Escribe la información de cada producto en el CSV:
-                archivo.write(f"\n{claveRandom}, {precioRandom}, {nombreRandom}")
+                archivo.write(f"\n\"{compradorRandom}\",\"{claveRandom}\",{precioRandom},\"{proveedorRandom}\"")
     
     archivo.close()
 
 if __name__ == "__main__":
+
     print("Analizando facturas...")
     getAllPurchases()
     print("Facturas analizadas :3")
