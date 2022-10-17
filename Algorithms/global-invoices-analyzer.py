@@ -74,7 +74,7 @@ def getAllPurchases():
             #! PARA SIMULAR DATOS DE PRODUCTOS DE UNA FACTURA:
             # productos = []
             cantidadProductos = random.randint(5, 20)
-            clavesRandom = ["123456", "654321", "468396", "346290", "026748", "492563", "082564", "017945", "017894", "624538"]
+            clavesRandom = ["42321710", "11172002", "50324441", "50303603", "42192101", "40174912", "41116500", "42295120", "50375803", "50446616"]
 
             for _ in range(0, cantidadProductos):
 

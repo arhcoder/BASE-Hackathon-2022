@@ -34,14 +34,23 @@ def intelligentSuggestor(clientID):
     # print(productsDataFrame)
     # print(products)
 
+    # Obtiene el catálogo de productos del SAT, para poder conocer los
+    # nombres genéricos según la clave de producto:
+    SATCatalog = pd.read_csv("../Database/CatalogoProductoServiciosSAT.csv", header=0, usecols=[0,1])
+
     # Encuentra los mejores proveedores para cada producto
     # que la empresa cliente compre:
     suggestions = []
     bestProvidersFile = pd.read_csv("best-providers.csv", header=0, usecols=[0,1,2])
+
     for product in products:
+
         bestOption = bestProvidersFile.loc[bestProvidersFile["claveProducto"].str.contains(str(product), case=False)]
+        productoSAT = SATCatalog.loc[SATCatalog["claveProducto"].str.contains(str(bestOption["claveProducto"].values[0]), case=False)]
+
         bestOption = dict({
             "claveProducto": str(bestOption["claveProducto"].values[0]),
+            "nombreProducto": str(productoSAT["claveProducto"].values[0]),
             "precioUnitario": int(bestOption["precioUnitario"].values[0]),
             "nombreProveedor": str(bestOption["nombreProveedor"].values[0])
         })
@@ -57,6 +66,7 @@ if __name__ == "__main__":
     clientID = "448724"
     bests = intelligentSuggestor(clientID)
     print(f"\n\n| MEJORES SUGERENCIAS DE COMPRA PARA EL CLIENTE \"{clientID}\" |\n\n")
+
     for best in bests:
         print("* Nombre clave del producto: " + str(best["claveProducto"]))
         print("* Precio unitario: " + str(best["precioUnitario"])+"$ MXN")
