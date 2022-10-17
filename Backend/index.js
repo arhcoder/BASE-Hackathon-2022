@@ -1,14 +1,15 @@
-// Included libraries...
+// Librerías necesarias...
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-require("dotenv").config();
 
 // Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
+// Se obtiene la contraseña de la base de datos del arhivo .env...
 const bd_password = process.env["BD_PASSWORD"];
-// Creating the connection to the database "crud", on the localhost...
+
+// Se conecta a la base de datos del hackathon...
 var connection = mysql.createConnection(
 {
     host: "localhost",
@@ -32,11 +33,11 @@ connection.connect((error) =>
 });
 
 
-// Put the app listenting on the port 3000...
+// Abre el puerto 3000 para escuchar peticiones...
 app.listen(3000, () => console.log("Express server running on port 3000! :D"));
 
 
-
+// [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
     response.setHeader("Access-Control-Allow-Origin", "*");
@@ -57,11 +58,11 @@ app.get("/getClients", (request, response) =>
 });
 
 
+// [GET] Obtiene todos los ID's de facturas de un cliente "x", con la antigüedad de "y" días...
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
 
     var sql = "SELECT uuid FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
-
     connection.query(sql, [request.params.clientID, request.params.days],
     (error, rows, fields) =>
     {
@@ -79,11 +80,10 @@ app.get("/getInvoices/:clientID/:days", (request, response) =>
 });
 
 
+// [GET] Obtiene todos los productos de una factura según su ID...
 app.get("/getPurchases/:invoiceID", (request, response) =>
 {
-
     var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
-
     connection.query(sql, [request.params.invoiceID],
     (error, rows, fields) =>
     {
