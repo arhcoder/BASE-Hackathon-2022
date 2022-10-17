@@ -696,32 +696,56 @@
 
                         <!-- Tab resumen -->
                         <div class="tab-pane fade" id="navs-pills-top-resumen" role="tabpanel">
+
                             <form action="" method="post">
-                                <div class="col-md-6">
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Resumen</h5>
-                                        <div class="card-body">
-                                            <div class="mb-3">
-                                                <label for="Rcuenta" class="form-label">Cuenta</label>
-                                                <input class="form-control solo-lectura" type="text"
-                                                    id="Rcuenta"
-                                                    placeholder="Cuenta" readonly="">
-                                            </div>
+                                <div class="card mb-4">
+                                    <h5 class="card-header">Resumen</h5>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="Rcuenta" class="form-label">Cuenta</label>
+                                            <input class="form-control solo-lectura" type="text" id="Rcuenta"
+                                                placeholder="Cuenta" readonly="">
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label for="Rdestino" class="form-label">Destino</label>
+                                            <input class="form-control solo-lectura" type="text" id="Rdestino"
+                                                placeholder="Destino" readonly="">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="Rbeneficiario" class="form-label">Beneficiario</label>
+                                            <input class="form-control solo-lectura" type="text" id="Rbeneficiario"
+                                                placeholder="Beneficiario" readonly="">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="Rreferencia" class="form-label">Referencia</label>
+                                            <input class="form-control solo-lectura" type="text" id="Rreferencia"
+                                                placeholder="Ref" readonly="">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="Rconcepto" class="form-label">Concepto</label>
+                                            <input class="form-control solo-lectura" type="text" id="Rconcepto"
+                                                placeholder="Concepto" readonly="">
+                                        </div>
+
                                     </div>
                                 </div>
+
+                                <!-- Botones ant sig -->
+                                <div class="row justify-content-center">
+                                    <div class="col text-start">
+                                        <button type="button" class="btn btn-outline-info"
+                                            onclick="siguiente('#btn-resumen','#btn-razon')">Anterior</button>
+                                    </div>
+                                    <div class="col text-end">
+                                        <button type="submit" class="btn btn-info">Confirmar</button>
+                                    </div>
+                                </div>
+                                <!-- /Botones ant sig -->
                             </form>
-                            <!-- Botones ant sig -->
-                            <div class="row justify-content-center">
-                                <div class="col text-start">
-                                    <button class="btn btn-outline-info"
-                                        onclick="siguiente('#btn-resumen','#btn-razon')">Anterior</button>
-                                </div>
-                                <div class="col text-end">
-                                    <button type="submit" class="btn btn-info">Confirmar</button>
-                                </div>
-                            </div>
-                            <!-- /Botones ant sig -->
                         </div>
                         <!-- /Tab resumen -->
 
@@ -771,9 +795,9 @@
             const datosCompletar = document.querySelectorAll(".form-control.solo-lectura");
             datosCompletar[0].value = cuenta.textContent;
             for (let i = 1; i < datosCompletar.length; i++) {
-                const dato = datosAdicionales[i-1];
+                const dato = datosAdicionales[i - 1];
                 const datoIns = datosCompletar[i];
-                
+                datoIns.value = dato.value;
             }
         }
 
