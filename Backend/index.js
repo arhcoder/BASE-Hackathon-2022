@@ -2,17 +2,19 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
+require("dotenv").config();
 
 // Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
-
+const bd_password = process.env["BD_PASSWORD"];
 // Creating the connection to the database "crud", on the localhost...
 var connection = mysql.createConnection(
 {
     host: "localhost",
     user: "root",
-    password: "",
+    port: 3306,
+    password: bd_password,
     database: "hackathon_db",
     multipleStatements: true
 });
@@ -37,6 +39,8 @@ app.listen(3000, () => console.log("Express server running on port 3000! :D"));
 
 app.get("/getClients", (request, response) =>
 {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Credentials", true);
     connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
     {
         if (!error)
@@ -56,7 +60,7 @@ app.get("/getClients", (request, response) =>
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
 
-    var sql = "SELECT uuid FROM Invoices WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
+    var sql = "SELECT uuid FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
 
     connection.query(sql, [request.params.clientID, request.params.days],
     (error, rows, fields) =>
