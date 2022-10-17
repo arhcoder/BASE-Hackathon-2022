@@ -2,7 +2,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-//joto2
+//me arreoiento de mis pecados: lo siento
 // Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
