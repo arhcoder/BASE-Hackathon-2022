@@ -1,0 +1,97 @@
+// Included libraries...
+const mysql = require("mysql");
+const express = require("express");
+const bodyparser = require("body-parser");
+
+// Creating an express library object named "app"...
+var app = express();
+app.use(bodyparser.json());
+
+// Creating the connection to the database "crud", on the localhost...
+var connection = mysql.createConnection(
+{
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "hackathon_db",
+    multipleStatements: true
+});
+connection.connect((error) =>
+{
+    if (!error)
+    {
+        console.log("Conectado correctamente con la base de datos :D");
+    }
+    else
+    {
+        console.log("No se pudo conectar con la base de datos D:\n"+
+        JSON.stringify(error, undefined, 2));
+    }
+});
+
+
+// Put the app listenting on the port 3000...
+app.listen(3000, () => console.log("Express server running on port 3000! :D"));
+
+
+
+app.get("/getClients", (request, response) =>
+{
+    connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
+    {
+        if (!error)
+        {
+            // console.log(rows);
+            response.send(rows);
+        }
+        else
+        {
+            console.log(error);
+            response.send(error);
+        }
+    });
+});
+
+
+app.get("/getInvoices/:clientID/:days", (request, response) =>
+{
+
+    var sql = "SELECT uuid FROM Invoices WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
+
+    connection.query(sql, [request.params.clientID, request.params.days],
+    (error, rows, fields) =>
+    {
+        if (!error)
+        {
+            // console.log(rows);
+            response.send(rows);
+        }
+        else
+        {
+            console.log(error);
+            response.send(error);
+        }
+    });
+});
+
+
+app.get("/getPurchases/:invoiceID", (request, response) =>
+{
+
+    var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
+
+    connection.query(sql, [request.params.invoiceID],
+    (error, rows, fields) =>
+    {
+        if (!error)
+        {
+            // console.log(rows);
+            response.send(rows);
+        }
+        else
+        {
+            console.log(error);
+            response.send(error);
+        }
+    });
+});
