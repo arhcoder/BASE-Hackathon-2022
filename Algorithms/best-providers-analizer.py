@@ -27,7 +27,7 @@ import pandas as pd
 def bestProvidersAnalizer():
 
     csvPath =("global-purchases.csv") #ubicacion .csv de global-purchases.csv
-    archivoCSV = pd.read_csv(csvPath, header=0, usecols=[0,1,2]) #convierte global-purchases.csv a data frame
+    archivoCSV = pd.read_csv(csvPath, header=0, usecols=[1,2,3]) #convierte global-purchases.csv a data frame
 
 
     archivoCSV_groupBy = archivoCSV[["claveProducto","precioUnitario"]].groupby(by="claveProducto", as_index=False).min() #extrae solo precioUnitario minimo por claveProducto

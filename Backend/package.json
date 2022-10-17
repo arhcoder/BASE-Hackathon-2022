@@ -1,0 +1,28 @@
+{
+  "name": "base-hackathon-2022-backend",
+  "version": "1.0.0",
+  "description": "Pendiente...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/arhcoder/BASE-Hackathon-2022.git"
+  },
+  "keywords": [
+    "Hackathon"
+  ],
+  "author": "Quesoft+",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arhcoder/BASE-Hackathon-2022/issues"
+  },
+  "homepage": "https://github.com/arhcoder/BASE-Hackathon-2022#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
