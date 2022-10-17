@@ -2,12 +2,10 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-require("dotenv").config()
 
-// Crea una instancia de express a modo de aplicación...
+// Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
-
 // Se obtiene la contraseña de la base de datos del arhivo .env...
 const bd_password = process.env["BD_PASSWORD"];
 
@@ -42,6 +40,8 @@ app.listen(3000, () => console.log("Aplicación corriendo en http://localhost:30
 // [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Credentials", true);
     connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
     {
         if (!error)
@@ -61,7 +61,8 @@ app.get("/getClients", (request, response) =>
 // [GET] Obtiene todos los ID's de facturas de un cliente "x", con la antigüedad de "y" días...
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
-    var sql = "SELECT uuid FROM Invoices WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
+
+    var sql = "SELECT uuid FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
     connection.query(sql, [request.params.clientID, request.params.days],
     (error, rows, fields) =>
     {
