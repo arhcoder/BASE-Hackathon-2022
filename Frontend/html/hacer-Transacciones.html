@@ -35,6 +35,36 @@
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    <style>
+        h4 {
+            color: #feb913;
+        }
+
+        .cuenta {
+            padding: 10px 0px;
+            cursor: pointer;
+            transition: background-color 0.3s linear;
+        }
+
+        .cuenta.datoActivo {
+            background-color: #feb913;
+            border-radius: 5px;
+        }
+
+        .datoActivo h4 {
+            color: ghostwhite;
+            text-decoration: underline;
+        }
+
+        .mascara-cuenta {
+            margin-left: 20px;
+        }
+
+        .amount {
+            margin: auto 10px;
+            font-size: 20px;
+        }
+    </style>
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -45,13 +75,20 @@
     <!-- jquery -->
     <script src="../js/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
 
+    <!-- css loader -->
+    <link rel="stylesheet" href="../assets/css/loader.css">
+
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
 </head>
 
 <body>
-
+    <div id="loader">
+        <div class="spinner-grow text-warning ajuste" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <!-- Menu -->
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
@@ -485,17 +522,66 @@
                     <div class="tab-content">
                         <!-- Tab seleccionar cuenta -->
                         <div class="tab-pane fade active show" id="navs-pills-top-cuenta" role="tabpanel">
-                            <p>
-                                Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame
-                                snaps
-                                powder. Bear claw candy topping.
-                            </p>
+                            <h1>Seleccionen su cuenta digital</h1>
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-1" onclick="datoActivo('cuenta','cuenta-1')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Alimentos</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************3456</i></div>
+                                </div>
+                                <div class="col-auto amount">$235,000.005</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-2" onclick="datoActivo('cuenta','cuenta-2')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Metales</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************9012</i></div>
+                                </div>
+                                <div class="col-auto amount">$1,850,110.010</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-3" onclick="datoActivo('cuenta','cuenta-3')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Autopartes</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************5678</i></div>
+                                </div>
+                                <div class="col-auto amount">$700,000.000</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-4" onclick="datoActivo('cuenta','cuenta-4')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Mantenimiento</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************1234</i></div>
+                                </div>
+                                <div class="col-auto amount">$100,500.99</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
                             <p class="mb-0">
-                                Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly.
-                                Bonbon
-                                jelly-o jelly-o ice cream jelly beans candy canes cake bonbon. Cookie jelly beans
-                                marshmallow
-                                jujubes sweet.
+                                Seleccione la cuenta desde la cual desee hacer la transferencia
                             </p>
 
                             <!-- Boton sig -->
@@ -510,16 +596,37 @@
 
                         <!-- Tab seleccionar destino -->
                         <div class="tab-pane fade" id="navs-pills-top-destino" role="tabpanel">
-                            <p>
-                                Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
-                                cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice
-                                cream
-                                cheesecake fruitcake.
-                            </p>
-                            <p class="mb-0">
-                                Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu
-                                halvah
-                                cotton candy liquorice caramels.
+                            <h1>Ingrese al Beneficiario</h1>
+
+                            <!-- Datos del Beneficiario -->
+                            <div class="card mb-4">
+                                <h5 class="card-header">Cuenta</h5>
+                                <div class="card-body">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control editables" id="floatingInputCuenta"
+                                            placeholder="CUENTA" aria-describedby="floatingInputHelpCUENTA">
+                                        <label for="floatingInputCuenta">No.Cuenta o CLABE</label>
+                                        <div id="floatingInputHelpCUENTA" class="form-text">
+                                            Asegúrese de escribirlo correctamente.
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="card-header">Nombre del Beneficiario</h5>
+                                <div class="card-body">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control editables" id="floatingInputUSER"
+                                            placeholder="BASE" aria-describedby="floatingInputHelpUSER">
+                                        <label for="floatingInputUSER">Beneficiario</label>
+                                        <div id="floatingInputHelpUSER" class="form-text">
+                                            Nombre de la empresa o proveedor.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Datos del Beneficiario -->
+
+                            <p class="mb-3">
+                                Revise los datos del destinatario antes de continuar
                             </p>
 
                             <!-- Botones ant sig -->
@@ -539,17 +646,37 @@
 
                         <!-- Tab razón -->
                         <div class="tab-pane fade" id="navs-pills-top-razon" role="tabpanel">
-                            <p>
-                                Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon
-                                gummies
-                                cupcake gummi bears cake chocolate.
-                            </p>
-                            <p class="mb-0">
-                                Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake.
-                                Sweet
-                                roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding
-                                jelly
-                                jelly-o tart brownie jelly.
+
+                            <!-- Datos de razon -->
+                            <div class="card mb-4">
+                                <h5 class="card-header">Referencia</h5>
+                                <div class="card-body">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control editables" id="floatingInputRazon"
+                                            placeholder="0103180" aria-describedby="floatingInputHelpRAZON"
+                                            value="1234567">
+                                        <label for="floatingInputRazon">Ref:</label>
+                                        <div id="floatingInputHelpRAZON" class="form-text">
+                                            No modificar de ser necesario.
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="card-header">Concepto</h5>
+                                <div class="card-body">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control editables" id="floatingInputConcepto"
+                                            placeholder="Concepto" aria-describedby="floatingInputHelpCONCEPTO">
+                                        <label for="floatingInputConcepto">Detalles</label>
+                                        <div id="floatingInputHelpCONCEPTO" class="form-text">
+                                            Sea honesto y breve.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Datos de razon -->
+
+                            <p class="mb-3">
+                                De esta manera puede llevar un registro de sus movimientos de forma clara
                             </p>
 
                             <!-- Botones ant sig -->
@@ -560,7 +687,7 @@
                                 </div>
                                 <div class="col text-end">
                                     <button class="btn btn-info"
-                                        onclick="siguiente('#btn-razon','#btn-resumen')">Siguiente</button>
+                                        onclick="siguiente('#btn-razon','#btn-resumen'); mostrarResumen();">Siguiente</button>
                                 </div>
                             </div>
                             <!-- /Botones ant sig -->
@@ -569,12 +696,21 @@
 
                         <!-- Tab resumen -->
                         <div class="tab-pane fade" id="navs-pills-top-resumen" role="tabpanel">
-                            <p>
-                                Smn
-                            </p>
-                            <p class="mb-0">
-                                La mona
-                            </p>
+                            <form action="" method="post">
+                                <div class="col-md-6">
+                                    <div class="card mb-4">
+                                        <h5 class="card-header">Resumen</h5>
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="Rcuenta" class="form-label">Cuenta</label>
+                                                <input class="form-control solo-lectura" type="text"
+                                                    id="Rcuenta"
+                                                    placeholder="Cuenta" readonly="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <!-- Botones ant sig -->
                             <div class="row justify-content-center">
                                 <div class="col text-start">
@@ -582,7 +718,7 @@
                                         onclick="siguiente('#btn-resumen','#btn-razon')">Anterior</button>
                                 </div>
                                 <div class="col text-end">
-                                    <button class="btn btn-info">Confirmar</button>
+                                    <button type="submit" class="btn btn-info">Confirmar</button>
                                 </div>
                             </div>
                             <!-- /Botones ant sig -->
@@ -590,9 +726,9 @@
                         <!-- /Tab resumen -->
 
                     </div>
+
                 </div>
                 <!-- /Contenido Tabs -->
-                
             </div>
         </div>
     </div>
@@ -621,13 +757,49 @@
 
     <!-- Cambio de tab -->
     <script type="text/javascript">
+        // Pasa tabs
         function siguiente(act, paso) {
             $(act).addClass("disabled");
             $(paso).removeClass("disabled");
             $(paso).click();
         }
+
+        // Rellena los datos del resume
+        function mostrarResumen() {
+            const cuenta = document.querySelector('.datoActivo .mascara-cuenta > i');
+            const datosAdicionales = document.querySelectorAll(".form-control.editables");
+            const datosCompletar = document.querySelectorAll(".form-control.solo-lectura");
+            datosCompletar[0].value = cuenta.textContent;
+            for (let i = 1; i < datosCompletar.length; i++) {
+                const dato = datosAdicionales[i-1];
+                const datoIns = datosCompletar[i];
+                
+            }
+        }
+
     </script>
     <!-- /Cambio de tab -->
+
+    <!-- datos seleccionados -->
+    <script>
+        //Remueve la clase datoActivo de un conjunto determinado y agrega dicha clase a un elemento especifico
+        function datoActivo(clase, dato) {
+            const datos = document.getElementsByClassName(clase);
+
+            for (let i = 0; i < datos.length; i++) {
+                const element = datos[i];
+                element.classList.remove("datoActivo");
+            }
+
+            const elemento = document.getElementById(dato);
+            elemento.classList.add("datoActivo");
+        }
+    </script>
+    <!-- /datos seleccionados -->
+
+    <!-- script del loader -->
+    <script src="../assets/js/loader.js" type="text/javascript"></script>
+
 </body>
 
 </html>
