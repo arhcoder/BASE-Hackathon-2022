@@ -36,7 +36,7 @@ connection.connect((error) =>
 
 
 // Abre el puerto 3000 para escuchar peticiones...
-app.listen(3000, () => console.log("Express server running on port 3000! :D"));
+app.listen(3000, () => console.log("Aplicación corriendo en http://localhost:3000/ :D"));
 
 
 // [GET] Obtiene todos los ID's de los clientes existentes...
