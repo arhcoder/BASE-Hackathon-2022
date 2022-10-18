@@ -39,68 +39,79 @@ connection.connect((error) =>
 
 
 // Abre el puerto 3000 para escuchar peticiones...
-app.listen(3000, () => console.log("Aplicación corriendo en http://localhost:3000/ :D"));
+app.listen(3000, () => console.log("Aplicación corriendo en https://34.227.231.244:3000/ :D"));
 
 
 // [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
-    connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
+    if (request.ip == "127.0.0.1")
     {
-        if (!error)
+        connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
         {
-            // console.log(rows);
-            response.send(rows);
-        }
-        else
-        {
-            console.log(error);
-            response.send(error);
-        }
-    });
+            if (!error)
+            {
+                // console.log(rows);
+                response.send(rows);
+            }
+            else
+            {
+                console.log(error);
+                response.send(error);
+            }
+        });
+    }
+    else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los ID's de facturas de un cliente "x", con la antigüedad de "y" días...
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
-
-    var sql = "SELECT uuid, rfcProvider FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
-    connection.query(sql, [request.params.clientID, request.params.days],
-    (error, rows, fields) =>
+    if (request.ip == "127.0.0.1")
     {
-        if (!error)
+        var sql = "SELECT uuid, rfcProvider FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
+        connection.query(sql, [request.params.clientID, request.params.days],
+        (error, rows, fields) =>
         {
-            // console.log(rows);
-            response.send(rows);
-        }
-        else
-        {
-            console.log(error);
-            response.send(error);
-        }
-    });
+            if (!error)
+            {
+                // console.log(rows);
+                response.send(rows);
+            }
+            else
+            {
+                console.log(error);
+                response.send(error);
+            }
+        });
+    }
+    else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los productos de una factura según su ID...
 app.get("/getPurchases/:invoiceID", (request, response) =>
 {
-    var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
-    connection.query(sql, [request.params.invoiceID],
-    (error, rows, fields) =>
+    if (request.ip == "127.0.0.1")
     {
-        if (!error)
+        var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
+        connection.query(sql, [request.params.invoiceID],
+        (error, rows, fields) =>
         {
-            // console.log(rows);
-            response.send(rows);
-        }
-        else
-        {
-            console.log(error);
-            response.send(error);
-        }
-    });
+            if (!error)
+            {
+                // console.log(rows);
+                response.send(rows);
+            }
+            else
+            {
+                console.log(error);
+                response.send(error);
+            }
+        });
+    }
+    else response.send("Nop :3");
 });
 
 
@@ -116,6 +127,7 @@ app.post("/login", (request, response) =>
     //      "token": "Lo que se capturó en la barra de token"
     // }
 
+    /*
     let loginData = request.body;
     console.log(loginData.account);
     console.log(loginData.password);
@@ -123,6 +135,7 @@ app.post("/login", (request, response) =>
 
     // Hace la petición de inicio de sesión a la API de BASE...
     // Se mandan los datos que se trajeron del frontend...
+    API_KEY = process.env["API_KEY"]
     loginResponse = elResultadoDeLaPetición;
 
     // Si el inicio de sesión retorna un OK...
@@ -171,5 +184,6 @@ app.post("/login", (request, response) =>
             "permission": false
         };
         response.send(notOk);
-    }
+    }*/
+    response.send("Inicio de sesión solicitado :3");
 });
