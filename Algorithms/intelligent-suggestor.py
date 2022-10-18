@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys
 
 def intelligentSuggestor(clientID):
 
@@ -68,6 +69,7 @@ def intelligentSuggestor(clientID):
 
 if __name__ == "__main__":
 
+    '''
     clientID = "448724"
     bests = intelligentSuggestor(clientID)
     print(f"\n\n| MEJORES SUGERENCIAS DE COMPRA PARA EL CLIENTE \"{clientID}\" |\n\n")
@@ -77,3 +79,7 @@ if __name__ == "__main__":
         print("* Precio unitario: " + str(best["precioUnitario"])+"$ MXN")
         print("* Nombre del proveedor: " + str(best["nombreProveedor"]))
         print("* Nombre del producto: " + str(best["nombreProducto"]))
+    '''
+
+    print(intelligentSuggestor(str(sys.argv[1])))
+    sys.stdout.flush()

@@ -2,6 +2,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
+const spawn = require("child_process").spawn;
 
 // Creating an express library object named "app"...
 var app = express();
@@ -186,4 +187,19 @@ app.post("/login", (request, response) =>
         response.send(notOk);
     }*/
     response.send("Inicio de sesión solicitado :3");
+});
+
+// [GET] Obtiene las sugerencias del cliente que tiene sesión activa:
+app.get("/suggestions/:idClientUnique", (request, response) =>
+{
+    // Primero verifica si el token de la sesión coincide con el generado:
+    // if (token)
+    // {
+        // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
+        const intelligentSuggestor = spawn("python3", ["../Algorothms/intelligent-suggestor.py", request.params.idClientUnique]);
+        intelligentSuggestor.stdout.on("data", (data) =>
+        {
+            console.log(data)
+        });
+    // }
 });
