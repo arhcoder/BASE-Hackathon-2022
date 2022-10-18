@@ -3,21 +3,18 @@ var USER = "";
 var PASS = "";
 var TOKEN = 0;
 var API_KEY = "";
-var JWTOKEN;
+var JWTOKEN=""
 const axios = require('axios');
-let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignIn";
+let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Recipients/GetRecipientsAuthorized";
 let dataLogin = {
-     "account": USER,
-     "password": PASS,
-     "token": TOKEN
-};
+    "Authorization":"Bearer "+JWTOKEN,
+    "StartDate": "2020-02-20" ,
+    "EndDate":"2020-02-20",
+    "Account":"145580241470001019"
+}
 let headersLogin = {
   "x-api-key": API_KEY,
-  "Content-Type": "application/json"
 };
 
 var responseLogIn = axios.post(urlLogin,dataLogin,{headers: headersLogin}).then(response =>{
-    console.log(response.data);
 });
-
-  
