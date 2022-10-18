@@ -2,14 +2,19 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-//me arreoiento de mis pecados: lo siento
+
 // Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
+
 // Se obtiene la contraseña de la base de datos del arhivo .env...
 const bd_password = process.env["BD_PASSWORD"];
 
-// Se conecta a la base de datos del hackathon...
+// Variables globales del JWT...
+// var JWT = ""
+// var JWT_REFRESH = ""
+
+// Se conecta a la base de datos local del hackathon...
 var connection = mysql.createConnection(
 {
     host: "localhost",
@@ -96,4 +101,75 @@ app.get("/getPurchases/:invoiceID", (request, response) =>
             response.send(error);
         }
     });
+});
+
+
+// [POST] Recibe datos de login y retorna respuesta de inicio de sesión
+// Para primero solicitar el TOKEN de acceso...
+app.post("/login", (request, response) =>
+{
+    // Datos de login que se mandan desde el frontend...
+    // BODY del request:
+    // {
+    //      "account": "Lo que se capturó en la barra de cuenta",
+    //      "password": "Lo que se capturó en la barra de contraseña",
+    //      "token": "Lo que se capturó en la barra de token"
+    // }
+
+    let loginData = request.body;
+    console.log(loginData.account);
+    console.log(loginData.password);
+    console.log(loginData.token);
+
+    // Hace la petición de inicio de sesión a la API de BASE...
+    // Se mandan los datos que se trajeron del frontend...
+    loginResponse = elResultadoDeLaPetición;
+
+    // Si el inicio de sesión retorna un OK...
+    if (statusCodeDelLoginResponse == 200)
+    {
+        // Se hace la petición de validar cuenta para obtener los
+        // datos de seguridad como la frase e imágen especiales...
+        specialDataResponse = elResultadoDeLaPetición;
+        fullName = elResultadoDeLaPetición.fullName;
+        roleName = elResultadoDeLaPetición.roleName;
+        phrase = elResultadoDeLaPetición.phrase;
+        imagePath = elResultadoDeLaPetición.imagePath;
+
+        // Responde con:
+        let ok =
+        {
+            "permission": true,
+            "name": loginResponse.content.name,
+            "userName": loginResponse.content.userName,
+            "firstLastName": loginResponse.content.firstLastName,
+            "secondLastName": loginResponse.content.secondLastName,
+            "email": loginResponse.content.email,
+            "companyName": loginResponse.content.companyName,
+            "rfc": loginResponse.content.rfc,
+            "idClientUnique": 0,
+            "idGroup": 0,
+            "jwt": loginResponse.content.jwt,
+            "jwtExpiredTime": 0,
+            "jwtRefresh": loginResponse.content.jwtRefresh,
+            "specialData":
+            {
+                "fullName": fullName,
+                "roleName": roleName,
+                "phrase": phrase,
+                "imagePath": imagePath
+            }
+        };
+        // JWT = ok.jwt;
+        // JWT_REFRESH = ok.jwtRefresh;
+        response.send(ok);
+    }
+    else
+    {
+        let notOk =
+        {
+            "permission": false
+        };
+        response.send(notOk);
+    }
 });
