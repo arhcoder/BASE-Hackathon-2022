@@ -16,5 +16,5 @@ let headersLogin = {
   "x-api-key": API_KEY,
 };
 
-var responseLogIn = axios.post(urlLogin,dataLogin,{headers: headersLogin}).then(response =>{
+var responseLogIn = axios.get(urlLogin,dataLogin,{headers: headersLogin}).then(response =>{
 });
