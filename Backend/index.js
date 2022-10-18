@@ -2,7 +2,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-const spawn = require("child_process").spawn;
+const { spawn } = require("child_process");
 const axios = require('axios');
 
 // Creating an express library object named "app"...
@@ -221,11 +221,16 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
     // if (token)
     // {
         // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
-        const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
-        const intelligentSuggestor = spawn(suggestorCommand, [], { shell: true });
-        intelligentSuggestor.stdout.on("data", (data) =>
+        // const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
+        const intelligentSuggestor = spawn("python", ["../Algorithms/intelligent-suggestor.py", "57474"]);
+        intelligentSuggestor.stdout.on("data", function(data)
         {
-            console.log(data);
+            suggestions = data.toString();
+        });
+
+        intelligentSuggestor.on("close", (code) =>
+        {
+            response.send(suggestions);
         });
     // }
 });
