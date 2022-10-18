@@ -40,8 +40,6 @@ app.listen(3000, () => console.log("Aplicación corriendo en http://localhost:30
 // [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
-    response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Credentials", true);
     connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
     {
         if (!error)
@@ -62,7 +60,7 @@ app.get("/getClients", (request, response) =>
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
 
-    var sql = "SELECT uuid FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
+    var sql = "SELECT uuid, rfcProvider FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
     connection.query(sql, [request.params.clientID, request.params.days],
     (error, rows, fields) =>
     {
