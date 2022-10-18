@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import sys
 
@@ -35,7 +34,7 @@ def intelligentSuggestor(clientID):
 
     # Obtiene el catálogo de productos del SAT, para poder conocer los
     # nombres genéricos según la clave de producto:
-    SATCatalog = pd.read_csv("CatalogoProductoServiciosSAT.csv", header=0)
+    SATCatalog = pd.read_csv("../Database/CatalogoProductoServiciosSAT.csv", header=0)
 
     # Encuentra los mejores proveedores para cada producto
     # que la empresa cliente compre:
@@ -46,31 +45,27 @@ def intelligentSuggestor(clientID):
 
         bestOption = bestProvidersFile.loc[bestProvidersFile["claveProducto"].str.contains(str(product), case=False)]
         
-        buscado = str(bestOption["claveProducto"].values[0]).rstrip("'").lstrip("'")
-        print(buscado)
-
-        #problema a resolver
-        busqueda = np.in1d(SATCatalog["claveProducto"], buscado)
-        output = SATCatalog.loc[busqueda, "nombreProducto"]
-        print(output)
+        buscado = str(bestOption["claveProducto"].values[0])
+        
+        clientPurchases = SATCatalog.loc[SATCatalog['claveProducto'].str.contains(buscado, case=False)]
+        # print(clientPurchases)
+        # productsDataFrame = clientPurchases["nombreProducto"]
 
         bestOption = dict({
             "claveProducto": str(bestOption["claveProducto"].values[0]),
-            "nombreProducto": str(output["nombreProducto"].values[0]),
+            "nombreProducto": str(clientPurchases["nombreProducto"].values[0]),
             "precioUnitario": int(bestOption["precioUnitario"].values[0]),
             "nombreProveedor": str(bestOption["nombreProveedor"].values[0])
         })
         suggestions.append(bestOption)
-        # print(f"\n{bestOption}")
-    
-    # print(suggestions)
+
     return suggestions
 
 
 if __name__ == "__main__":
 
     '''
-    clientID = "448724"
+    clientID = "57474"
     bests = intelligentSuggestor(clientID)
     print(f"\n\n| MEJORES SUGERENCIAS DE COMPRA PARA EL CLIENTE \"{clientID}\" |\n\n")
 
@@ -82,4 +77,4 @@ if __name__ == "__main__":
     '''
 
     print(intelligentSuggestor(str(sys.argv[1])))
-    sys.stdout.flush()
+    # sys.stdout.flush()

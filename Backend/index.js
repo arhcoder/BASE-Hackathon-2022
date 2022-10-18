@@ -2,7 +2,8 @@
 const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
-const spawn = require("child_process").spawn;
+const { spawn } = require("child_process");
+const axios = require('axios');
 
 // Creating an express library object named "app"...
 var app = express();
@@ -46,8 +47,8 @@ app.listen(3000, () => console.log("Aplicación corriendo en https://34.227.231.
 // [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
         {
             if (!error)
@@ -61,16 +62,16 @@ app.get("/getClients", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los ID's de facturas de un cliente "x", con la antigüedad de "y" días...
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         var sql = "SELECT uuid, rfcProvider FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
         connection.query(sql, [request.params.clientID, request.params.days],
         (error, rows, fields) =>
@@ -86,16 +87,16 @@ app.get("/getInvoices/:clientID/:days", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los productos de una factura según su ID...
 app.get("/getPurchases/:invoiceID", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
         connection.query(sql, [request.params.invoiceID],
         (error, rows, fields) =>
@@ -111,8 +112,8 @@ app.get("/getPurchases/:invoiceID", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
@@ -128,7 +129,6 @@ app.post("/login", (request, response) =>
     //      "token": "Lo que se capturó en la barra de token"
     // }
 
-    /*
     let loginData = request.body;
     console.log(loginData.account);
     console.log(loginData.password);
@@ -136,57 +136,82 @@ app.post("/login", (request, response) =>
 
     // Hace la petición de inicio de sesión a la API de BASE...
     // Se mandan los datos que se trajeron del frontend...
-    API_KEY = process.env["API_KEY"]
-    loginResponse = elResultadoDeLaPetición;
+    //FALTA GET DE PARAMETROS DEK USUARIO QUE ESTÁ INICIANDO SESIÓN
+    // var USER = process.env["USER"];
+    // var PASS = process.env["PASS"];
+    // var TOKEN = process.env["TOKEN"];
+    var API_KEY = process.env["API_KEY"];
+    var JWTOKEN;
 
-    // Si el inicio de sesión retorna un OK...
-    if (statusCodeDelLoginResponse == 200)
+    let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignIn";
+    let dataLogin =
     {
-        // Se hace la petición de validar cuenta para obtener los
-        // datos de seguridad como la frase e imágen especiales...
-        specialDataResponse = elResultadoDeLaPetición;
-        fullName = elResultadoDeLaPetición.fullName;
-        roleName = elResultadoDeLaPetición.roleName;
-        phrase = elResultadoDeLaPetición.phrase;
-        imagePath = elResultadoDeLaPetición.imagePath;
+        "account": loginData.account,
+        "password": loginData.password,
+        "token": loginData.token
+    };
+    let headersLogin =
+    {
+        "x-api-key": API_KEY,
+        "Content-Type": "application/json"
+    };
 
-        // Responde con:
-        let ok =
+    var responseLogIn = axios.post(urlLogin, dataLogin, {headers: headersLogin}).then(response =>
+    {
+        try
         {
-            "permission": true,
-            "name": loginResponse.content.name,
-            "userName": loginResponse.content.userName,
-            "firstLastName": loginResponse.content.firstLastName,
-            "secondLastName": loginResponse.content.secondLastName,
-            "email": loginResponse.content.email,
-            "companyName": loginResponse.content.companyName,
-            "rfc": loginResponse.content.rfc,
-            "idClientUnique": 0,
-            "idGroup": 0,
-            "jwt": loginResponse.content.jwt,
-            "jwtExpiredTime": 0,
-            "jwtRefresh": loginResponse.content.jwtRefresh,
-            "specialData":
+            JWTOKEN = responseLogIn.data.jwt;
+            console.log(response.data);
+            // Si el inicio de sesión retorna un OK...
+            if (JWTOKEN)
             {
-                "fullName": fullName,
-                "roleName": roleName,
-                "phrase": phrase,
-                "imagePath": imagePath
+                // Se hace la petición de validar cuenta para obtener los
+                // datos de seguridad como la frase e imágen especiales...
+                fullName = response.data.fullName;
+                roleName = response.data.roleName;
+                phrase = response.data.phrase;
+                imagePath = response.data.imagePath;
+
+                // Responde con:
+                let ok =
+                {
+                    "permission": true,
+                    "name": loginResponse.content.name,
+                    "userName": loginResponse.content.userName,
+                    "firstLastName": loginResponse.content.firstLastName,
+                    "secondLastName": loginResponse.content.secondLastName,
+                    "email": loginResponse.content.email,
+                    "companyName": loginResponse.content.companyName,
+                    "rfc": loginResponse.content.rfc,
+                    "idClientUnique": 0,
+                    "idGroup": 0,
+                    "jwt": loginResponse.content.jwt,
+                    "jwtExpiredTime": 0,
+                    "jwtRefresh": loginResponse.content.jwtRefresh,
+                    "specialData":
+                    {
+                        "fullName": fullName,
+                        "roleName": roleName,
+                        "phrase": phrase,
+                        "imagePath": imagePath
+                    }
+                };
+                // JWT = ok.jwt;
+                // JWT_REFRESH = ok.jwtRefresh;
+                response.send(ok);
             }
-        };
-        // JWT = ok.jwt;
-        // JWT_REFRESH = ok.jwtRefresh;
-        response.send(ok);
-    }
-    else
-    {
-        let notOk =
+        }
+        catch (error)
         {
-            "permission": false
-        };
-        response.send(notOk);
-    }*/
-    response.send("Inicio de sesión solicitado :3");
+            console.log(error);
+            let notOk =
+            {
+                "permission": false
+            };
+            response.send(notOk);
+        }
+    });
+    // response.send("Inicio de sesión solicitado :3");
 });
 
 // [GET] Obtiene las sugerencias del cliente que tiene sesión activa:
@@ -196,10 +221,16 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
     // if (token)
     // {
         // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
-        const intelligentSuggestor = spawn("python3", ["../Algorothms/intelligent-suggestor.py", request.params.idClientUnique]);
-        intelligentSuggestor.stdout.on("data", (data) =>
+        // const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
+        const intelligentSuggestor = spawn("python", ["../Algorithms/intelligent-suggestor.py", "57474"]);
+        intelligentSuggestor.stdout.on("data", function(data)
         {
-            console.log(data)
+            suggestions = data.toString();
+        });
+
+        intelligentSuggestor.on("close", (code) =>
+        {
+            response.send(suggestions);
         });
     // }
 });
