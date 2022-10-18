@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `hackathon_db` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `hackathon_db`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hackathon_db
@@ -120,6 +118,32 @@ LOCK TABLES `UserCompany` WRITE;
 INSERT INTO `UserCompany` VALUES ('31170','Future Space Explore Co.'),('57474','North Protection Corp.'),('77059','Global Mobile Group');
 /*!40000 ALTER TABLE `UserCompany` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `userAccount`
+--
+
+DROP TABLE IF EXISTS `userAccount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `userAccount` (
+  `idClientUnique` int NOT NULL,
+  `UserCompany_rfcUserCompany` varchar(45) NOT NULL,
+  PRIMARY KEY (`idClientUnique`),
+  KEY `fk_userAccount_UserCompany1_idx` (`UserCompany_rfcUserCompany`),
+  CONSTRAINT `fk_userAccount_UserCompany1` FOREIGN KEY (`UserCompany_rfcUserCompany`) REFERENCES `UserCompany` (`rfcUserCompany`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userAccount`
+--
+
+LOCK TABLES `userAccount` WRITE;
+/*!40000 ALTER TABLE `userAccount` DISABLE KEYS */;
+INSERT INTO `userAccount` VALUES (47445,'31170'),(4334600,'31170');
+/*!40000 ALTER TABLE `userAccount` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -130,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-16 16:08:04
+-- Dump completed on 2022-10-17 16:08:26

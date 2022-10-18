@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Banco Base</title>
+    <title>Scalon by BASE</title>
 
     <meta name="description" content="Realizacion de transacciones" />
 
@@ -36,7 +36,7 @@
 
     <!-- Page CSS -->
     <style>
-        h4 {
+        .nombre-cuenta h4 {
             color: #feb913;
         }
 
@@ -84,6 +84,7 @@
 </head>
 
 <body>
+    <!-- Pantalla de carga -->
     <div id="loader">
         <div class="spinner-grow text-warning ajuste" role="status">
             <span class="visually-hidden">Loading...</span>
@@ -483,8 +484,9 @@
         <div class="content-wrapper">
             <!-- Contenido 1 y único en este caso -->
             <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Transacciones /</span> Realizar Transferencia</h4>
+                
                 <div class="nav-align-top mb-4">
-
                     <!-- Tabs -->
                     <ul class="nav nav-pills mb-3" role="tablist">
                         <li class="nav-item">

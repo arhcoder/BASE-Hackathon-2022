@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+    data-template="vertical-menu-template-free">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Scalon by BASE</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!-- css loader -->
+    <link rel="stylesheet" href="../assets/css/loader.css">
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+</head>
+
+<body>
+    <!-- Pantalla de carga -->
+    <div id="loader">
+        <div class="spinner-grow text-warning ajuste" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+                <span class="app-brand-logo demo">
+                    <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path
+                                d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
+                                id="path-1"></path>
+                            <path
+                                d="M5.47320593,6.00457225 C4.05321814,8.216144 4.36334763,10.0722806 6.40359441,11.5729822 C8.61520715,12.571656 10.0999176,13.2171421 10.8577257,13.5094407 L15.5088241,14.433041 L18.6192054,7.984237 C15.5364148,3.11535317 13.9273018,0.573395879 13.7918663,0.358365126 C13.5790555,0.511491653 10.8061687,2.3935607 5.47320593,6.00457225 Z"
+                                id="path-3"></path>
+                            <path
+                                d="M7.50063644,21.2294429 L12.3234468,23.3159332 C14.1688022,24.7579751 14.397098,26.4880487 13.008334,28.506154 C11.6195701,30.5242593 10.3099883,31.790241 9.07958868,32.3040991 C5.78142938,33.4346997 4.13234973,34 4.13234973,34 C4.13234973,34 2.75489982,33.0538207 2.37032616e-14,31.1614621 C-0.55822714,27.8186216 -0.55822714,26.0572515 -4.05231404e-15,25.8773518 C0.83734071,25.6075023 2.77988457,22.8248993 3.3049379,22.52991 C3.65497346,22.3332504 5.05353963,21.8997614 7.50063644,21.2294429 Z"
+                                id="path-4"></path>
+                            <path
+                                d="M20.6,7.13333333 L25.6,13.8 C26.2627417,14.6836556 26.0836556,15.9372583 25.2,16.6 C24.8538077,16.8596443 24.4327404,17 24,17 L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923 12.4,13.8 L17.4,7.13333333 C18.0627417,6.24967773 19.3163444,6.07059163 20.2,6.73333333 C20.3516113,6.84704183 20.4862915,6.981722 20.6,7.13333333 Z"
+                                id="path-5"></path>
+                        </defs>
+                        <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
+                                <g id="Icon" transform="translate(27.000000, 15.000000)">
+                                    <g id="Mask" transform="translate(0.000000, 8.000000)">
+                                        <mask id="mask-2" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <use fill="#fdb913" xlink:href="#path-1"></use>
+                                        <g id="Path-3" mask="url(#mask-2)">
+                                            <use fill="#fdb913" xlink:href="#path-3"></use>
+                                            <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
+                                        </g>
+                                        <g id="Path-4" mask="url(#mask-2)">
+                                            <use fill="#fdb913" xlink:href="#path-4"></use>
+                                            <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
+                                        </g>
+                                    </g>
+                                    <g id="Triangle"
+                                        transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
+                                        <use fill="#fdb913" xlink:href="#path-5"></use>
+                                        <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </span>
+                <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+        </div>
+
+        <div class="menu-inner-shadow"></div>
+
+        <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+                <a href="index.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+
+            <!-- Layouts -->
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Layouts</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="layouts-without-menu.html" class="menu-link">
+                            <div data-i18n="Without menu">Without menu</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-without-navbar.html" class="menu-link">
+                            <div data-i18n="Without navbar">Without navbar</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-container.html" class="menu-link">
+                            <div data-i18n="Container">Container</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-fluid.html" class="menu-link">
+                            <div data-i18n="Fluid">Fluid</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-blank.html" class="menu-link">
+                            <div data-i18n="Blank">Blank</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Pages</span>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <div data-i18n="Account Settings">Account Settings</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="pages-account-settings-account.html" class="menu-link">
+                            <div data-i18n="Account">Account</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="pages-account-settings-notifications.html" class="menu-link">
+                            <div data-i18n="Notifications">Notifications</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="pages-account-settings-connections.html" class="menu-link">
+                            <div data-i18n="Connections">Connections</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                    <div data-i18n="Authentications">Authentications</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                            <div data-i18n="Basic">Login</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                            <div data-i18n="Basic">Register</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+                            <div data-i18n="Basic">Forgot Password</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                    <div data-i18n="Misc">Misc</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="pages-misc-error.html" class="menu-link">
+                            <div data-i18n="Error">Error</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="pages-misc-under-maintenance.html" class="menu-link">
+                            <div data-i18n="Under Maintenance">Under Maintenance</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+            <!-- Cards -->
+            <li class="menu-item active">
+                <a href="cards-basic.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Cards</div>
+                </a>
+            </li>
+            <!-- User interface -->
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-box"></i>
+                    <div data-i18n="User interface">User interface</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="ui-accordion.html" class="menu-link">
+                            <div data-i18n="Accordion">Accordion</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-alerts.html" class="menu-link">
+                            <div data-i18n="Alerts">Alerts</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-badges.html" class="menu-link">
+                            <div data-i18n="Badges">Badges</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-buttons.html" class="menu-link">
+                            <div data-i18n="Buttons">Buttons</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-carousel.html" class="menu-link">
+                            <div data-i18n="Carousel">Carousel</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-collapse.html" class="menu-link">
+                            <div data-i18n="Collapse">Collapse</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-dropdowns.html" class="menu-link">
+                            <div data-i18n="Dropdowns">Dropdowns</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-footer.html" class="menu-link">
+                            <div data-i18n="Footer">Footer</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-list-groups.html" class="menu-link">
+                            <div data-i18n="List Groups">List groups</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-modals.html" class="menu-link">
+                            <div data-i18n="Modals">Modals</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-navbar.html" class="menu-link">
+                            <div data-i18n="Navbar">Navbar</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-offcanvas.html" class="menu-link">
+                            <div data-i18n="Offcanvas">Offcanvas</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-pagination-breadcrumbs.html" class="menu-link">
+                            <div data-i18n="Pagination &amp; Breadcrumbs">Pagination &amp; Breadcrumbs</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-progress.html" class="menu-link">
+                            <div data-i18n="Progress">Progress</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-spinners.html" class="menu-link">
+                            <div data-i18n="Spinners">Spinners</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-tabs-pills.html" class="menu-link">
+                            <div data-i18n="Tabs &amp; Pills">Tabs &amp; Pills</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-toasts.html" class="menu-link">
+                            <div data-i18n="Toasts">Toasts</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-tooltips-popovers.html" class="menu-link">
+                            <div data-i18n="Tooltips & Popovers">Tooltips &amp; popovers</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="ui-typography.html" class="menu-link">
+                            <div data-i18n="Typography">Typography</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Extended components -->
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-copy"></i>
+                    <div data-i18n="Extended UI">Extended UI</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
+                            <div data-i18n="Perfect Scrollbar">Perfect scrollbar</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="extended-ui-text-divider.html" class="menu-link">
+                            <div data-i18n="Text Divider">Text Divider</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="icons-boxicons.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-crown"></i>
+                    <div data-i18n="Boxicons">Boxicons</div>
+                </a>
+            </li>
+
+            <!-- Forms & Tables -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp;
+                    Tables</span></li>
+            <!-- Forms -->
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-detail"></i>
+                    <div data-i18n="Form Elements">Form Elements</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="forms-basic-inputs.html" class="menu-link">
+                            <div data-i18n="Basic Inputs">Basic Inputs</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="forms-input-groups.html" class="menu-link">
+                            <div data-i18n="Input groups">Input groups</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-detail"></i>
+                    <div data-i18n="Form Layouts">Form Layouts</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="form-layouts-vertical.html" class="menu-link">
+                            <div data-i18n="Vertical Form">Vertical Form</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="form-layouts-horizontal.html" class="menu-link">
+                            <div data-i18n="Horizontal Form">Horizontal Form</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Tables -->
+            <li class="menu-item">
+                <a href="tables-basic.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-table"></i>
+                    <div data-i18n="Tables">Tables</div>
+                </a>
+            </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+            <li class="menu-item">
+                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
+                    class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-support"></i>
+                    <div data-i18n="Support">Support</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    target="_blank" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-file"></i>
+                    <div data-i18n="Documentation">Documentation</div>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- / Menu -->
+
+    <!-- Formato de division entre barra lateral y contenido -->
+    <div class="layout-page">
+        <!-- Divisior del contenido -->
+        <div class="content-wrapper">
+            <!-- Contenido 1 y único en este caso -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Mi cuenta /</span> Autorizaciones</h4>
+                <div class="row mb-5">
+
+                    <!-- Equipo 0 -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Primer acceso el 17/10/2022</div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <!-- logo Linux -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1);">
+                                        <path
+                                            d="M12.642 8.084c-.364.189-.79.42-1.242.42s-.81-.209-1.066-.413c-.13-.101-.234-.202-.313-.276-.137-.108-.12-.259-.064-.254.094.012.108.136.168.191.08.075.18.172.302.269.243.192.567.38.973.38s.878-.238 1.167-.4c.163-.092.371-.256.541-.381.13-.095.125-.21.232-.198.107.013.028.127-.122.258a3.404 3.404 0 0 1-.576.404z">
+                                        </path>
+                                        <path
+                                            d="M19.649 17.77c-.142-.16-.209-.456-.281-.771s-.153-.654-.411-.874l-.002-.001a1.054 1.054 0 0 0-.317-.192c.359-1.065.219-2.126-.145-3.084-.444-1.177-1.222-2.202-1.815-2.903-.664-.838-1.313-1.633-1.301-2.808.021-1.793.197-5.118-2.958-5.122a4.66 4.66 0 0 0-.401.017c-3.526.283-2.59 4.008-2.643 5.255-.064.912-.249 1.631-.877 2.523-.736.876-1.774 2.295-2.266 3.771-.232.697-.342 1.407-.241 2.08a1.9 1.9 0 0 0-.091.089c-.216.231-.376.511-.555.699-.166.167-.403.229-.664.323s-.547.231-.721.565l-.001.002a1 1 0 0 0-.108.484c0 .154.023.311.046.461.048.313.097.609.032.81-.206.564-.232.954-.087 1.237.146.284.444.409.783.479.676.141 1.592.106 2.314.489l.062-.117-.061.118c.773.404 1.557.547 2.182.405.454-.104.821-.374 1.011-.789.489-.002 1.025-.209 1.885-.256.583-.047 1.312.207 2.149.16a1.119 1.119 0 0 0 .099.264c.324.649.928.946 1.571.896s1.329-.43 1.883-1.089l-.102-.085.102.084c.527-.64 1.403-.905 1.984-1.255.29-.175.525-.395.544-.713.018-.318-.169-.675-.599-1.152zm-7.79-11.708c-.003-.234.036-.435.126-.639s.201-.351.358-.47.312-.174.494-.176h.009c.179 0 .332.053.489.167.159.116.274.261.366.463a1.493 1.493 0 0 1 .141.636c.002.235-.038.435-.127.639a1.23 1.23 0 0 1-.18.299l-.074-.033c-.089-.038-.167-.069-.237-.096s-.124-.044-.181-.064c.041-.049.122-.108.151-.181a.943.943 0 0 0 .072-.347l.002-.016a.953.953 0 0 0-.05-.337c-.038-.113-.086-.195-.155-.263s-.139-.099-.223-.101h-.011a.324.324 0 0 0-.217.086.618.618 0 0 0-.174.25.944.944 0 0 0-.072.348l-.001.015a.992.992 0 0 0 .014.2 2.463 2.463 0 0 0-.507-.171 1.681 1.681 0 0 1-.014-.19v-.019zm-2.144.052c-.012-.202.009-.376.064-.556s.13-.311.238-.418a.516.516 0 0 1 .349-.168h.03c.118 0 .225.04.335.127a.968.968 0 0 1 .284.389c.076.171.116.343.127.545v.002a1.51 1.51 0 0 1-.002.243c-.023.006-.046.014-.068.021-.128.044-.23.093-.328.158a.845.845 0 0 0 .003-.214v-.012a.95.95 0 0 0-.068-.274.523.523 0 0 0-.138-.203c-.052-.044-.1-.065-.153-.064l-.017.001c-.061.005-.11.034-.157.092a.536.536 0 0 0-.101.223.912.912 0 0 0-.019.293l.001.012c.01.103.031.189.067.275a.528.528 0 0 0 .166.224c-.059.045-.098.078-.146.113l-.11.081a.995.995 0 0 1-.229-.342 1.528 1.528 0 0 1-.128-.546v-.002zm.155 1.228c.187-.14.315-.234.402-.298.086-.063.121-.086.148-.112h.001c.14-.132.362-.374.699-.49.115-.04.245-.065.39-.066.275-.001.608.089 1.01.348.247.16.439.174.882.363h.001c.213.087.338.202.399.321.061.12.063.25.012.387-.103.273-.429.562-.887.705h-.001c-.224.072-.418.233-.647.364a1.449 1.449 0 0 1-.842.217 1.105 1.105 0 0 1-.374-.083 1.202 1.202 0 0 1-.27-.167c-.161-.131-.303-.295-.51-.416h-.002c-.333-.19-.515-.408-.573-.598-.057-.189-.003-.351.162-.475zm.131 13.018v.001c-.047.623-.398.961-.938 1.085-.539.123-1.27 0-1.999-.381h-.001c-.808-.427-1.768-.385-2.384-.514-.308-.064-.509-.161-.602-.341-.092-.18-.094-.494.102-1.028l.001-.002.001-.002c.097-.299.025-.626-.021-.934-.047-.307-.07-.586.034-.781l.001-.002c.135-.259.332-.352.576-.439.245-.088.534-.157.764-.386l.001-.001.001-.001c.212-.223.371-.503.557-.702.157-.167.314-.279.551-.28h.009c.041 0 .085.003.132.011.314.047.588.268.853.625l.762 1.389h.001c.202.423.631.89.994 1.365.362.475.644.952.607 1.317l-.002.001zm-.063-1.01a6.721 6.721 0 0 0-.333-.469 13.467 13.467 0 0 0-.229-.293c.151 0 .28-.024.384-.072a.486.486 0 0 0 .266-.274c.09-.242 0-.583-.288-.973-.29-.39-.778-.83-1.494-1.269-.527-.328-.821-.729-.959-1.165s-.119-.907-.013-1.373c.204-.894.729-1.762 1.063-2.308.09-.066.032.123-.339.811-.332.629-.953 2.081-.103 3.214a6.722 6.722 0 0 1 .538-2.398c.472-1.067 1.456-2.919 1.534-4.395.041.029.18.123.241.158.182.106.316.262.492.403.177.142.396.264.729.283l.093.003c.343 0 .61-.112.833-.239.242-.138.436-.292.618-.351h.001c.387-.122.694-.335.869-.585.302 1.186 1.001 2.897 1.45 3.733.239.443.715 1.385.92 2.52.13-.004.273.015.427.054.537-1.393-.455-2.892-.909-3.31-.184-.178-.192-.258-.102-.254.492.436 1.139 1.311 1.374 2.3.107.451.13.925.016 1.393.056.023.113.048.171.076.862.42 1.181.785 1.027 1.283-.05-.002-.1-.001-.148 0h-.014c.125-.395-.151-.687-.889-1.02-.764-.336-1.373-.303-1.476.379a1.302 1.302 0 0 0-.017.109c-.057.02-.114.045-.172.076-.358.197-.555.553-.664.99-.108.437-.14.964-.17 1.558-.019.298-.141.702-.266 1.129-1.249.897-2.986 1.283-4.461.276zm9.628.057c-.524.317-1.456.593-2.05 1.313-.517.615-1.146.952-1.7.996-.555.044-1.033-.186-1.315-.752v-.001l-.001-.003c-.175-.333-.102-.858.045-1.412.147-.554.359-1.123.388-1.585v-.001c.03-.592.063-1.11.163-1.509.1-.399.256-.669.533-.821l.039-.02c.031.513.285 1.036.734 1.149.491.129 1.199-.292 1.498-.636.06-.002.118-.006.175-.007.262-.006.481.009.707.205v.001h.001c.173.146.255.423.326.733.071.31.128.647.342.888h.001c.41.456.542.764.531.96-.011.198-.153.344-.417.502z">
+                                        </path>
+                                        <path
+                                            d="M11.738 6.762c.015.048.093.04.138.063.04.02.071.065.116.066.042.001.107-.015.113-.057.008-.056-.073-.091-.126-.111-.067-.026-.153-.039-.216-.004-.014.008-.03.027-.025.043zm-.46 0c-.016.048-.094.04-.139.063-.039.02-.071.065-.115.066-.042.001-.108-.015-.114-.057-.007-.056.074-.091.126-.111.067-.026.153-.039.217-.004.015.008.03.027.025.043z">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo Linux -->
+                                    Equipo Linux
+                                </h5>
+                                <p class="card-text">
+                                    Un equipo Linux acceso el 17/10/2022 a las 04:11 desde Jiangxi, China.
+                                </p>
+                                <hr>
+                                <p class="card-text">
+                                    Acceso a traves de:
+                                    <!-- logo baidu -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1);">
+                                        <path
+                                            d="M6.217 12.486c1.964-.422 1.693-2.772 1.637-3.287-.096-.788-1.028-2.172-2.291-2.061-1.588.141-1.821 2.44-1.821 2.44-.216 1.06.515 3.33 2.475 2.908m3.646-3.944c1.084 0 1.959-1.251 1.959-2.792 0-1.537-.871-2.785-1.955-2.785-1.086 0-1.966 1.242-1.966 2.785s.88 2.792 1.965 2.792m4.671.186c1.454.195 2.38-1.355 2.568-2.53.188-1.166-.754-2.528-1.776-2.763-1.031-.237-2.303 1.411-2.431 2.484-.136 1.318.188 2.627 1.634 2.813m5.751 1.973c0-.562-.46-2.253-2.19-2.253-1.729 0-1.965 1.596-1.965 2.726 0 1.077.089 2.573 2.247 2.528 2.148-.052 1.913-2.438 1.913-3.002M18.1 15.626s-2.247-1.739-3.557-3.613c-1.776-2.768-4.304-1.64-5.144-.239-.845 1.418-2.153 2.306-2.339 2.544-.188.232-2.709 1.596-2.147 4.079.563 2.483 2.528 2.439 2.528 2.439s1.446.142 3.133-.234c1.686-.375 3.13.091 3.13.091s3.92 1.317 5.005-1.212c1.072-2.537-.61-3.847-.61-3.847">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo baidu -->
+                                    Navegador Baidu
+                                </p>
+                                <div class="text-end">
+                                    <a href="javascript:void(0)" class="btn btn-primary text-end"><b>Más
+                                            detalles</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Equipo 0 -->
+
+                    <!-- Equipo 1 -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Primer acceso el 12/06/2022</div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <!-- logo Windows -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1);">
+                                        <path
+                                            d="m3 5.557 7.357-1.002.004 7.097-7.354.042L3 5.557zm7.354 6.913.006 7.103-7.354-1.011v-6.14l7.348.048zm.892-8.046L21.001 3v8.562l-9.755.077V4.424zm9.758 8.113-.003 8.523-9.755-1.378-.014-7.161 9.772.016z">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo Windows -->
+                                    Equipo Windows
+                                </h5>
+                                <p class="card-text">
+                                    Un equipo Window acceso el 12/06/2022 a las 18:25 desde León, Guanajuato.
+                                </p>
+                                <hr>
+                                <p class="card-text">
+                                    Acceso a traves de:
+                                    <!-- logo edge -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1)">
+                                        <path
+                                            d="M20.349 13.684H8.874c0 .433.063.825.195 1.178a3.334 3.334 0 0 0 1.381 1.634c.309.196.646.359 1.005.484.356.13.729.226 1.107.288.821.13 1.658.123 2.477-.021a9.79 9.79 0 0 0 2.421-.783c.393-.18.79-.376 1.201-.594v3.805a13.453 13.453 0 0 1-2.711.978c-.457.112-.92.196-1.396.246-.486.054-.975.079-1.464.079a8.185 8.185 0 0 1-1.95-.232 7.679 7.679 0 0 1-1.762-.668 7.29 7.29 0 0 1-1.51-1.062 6.67 6.67 0 0 1-1.941-3.103 6.978 6.978 0 0 1-.267-1.953c0-.737.101-1.439.303-2.11a6.718 6.718 0 0 1 2.264-3.342 7.38 7.38 0 0 1 1.847-1.066 3.891 3.891 0 0 0-.869 1.329 5.682 5.682 0 0 0-.401 1.538h6.391c0-.646-.063-1.207-.196-1.689-.131-.484-.342-.885-.637-1.201A2.64 2.64 0 0 0 13.23 6.7c-.462-.16-1.021-.241-1.675-.241-.771 0-1.543.111-2.314.344a9.804 9.804 0 0 0-2.2.955c-.695.412-1.335.897-1.919 1.452a9.167 9.167 0 0 0-1.474 1.819c.084-.742.247-1.474.485-2.18a9.304 9.304 0 0 1 .912-1.938 8.622 8.622 0 0 1 1.303-1.609 7.735 7.735 0 0 1 1.655-1.235 8.45 8.45 0 0 1 1.955-.792 10.042 10.042 0 0 1 2.233-.254c.46 0 .917.041 1.375.124.457.084.903.196 1.339.342a8.012 8.012 0 0 1 2.315 1.239 7.95 7.95 0 0 1 1.711 1.833c.463.692.813 1.459 1.055 2.292s.365 1.701.365 2.602v2.23h-.002z">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo edge -->
+                                    Navegador Microsoft Edge
+                                </p>
+                                <div class="text-end">
+                                    <a href="javascript:void(0)" class="btn btn-primary text-end"><b>Más
+                                            detalles</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Equipo 1 -->
+
+                    <!-- Equipo 2 -->
+                    <div class="col-sm-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Primer acceso el 10/05/2022</div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <!-- logo Windows -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1);">
+                                        <path
+                                            d="m3 5.557 7.357-1.002.004 7.097-7.354.042L3 5.557zm7.354 6.913.006 7.103-7.354-1.011v-6.14l7.348.048zm.892-8.046L21.001 3v8.562l-9.755.077V4.424zm9.758 8.113-.003 8.523-9.755-1.378-.014-7.161 9.772.016z">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo Windows -->
+                                    Equipo Windows
+                                </h5>
+                                <p class="card-text">
+                                    Un equipo Window acceso el 10/05/2022 a las 12:26 desde León, Guanajuato.
+                                </p>
+                                <hr>
+                                <p class="card-text">
+                                    Acceso a traves de:
+                                    <!-- logo google -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        style="fill: rgba(0, 0, 0, 1);">
+                                        <path
+                                            d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z">
+                                        </path>
+                                    </svg>
+                                    <!-- /logo google -->
+                                    Navegador Google Chorme
+                                </p>
+                                <div class="text-end">
+                                    <a href="javascript:void(0)" class="btn btn-primary text-end"><b>Más
+                                            detalles</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Equipo 2 -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Core JS -->
+        <!-- build:js assets/vendor/js/core.js -->
+        <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="../assets/vendor/libs/popper/popper.js"></script>
+        <script src="../assets/vendor/js/bootstrap.js"></script>
+        <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+        <script src="../assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
+
+        <!-- Vendors JS -->
+        <script src="../assets/vendor/libs/masonry/masonry.js"></script>
+
+        <!-- Main JS -->
+        <script src="../assets/js/main.js"></script>
+
+        <!-- script del loader -->
+        <script src="../assets/js/loader.js" type="text/javascript"></script>
+
+        <!-- Place this tag in your head or just before your close body tag -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+
+</html>
