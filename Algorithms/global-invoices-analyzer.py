@@ -59,14 +59,16 @@ def getAllPurchases():
     urlAPIGetInvoices = "http://localhost:3000/getInvoices/"
     for client in clients:
         invoices = []
+        invoiceProviders = []
         invoicesJSON = requests.get(urlAPIGetInvoices+client+"/30").json()
         for invoiceID in invoicesJSON:
             invoices.append(str(invoiceID["uuid"]))
+            invoiceProviders.append(str(invoiceID["rfcProvider"]))
 
         # Para cada factura, obtiene la lista de todos los productos:
         # "SELECT * from productsInInvoice WHERE invoiceID = ?"
         urlAPIGetProducts = "http://localhost:3000/getPurchases/"
-        for invoice in invoices:
+        for i, invoice in enumerate(invoices):
             products = requests.get(str(urlAPIGetProducts+invoice)).json()
 
             #! PEQUEÑA SIMULACIÓN QUE SE INVENTA PRODUCTOS ALEATORIOS, PUESTOS ÚNICAMENTE
@@ -93,19 +95,20 @@ def getAllPurchases():
             for product in products:
                 productKey = str(product["productKey"])
                 productUnitaryValue = str(product["unitaryValueProduct"])
-                proveedorRandom = "Proveedor Random " + str(random.randint(1, 1000))
+                productProvider = str(invoiceProviders[i])
+                # proveedorRandom = "Proveedor Random " + str(random.randint(1, 1000))
 
 				# Escribe la información de cada producto en el CSV:
-                archivo.write(f"\n\'{client}\',\'{productKey}\',{productUnitaryValue},\'{proveedorRandom}\'")
+                archivo.write(f"\n\'{client}\',\'{productKey}\',{productUnitaryValue},\'{productProvider}\'")
 
     archivo.close()
 
 # Main point de prueba #
 # Punto de ejecución:
 '''
-	if __name__ == "__main__":
+if __name__ == "__main__":
 
-    	print("Analizando facturas...")
-    	getAllPurchases()
-    	print("Facturas analizadas :3")
+	print("Analizando facturas...")
+	getAllPurchases()
+	print("Facturas analizadas :3")
 '''
