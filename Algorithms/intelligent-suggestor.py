@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 def intelligentSuggestor(clientID):
@@ -33,7 +34,7 @@ def intelligentSuggestor(clientID):
 
     # Obtiene el catálogo de productos del SAT, para poder conocer los
     # nombres genéricos según la clave de producto:
-    SATCatalog = pd.read_csv("../Database/CatalogoProductoServiciosSAT.csv", header=0, usecols=[0,1])
+    SATCatalog = pd.read_csv("CatalogoProductoServiciosSAT.csv", header=0)
 
     # Encuentra los mejores proveedores para cada producto
     # que la empresa cliente compre:
@@ -43,11 +44,18 @@ def intelligentSuggestor(clientID):
     for product in products:
 
         bestOption = bestProvidersFile.loc[bestProvidersFile["claveProducto"].str.contains(str(product), case=False)]
-        productoSAT = SATCatalog.loc[SATCatalog["claveProducto"].str.contains(str(bestOption["claveProducto"].values[0]), case=False)]
+        
+        buscado = str(bestOption["claveProducto"].values[0]).rstrip("'").lstrip("'")
+        print(buscado)
+
+        #problema a resolver
+        busqueda = np.in1d(SATCatalog["claveProducto"], buscado)
+        output = SATCatalog.loc[busqueda, "nombreProducto"]
+        print(output)
 
         bestOption = dict({
             "claveProducto": str(bestOption["claveProducto"].values[0]),
-            "nombreProducto": str(productoSAT["claveProducto"].values[0]),
+            "nombreProducto": str(output["nombreProducto"].values[0]),
             "precioUnitario": int(bestOption["precioUnitario"].values[0]),
             "nombreProveedor": str(bestOption["nombreProveedor"].values[0])
         })
@@ -68,4 +76,4 @@ if __name__ == "__main__":
         print("* Nombre clave del producto: " + str(best["claveProducto"]))
         print("* Precio unitario: " + str(best["precioUnitario"])+"$ MXN")
         print("* Nombre del proveedor: " + str(best["nombreProveedor"]))
-        print()
+        print("* Nombre del producto: " + str(best["nombreProducto"]))
