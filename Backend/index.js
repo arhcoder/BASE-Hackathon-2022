@@ -46,8 +46,8 @@ app.listen(3000, () => console.log("Aplicación corriendo en https://34.227.231.
 // [GET] Obtiene todos los ID's de los clientes existentes...
 app.get("/getClients", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         connection.query("SELECT rfcUserCompany FROM UserCompany", (error, rows, fields) =>
         {
             if (!error)
@@ -61,16 +61,16 @@ app.get("/getClients", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los ID's de facturas de un cliente "x", con la antigüedad de "y" días...
 app.get("/getInvoices/:clientID/:days", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         var sql = "SELECT uuid, rfcProvider FROM Invoice WHERE rfcUserCompany = ? AND expeditionDate BETWEEN DATE_SUB(NOW(), INTERVAL ? DAY) AND NOW();";
         connection.query(sql, [request.params.clientID, request.params.days],
         (error, rows, fields) =>
@@ -86,16 +86,16 @@ app.get("/getInvoices/:clientID/:days", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
 // [GET] Obtiene todos los productos de una factura según su ID...
 app.get("/getPurchases/:invoiceID", (request, response) =>
 {
-    if (request.ip == "127.0.0.1")
-    {
+    // if (request.ip == "127.0.0.1")
+    // {
         var sql = "SELECT * FROM Product WHERE Invoice_uuid = ?";
         connection.query(sql, [request.params.invoiceID],
         (error, rows, fields) =>
@@ -111,8 +111,8 @@ app.get("/getPurchases/:invoiceID", (request, response) =>
                 response.send(error);
             }
         });
-    }
-    else response.send("Nop :3");
+    // }
+    // else response.send("Nop :3");
 });
 
 
@@ -196,7 +196,8 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
     // if (token)
     // {
         // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
-        const intelligentSuggestor = spawn("python3", ["../Algorothms/intelligent-suggestor.py", request.params.idClientUnique]);
+        const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
+        const intelligentSuggestor = spawn(suggestorCommand, [], { shell: true });
         intelligentSuggestor.stdout.on("data", (data) =>
         {
             console.log(data)

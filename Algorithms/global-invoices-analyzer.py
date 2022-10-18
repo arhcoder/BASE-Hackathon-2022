@@ -1,5 +1,5 @@
 import requests
-import random
+from datetime import datetime
 
 def getAllPurchases():
 
@@ -36,7 +36,7 @@ def getAllPurchases():
     '''
 
     # Formato del CSV:
-    archivo = open("global-purchases.csv", "w")
+    archivo = open("../Backend/global-purchases.csv", "w")
     archivo.write("idCliente,claveProducto,precioUnitario,nombreProveedor")
     archivo.close()
 
@@ -52,7 +52,7 @@ def getAllPurchases():
 
     # Obtiene todas las facturas de los últimos n días:
     days = 30
-    archivo = open("global-purchases.csv", "a")
+    archivo = open("../Backend/global-purchases.csv", "a")
 
 	# Para cada cliente, obtiene sus facturas:
 	# "SELECT idInvoice FROM invoices WHERE clienID = ?"
@@ -103,12 +103,9 @@ def getAllPurchases():
 
     archivo.close()
 
-# Main point de prueba #
 # Punto de ejecución:
-'''
 if __name__ == "__main__":
-
-	print("Analizando facturas...")
-	getAllPurchases()
-	print("Facturas analizadas :3")
-'''
+    print("\n"+datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    print("Analizando facturas...")
+    getAllPurchases()
+    print("Facturas analizadas :3\n")
