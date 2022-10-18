@@ -34,6 +34,10 @@ def bestProvidersAnalizer():
     providersCSVPath = ("best-providers.csv") #ubicacion .csv de best-providers.csv
     archivoCSV_merge.to_csv(providersCSVPath, index=False) #envia archivoCSV_merge al best-providers.csv
 
+    # Elimina las filas repetidas:
+    bests = pd.read_csv("best-providers.csv", header=0, usecols=[0,1,2])
+    bests = bests.drop_duplicates()
+    bests.to_csv(providersCSVPath, index=False)
 
 if __name__ == "__main__":
 
