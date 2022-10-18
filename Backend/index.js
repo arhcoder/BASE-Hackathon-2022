@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const express = require("express");
 const bodyparser = require("body-parser");
 const spawn = require("child_process").spawn;
+const axios = require('axios');
 
 // Creating an express library object named "app"...
 var app = express();
@@ -128,7 +129,6 @@ app.post("/login", (request, response) =>
     //      "token": "Lo que se capturó en la barra de token"
     // }
 
-    /*
     let loginData = request.body;
     console.log(loginData.account);
     console.log(loginData.password);
@@ -136,57 +136,82 @@ app.post("/login", (request, response) =>
 
     // Hace la petición de inicio de sesión a la API de BASE...
     // Se mandan los datos que se trajeron del frontend...
-    API_KEY = process.env["API_KEY"]
-    loginResponse = elResultadoDeLaPetición;
+    //FALTA GET DE PARAMETROS DEK USUARIO QUE ESTÁ INICIANDO SESIÓN
+    // var USER = process.env["USER"];
+    // var PASS = process.env["PASS"];
+    // var TOKEN = process.env["TOKEN"];
+    var API_KEY = process.env["API_KEY"];
+    var JWTOKEN;
 
-    // Si el inicio de sesión retorna un OK...
-    if (statusCodeDelLoginResponse == 200)
+    let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignIn";
+    let dataLogin =
     {
-        // Se hace la petición de validar cuenta para obtener los
-        // datos de seguridad como la frase e imágen especiales...
-        specialDataResponse = elResultadoDeLaPetición;
-        fullName = elResultadoDeLaPetición.fullName;
-        roleName = elResultadoDeLaPetición.roleName;
-        phrase = elResultadoDeLaPetición.phrase;
-        imagePath = elResultadoDeLaPetición.imagePath;
+        "account": loginData.account,
+        "password": loginData.password,
+        "token": loginData.token
+    };
+    let headersLogin =
+    {
+        "x-api-key": API_KEY,
+        "Content-Type": "application/json"
+    };
 
-        // Responde con:
-        let ok =
+    var responseLogIn = axios.post(urlLogin, dataLogin, {headers: headersLogin}).then(response =>
+    {
+        try
         {
-            "permission": true,
-            "name": loginResponse.content.name,
-            "userName": loginResponse.content.userName,
-            "firstLastName": loginResponse.content.firstLastName,
-            "secondLastName": loginResponse.content.secondLastName,
-            "email": loginResponse.content.email,
-            "companyName": loginResponse.content.companyName,
-            "rfc": loginResponse.content.rfc,
-            "idClientUnique": 0,
-            "idGroup": 0,
-            "jwt": loginResponse.content.jwt,
-            "jwtExpiredTime": 0,
-            "jwtRefresh": loginResponse.content.jwtRefresh,
-            "specialData":
+            JWTOKEN = responseLogIn.data.jwt;
+            console.log(response.data);
+            // Si el inicio de sesión retorna un OK...
+            if (JWTOKEN)
             {
-                "fullName": fullName,
-                "roleName": roleName,
-                "phrase": phrase,
-                "imagePath": imagePath
+                // Se hace la petición de validar cuenta para obtener los
+                // datos de seguridad como la frase e imágen especiales...
+                fullName = response.data.fullName;
+                roleName = response.data.roleName;
+                phrase = response.data.phrase;
+                imagePath = response.data.imagePath;
+
+                // Responde con:
+                let ok =
+                {
+                    "permission": true,
+                    "name": loginResponse.content.name,
+                    "userName": loginResponse.content.userName,
+                    "firstLastName": loginResponse.content.firstLastName,
+                    "secondLastName": loginResponse.content.secondLastName,
+                    "email": loginResponse.content.email,
+                    "companyName": loginResponse.content.companyName,
+                    "rfc": loginResponse.content.rfc,
+                    "idClientUnique": 0,
+                    "idGroup": 0,
+                    "jwt": loginResponse.content.jwt,
+                    "jwtExpiredTime": 0,
+                    "jwtRefresh": loginResponse.content.jwtRefresh,
+                    "specialData":
+                    {
+                        "fullName": fullName,
+                        "roleName": roleName,
+                        "phrase": phrase,
+                        "imagePath": imagePath
+                    }
+                };
+                // JWT = ok.jwt;
+                // JWT_REFRESH = ok.jwtRefresh;
+                response.send(ok);
             }
-        };
-        // JWT = ok.jwt;
-        // JWT_REFRESH = ok.jwtRefresh;
-        response.send(ok);
-    }
-    else
-    {
-        let notOk =
+        }
+        catch (error)
         {
-            "permission": false
-        };
-        response.send(notOk);
-    }*/
-    response.send("Inicio de sesión solicitado :3");
+            console.log(error);
+            let notOk =
+            {
+                "permission": false
+            };
+            response.send(notOk);
+        }
+    });
+    // response.send("Inicio de sesión solicitado :3");
 });
 
 // [GET] Obtiene las sugerencias del cliente que tiene sesión activa:
@@ -200,7 +225,7 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
         const intelligentSuggestor = spawn(suggestorCommand, [], { shell: true });
         intelligentSuggestor.stdout.on("data", (data) =>
         {
-            console.log(data)
+            console.log(data);
         });
     // }
 });
