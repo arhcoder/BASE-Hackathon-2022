@@ -578,8 +578,8 @@
               <!-- Layout Demo -->
               <div class="layout-demo-wrapper">
                 <div class="layout-demo-placeholder">
-                    <form id="regForm">
-                        <h1 id="register">Sistema de Recomendaciones</h1>
+                    <form class="form" id="regForm">
+                        <h1 class="display-4" id="register">Sistema de Recomendaciones</h1>
                         <div class="all-steps" id="all-steps"> 
                           <span class="step"><i class="fa fa-user"></i></span> 
                           <span class="step"><i class="fa fa-map-marker"></i></span>
@@ -625,7 +625,7 @@
                         </div>
                         <div style="overflow:auto;" id="nextprevious">
                             <div style="float:right;">
-                              <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> 
+                              <button type="button"  id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button> 
                               <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button> </div>
                         </div>
                     </form>
@@ -762,14 +762,13 @@
 #regForm {
     background-color: #ffffff;
     margin: 0px auto;
-    font-family: Raleway;
     padding: 40px;
     border-radius: 10px
 }
 
 #register{
 
-  color: #6A1B9A;
+  color: #f6cf40;
 }
 
 h1 {
@@ -780,7 +779,6 @@ input {
     padding: 10px;
     width: 100%;
     font-size: 17px;
-    font-family: Raleway;
     border: 1px solid #aaaaaa;
     border-radius: 10px;
 }
@@ -789,7 +787,7 @@ input {
 
 .tab input:focus{
 
-  border:1px solid #6a1b9a !important;
+  border:1px solid #e98324 !important;
   outline: none;
 }
 
@@ -803,13 +801,12 @@ input.invalid {
 }
 
 button {
-    background-color: #6A1B9A;
+    background-color: #f7e347;
     color: #ffffff;
     border: none;
     border-radius: 50%;
     padding: 10px 20px;
     font-size: 17px;
-    font-family: Raleway;
     cursor: pointer
 }
 
@@ -847,7 +844,7 @@ button:focus{
     justify-content: center;
     align-items: center;
     font-size: 15px;
-    color: #6a1b9a;
+    color: #f6993c;
     opacity: 0.5;
 }
 
@@ -858,7 +855,7 @@ button:focus{
 
 .step.finish {
    color: #fff;
-   background: #6a1b9a;
+   background: #f37d47;
    opacity: 1;
 
 }
