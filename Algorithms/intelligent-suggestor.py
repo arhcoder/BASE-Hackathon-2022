@@ -1,28 +1,25 @@
-'''
-
-# ALGORITMO 03 #
-# INTELLIGENT SUGGESTOR #
-
-* Se ejecuta cada que "x";
-    - x = El usuario inicia sesión en el dashboard;
-    NOTA:
-    Una opción para el futuro es que:
-    - x = Cada día para actualizar las sugerencias y enviar notificaciones.
-
-* Encuentra los "n" productos que ha comprado el usuario "clientID", desde
-  el archivo "global-purchases.csv".
-
-* Para cada uno de estos productos, busca la mejor opción de proveedor desde
-  el archivo "best-providers.csv" y la archiva como sugerencia.
-
-* RETORNA una lista con las mejores sugerencias para el usuario.
-
-'''
-
-from unittest import case
 import pandas as pd
 
 def intelligentSuggestor(clientID):
+
+    '''
+    # ALGORITMO 03 #
+    # INTELLIGENT SUGGESTOR #
+
+    * Se ejecuta cada que "x";
+        - x = El usuario inicia sesión en el dashboard;
+        NOTA:
+        Una opción para el futuro es que:
+        - x = Cada día para actualizar las sugerencias y enviar notificaciones.
+
+    * Encuentra los "n" productos que ha comprado el usuario "clientID", desde
+    el archivo "global-purchases.csv".
+
+    * Para cada uno de estos productos, busca la mejor opción de proveedor desde
+    el archivo "best-providers.csv" y la archiva como sugerencia.
+
+    * RETORNA una lista con las mejores sugerencias para el usuario.
+    '''
 
     # Encuentra los productos que compra la empresa:
     purchasesFile = pd.read_csv("global-purchases.csv", header=0, usecols=[0,1,2,3])

@@ -1,42 +1,39 @@
-'''
-
-# ALGORITMO 01 #
-# GLOBAL INVOICES ANALIZER #
-
-ESTE ALGORITMO ES LA BASE DEL FUNCIONAMIENTO DEL SISTEMA:
-
-* Se ejecuta cada "x" tiempo;
-    - x = 1 día;
-
-* Recupera las facturas de compra del plazo "y"; de todas
-  las empresas clientes de BASE, directo de la fuente "z";
-    - y = El último mes;
-    - z = Base de datos de facturas (SIMULADA);
-    NOTA:
-    - z será el servicio de obtención de facturas del SAT:
-    https://sat.ws/
-
-* PARA PODER CLASIFICAR VARIOS PRODUCTOS, QUE SEGÚN SU NOMBRE
-  GENÉRICO SE PUEDAN CATEGORIZAR A UN MISMO TIPO, SE UTILIZARÁ
-  EL DATO DE UNA FACTURA QUE DESIGNA EL SAT ().
-
-* Teniendo una lista con los productos comprados, obtiene su
-  precio unitario.
-
-* Guarda en un CSV todos los productos que han comprado los
-  clientes de BASE, mediante los siguientes datos:
-
-    - claveProducto;
-    - precioUnitario;
-    - nombreProveedor;
-
-'''
-
 import requests
-from datetime import date
 import random
 
 def getAllPurchases():
+
+    '''
+	# ALGORITMO 01 #
+	# GLOBAL INVOICES ANALIZER #
+
+	ESTE ALGORITMO ES LA BASE DEL FUNCIONAMIENTO DEL SISTEMA:
+
+	* Se ejecuta cada "x" tiempo;
+		- x = 1 día;
+
+	* Recupera las facturas de compra del plazo "y"; de todas
+	las empresas clientes de BASE, directo de la fuente "z";
+		- y = El último mes;
+		- z = Base de datos de facturas (SIMULADA);
+		NOTA:
+		- z será el servicio de obtención de facturas del SAT:
+		https://sat.ws/
+
+	* PARA PODER CLASIFICAR VARIOS PRODUCTOS, QUE SEGÚN SU NOMBRE
+	GENÉRICO SE PUEDAN CATEGORIZAR A UN MISMO TIPO, SE UTILIZARÁ
+	EL DATO DE UNA FACTURA QUE DESIGNA EL SAT ().
+
+	* Teniendo una lista con los productos comprados, obtiene su
+	precio unitario.
+
+	* Guarda en un CSV todos los productos que han comprado los
+	clientes de BASE, mediante los siguientes datos:
+
+		- claveProducto;
+		- precioUnitario;
+		- nombreProveedor;
+	'''
 
     # Facturas desde x días:
     invoicesSinceDays = 30
@@ -84,7 +81,7 @@ def getAllPurchases():
                 proveedorRandom = "Proveedor Random "+str(random.randint(1, 1000))
 
                 # productoRandom =
-				        # {
+				# {
                 #     // "compradorRandom": compradorRandom
                 #     "claveProducto": claveRandom,
                 #     "precioUnitario": precioRandom,
@@ -96,6 +93,7 @@ def getAllPurchases():
                 archivo.write(f"\n\'{client}\',\'{claveRandom}\',{precioRandom},\'{proveedorRandom}\'")
     
     archivo.close()
+
 
 if __name__ == "__main__":
 

@@ -1,30 +1,27 @@
-'''
-
-# ALGORITMO 02 #
-# GLOBAL-PURCHASES ANALIZER TO GET BEST PROVIDERS #
-
-* Ejecutable cada x+y tiempo
-    - x = 1 dia
-    - y = tiempo de ejecucion algoritmo01
-
-* De todos los registros en global-purchases toma
-    - claveProducto
-    - precioUnitario
-    - nombreProveedor
-
-* Obtendra para cada claveProducto el nombreProveedor con 
-menor precioUnitario
-
-* Creara un archivo .csv que guarde
-    - claveProducto
-    - mejorNombreProveedor
-
-'''
-
-import numpy as np
 import pandas as pd
 
 def bestProvidersAnalizer():
+
+    '''
+    # ALGORITMO 02 #
+    # GLOBAL-PURCHASES ANALIZER TO GET BEST PROVIDERS #
+
+    * Ejecutable cada x+y tiempo
+        - x = 1 dia
+        - y = tiempo de ejecucion algoritmo01
+
+    * De todos los registros en global-purchases toma
+        - claveProducto
+        - precioUnitario
+        - nombreProveedor
+
+    * Obtendra para cada claveProducto el nombreProveedor con 
+    menor precioUnitario
+
+    * Creara un archivo .csv que guarde
+        - claveProducto
+        - mejorNombreProveedor
+    '''
 
     csvPath =("global-purchases.csv") #ubicacion .csv de global-purchases.csv
     archivoCSV = pd.read_csv(csvPath, header=0, usecols=[1,2,3]) #convierte global-purchases.csv a data frame
@@ -36,6 +33,7 @@ def bestProvidersAnalizer():
 
     providersCSVPath = ("best-providers.csv") #ubicacion .csv de best-providers.csv
     archivoCSV_merge.to_csv(providersCSVPath, index=False) #envia archivoCSV_merge al best-providers.csv
+
 
 if __name__ == "__main__":
 
