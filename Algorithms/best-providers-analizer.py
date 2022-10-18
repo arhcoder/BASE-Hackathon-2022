@@ -39,8 +39,10 @@ def bestProvidersAnalizer():
     bests = bests.drop_duplicates()
     bests.to_csv(providersCSVPath, index=False)
 
+'''
 if __name__ == "__main__":
 
     print("Obteniendo los mejores proveedores...")
     bestProvidersAnalizer()
     print("Mejores proveedores obtendios :3")
+'''
