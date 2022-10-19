@@ -4,17 +4,19 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const { spawn } = require("child_process");
 const axios = require('axios');
+require("dotenv").config();
 
 // Creating an express library object named "app"...
 var app = express();
 app.use(bodyparser.json());
 
 // Se obtiene la contraseña de la base de datos del arhivo .env...
-const bd_password = process.env["BD_PASSWORD"];
+const API_KEY = process.env.API_KEY;
+const BD_PASSWORD = process.env.BD_PASSWORD;
 
-// Variables globales del JWT...
-// var JWT = ""
-// var JWT_REFRESH = ""
+// GLOBAL JAVA WEB TOKENS:
+var JWT = ""
+var JWT_REFRESH = ""
 
 // Se conecta a la base de datos local del hackathon...
 var connection = mysql.createConnection(
@@ -22,7 +24,7 @@ var connection = mysql.createConnection(
     host: "localhost",
     user: "root",
     port: 3306,
-    password: bd_password,
+    password: BD_PASSWORD,
     database: "hackathon_db",
     multipleStatements: true
 });
@@ -91,7 +93,6 @@ app.get("/getInvoices/:clientID/:days", (request, response) =>
     // else response.send("Nop :3");
 });
 
-
 // [GET] Obtiene todos los productos de una factura según su ID...
 app.get("/getPurchases/:invoiceID", (request, response) =>
 {
@@ -116,19 +117,43 @@ app.get("/getPurchases/:invoiceID", (request, response) =>
     // else response.send("Nop :3");
 });
 
+// [GET] Obtiene las sugerencias del cliente que tiene sesión activa:
+app.get("/suggestions/:idClientUnique", (request, response) =>
+{
+    // Primero verifica si el token de la sesión coincide con el generado:
+    // if (token)
+    // {
+        // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
+        // const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
+        const intelligentSuggestor = spawn("python", ["../Algorithms/intelligent-suggestor.py", ""+request.params.idClientUnique]);
+        intelligentSuggestor.stdout.on("data", function(data)
+        {
+            suggestions = data.toString();
+            suggestions = suggestions.replace(/"/g,"");
+            suggestions = suggestions.replace(/'/g,"\"");
+            suggestions = JSON.parse(suggestions);
+        });
+
+        intelligentSuggestor.on("close", (code) =>
+        {
+            response.send(suggestions);
+        });
+    // }
+});
+
+
+// MANEJO DE SESIONES //
 app.post("/validate", (request, response) =>
 {
-    //Recibe el dato USERNAME 
-    //BODY del request
+    // Recibe el dato USERNAME:
+    //BODY del request:
     //{
-    //"username":"el nombre de usuario que se envia"
+    //  "username": "El nombre de usuario que se envia"
     //}
-    var API_KEY = process.env["API_KEY"];
-    var username = requess.body.userName;
     let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/ValidateAccount";
     let dataLogin =
     {
-        "userName": username,
+        "userName": request.body.username
     };
     let headersLogin =
     {
@@ -136,18 +161,19 @@ app.post("/validate", (request, response) =>
         "Content-Type": "application/json"
     };
 
-    var responseLogIn = axios.post(urlLogin,dataLogin, {headers: headersLogin}).then(response =>
+    var responseLogIn = axios.post(urlLogin,dataLogin, {headers: headersLogin}).then(myResponse =>
     {
-        var respuestaValidate =
+        /* var respuestaValidate =
         {
-            "fullName": responseLogIn.data.fullName,
-            "idStatus": responseLogIn.data.idStatus,
-            "roleName": responseLogIn.data.roleName,
-            "isBasic": responseLogIn.data.isBasic,
-            "phrase": responseLogIn.data.phrase,
-            "imagePath": responseLogIn.data.imagePath
+            "fullName": myResponse.data.fullName,
+            "idStatus": myResponse.data.idStatus,
+            "roleName": myResponse.data.roleName,
+            "isBasic": myResponse.data.isBasic,
+            "phrase": myResponse.data.phrase,
+            "imagePath": myResponse.data.imagePath
         };
-        response.send(respuestaValidate);
+        response.send(respuestaValidate);*/
+        response.send(myResponse.data)
     });
 });
 
@@ -163,26 +189,21 @@ app.post("/login", (request, response) =>
     //      "token": "Lo que se capturó en la barra de token"
     // }
 
-    let loginData = request.body;
-    console.log(loginData.account);
-    console.log(loginData.password);
-    console.log(loginData.token);
+    // let loginData = request.body;
+    // console.log(loginData.account);
+    // console.log(loginData.password);
+    // console.log(loginData.token);
 
     // Hace la petición de inicio de sesión a la API de BASE...
     // Se mandan los datos que se trajeron del frontend...
     //FALTA GET DE PARAMETROS DEK USUARIO QUE ESTÁ INICIANDO SESIÓN
-    // var USER = process.env["USER"];
-    // var PASS = process.env["PASS"];
-    // var TOKEN = process.env["TOKEN"];
-    var API_KEY = process.env["API_KEY"];
-    var JWTOKEN;
 
     let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignIn";
     let dataLogin =
     {
-        "account": loginData.account,
-        "password": loginData.password,
-        "token": loginData.token
+        "account": request.body.account,
+        "password": request.body.password,
+        "token": request.body.token
     };
     let headersLogin =
     {
@@ -190,12 +211,14 @@ app.post("/login", (request, response) =>
         "Content-Type": "application/json"
     };
 
-    var responseLogIn = axios.post(urlLogin, dataLogin, {headers: headersLogin}).then(response =>
+    var responseLogIn = axios.post(urlLogin, dataLogin, {headers: headersLogin}).then(xresponse =>
     {
         try
         {
+            // Se obtiene el JWTOKEN:
             JWTOKEN = responseLogIn.data.jwt;
-            console.log(response.data);
+            // console.log(response.data);
+
             // Si el inicio de sesión retorna un OK...
             if (JWTOKEN)
             {
@@ -210,18 +233,18 @@ app.post("/login", (request, response) =>
                 let ok =
                 {
                     "permission": true,
-                    "name": loginResponse.content.name,
-                    "userName": loginResponse.content.userName,
-                    "firstLastName": loginResponse.content.firstLastName,
-                    "secondLastName": loginResponse.content.secondLastName,
-                    "email": loginResponse.content.email,
-                    "companyName": loginResponse.content.companyName,
-                    "rfc": loginResponse.content.rfc,
+                    "name": xresponse.content.name,
+                    "userName": xresponse.content.userName,
+                    "firstLastName": xresponse.content.firstLastName,
+                    "secondLastName": xresponse.content.secondLastName,
+                    "email": xresponse.content.email,
+                    "companyName": xresponse.content.companyName,
+                    "rfc": xresponse.content.rfc,
                     "idClientUnique": 0,
                     "idGroup": 0,
-                    "jwt": loginResponse.content.jwt,
+                    "jwt": xresponse.content.jwt,
                     "jwtExpiredTime": 0,
-                    "jwtRefresh": loginResponse.content.jwtRefresh,
+                    "jwtRefresh": xresponse.content.jwtRefresh,
                     "specialData":
                     {
                         "fullName": fullName,
@@ -230,8 +253,11 @@ app.post("/login", (request, response) =>
                         "imagePath": imagePath
                     }
                 };
-                // JWT = ok.jwt;
-                // JWT_REFRESH = ok.jwtRefresh;
+
+                // Guarda los TOKENS para futuros usos:
+                JWT = ok.jwt;
+                JWT_REFRESH = ok.jwtRefresh;
+
                 response.send(ok);
             }
         }
@@ -246,28 +272,4 @@ app.post("/login", (request, response) =>
         }
     });
     // response.send("Inicio de sesión solicitado :3");
-});
-
-// [GET] Obtiene las sugerencias del cliente que tiene sesión activa:
-app.get("/suggestions/:idClientUnique", (request, response) =>
-{
-    // Primero verifica si el token de la sesión coincide con el generado:
-    // if (token)
-    // {
-        // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
-        // const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
-        const intelligentSuggestor = spawn("python", ["../Algorithms/intelligent-suggestor.py", "57474"]);
-        intelligentSuggestor.stdout.on("data", function(data)
-        {
-            suggestions = data.toString();
-            suggestions = suggestions.replace(/"/g,"");
-            suggestions = suggestions.replace(/'/g,"\"");
-            suggestions = JSON.parse(suggestions);
-        });
-
-        intelligentSuggestor.on("close", (code) =>
-        {
-            response.send(suggestions);
-        });
-    // }
 });
