@@ -57,6 +57,10 @@ app.listen(process.env.PORT || 5500, function () {
 CONTROLADORES
 */
 
+let Usuario = require('./models/User')
+Usuario.companyName='bimbo'
+
+
 const indexController = require('./controllers/index')
 const sugerenciasVentaController = require('./controllers/sugerenciasVenta')
 const sugerenciasCompraController = require('./controllers/sugerenciasCompra')
