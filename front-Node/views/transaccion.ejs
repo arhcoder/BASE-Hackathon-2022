@@ -7,9 +7,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Scalon by BASE</title>
+    <title>Scalon by Base</title>
 
-    <meta name="description" content="Realizacion de transacciones" />
+    <meta name="description" content="" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -33,6 +33,17 @@
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+    <!-- css loader -->
+    <link rel="stylesheet" href="../assets/css/loader.css">
 
     <!-- Page CSS -->
     <style>
@@ -66,437 +77,359 @@
         }
     </style>
 
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
-
-    <!-- Include html inside of html -->
-    <script src="https://unpkg.com/htmlincludejs"></script>
-
-    <!-- jquery -->
-    <script src="../js/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
-
-    <!-- css loader -->
-    <link rel="stylesheet" href="../assets/css/loader.css">
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
 </head>
 
 <body>
     <!-- Pantalla de carga -->
-    <div id="loader">
-        <div class="spinner-grow text-warning ajuste" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-    <!-- Menu -->
-    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
-            <span class="app-brand-logo demo">
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Scalon by</span>
-              <img src="../assets/img/favicon/base.png" height="25" alt="">
-           
-          </a>
+    <%- include('layouts/loader'); -%>
+        <!-- /Pantalla de carga -->
 
-          <a href="#" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-          </a>
-        </div>
+        <!-- Menu -->
+        <%- include('layouts/navbar'); -%>
+            <!-- / Menu -->
 
-        <div class="menu-inner-shadow"></div>
+            <!-- Proseso de transacciones -->
 
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <li class="menu-item active">
-            <a href="index.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Menu</div>
-            </a>
-          </li>
+            <!-- Formato de division entre barra lateral y contenido -->
+            <div class="layout-page">
+                <!-- Divisior del contenido -->
+                <div class="content-wrapper">
+                    <!-- Contenido 1 y único en este caso -->
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Transacciones /</span> Realizar
+                            Transferencia</h4>
 
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Transacciones</span>
-          </li>
+                        <div class="nav-align-top mb-4">
+                            <!-- Tabs -->
+                            <ul class="nav nav-pills mb-3" role="tablist">
+                                <li class="nav-item">
+                                    <button id="btn-cuenta" type="button" class="nav-link active disabled" role="tab"
+                                        data-bs-toggle="tab" data-bs-target="#navs-pills-top-cuenta"
+                                        aria-controls="navs-pills-top-cuenta" aria-selected="true">
+                                        Cuenta
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="btn-destino" type="button" class="nav-link disabled" role="tab"
+                                        data-bs-toggle="tab" data-bs-target="#navs-pills-top-destino"
+                                        aria-controls="navs-pills-top-destino" aria-selected="false">
+                                        Destinatario
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="btn-razon" type="button" class="nav-link disabled" role="tab"
+                                        data-bs-toggle="tab" data-bs-target="#navs-pills-top-razon"
+                                        aria-controls="navs-pills-top-razon" aria-selected="false">
+                                        Razón
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="btn-resumen" type="button" class="nav-link disabled" role="tab"
+                                        data-bs-toggle="tab" data-bs-target="#navs-pills-top-resumen"
+                                        aria-controls="navs-pills-top-resumen" aria-selected="false">
+                                        Resumen
+                                    </button>
+                                </li>
+                            </ul>
+                            <!-- /Tabs -->
 
-          <li class="menu-item">
-            <a href="hacer-Transacciones.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Realizar Transferencias</div>
-            </a>
-          </li>
+                            <!-- barra de progreso -->
+                            <div class="progress mb-4">
+                                <div id="progreso" class="progress-bar progress-bar-striped progress-bar-animated"
+                                    role="progressbar" aria-label="Animated striped example" aria-valuenow="25"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                            </div>
+                            <!-- /barra de progreso -->
 
-          <li class="menu-item">
-            <a href="ver-movimientos.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Ver Movimientos</div>
-            </a>
-          </li>
+                            <!-- Contenido Tabs -->
+                            <div class="tab-content">
+                                <!-- Tab seleccionar cuenta -->
+                                <div class="tab-pane fade active show" id="navs-pills-top-cuenta" role="tabpanel">
+                                    <h1>Seleccionen su cuenta digital</h1>
 
-          <!-- Components -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Sugerencias</span></li>
-          <!-- Cards -->
-          <li class="menu-item">
-            <a href="sugerencias-compra.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Compras</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="sugerencias-venta.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Ventas</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="divisas.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Divisas</div>
-            </a>
-          </li>
-
-          <!-- Forms & Tables -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Mi cuenta</span></li>
-          <!-- Forms -->
-          <li class="menu-item">
-            <a href="cuentas.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Cuentas Digitales</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="notificaciones.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Notificaciones</div>
-            </a>
-          </li>
-
-          <li class="menu-item">
-            <a href="log-accesos.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Accesos</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="autoricaciones-equipos.html" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-collection"></i>
-              <div data-i18n="Basic">Autorizaciones</div>
-            </a>
-          </li>
-
-          
-        </ul>
-      </aside>
-    <!-- / Menu -->
-
-    <!-- Proseso de transacciones -->
-
-    <!-- Formato de division entre barra lateral y contenido -->
-    <div class="layout-page">
-        <!-- Divisior del contenido -->
-        <div class="content-wrapper">
-            <!-- Contenido 1 y único en este caso -->
-            <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Transacciones /</span> Realizar Transferencia</h4>
-                
-                <div class="nav-align-top mb-4">
-                    <!-- Tabs -->
-                    <ul class="nav nav-pills mb-3" role="tablist">
-                        <li class="nav-item">
-                            <button id="btn-cuenta" type="button" class="nav-link active disabled" role="tab"
-                                data-bs-toggle="tab" data-bs-target="#navs-pills-top-cuenta"
-                                aria-controls="navs-pills-top-cuenta" aria-selected="true">
-                                Cuenta
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="btn-destino" type="button" class="nav-link disabled" role="tab"
-                                data-bs-toggle="tab" data-bs-target="#navs-pills-top-destino"
-                                aria-controls="navs-pills-top-destino" aria-selected="false">
-                                Destinatario
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="btn-razon" type="button" class="nav-link disabled" role="tab"
-                                data-bs-toggle="tab" data-bs-target="#navs-pills-top-razon"
-                                aria-controls="navs-pills-top-razon" aria-selected="false">
-                                Razón
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="btn-resumen" type="button" class="nav-link disabled" role="tab"
-                                data-bs-toggle="tab" data-bs-target="#navs-pills-top-resumen"
-                                aria-controls="navs-pills-top-resumen" aria-selected="false">
-                                Resumen
-                            </button>
-                        </li>
-                    </ul>
-                    <!-- /Tabs -->
-
-                    <!-- Contenido Tabs -->
-                    <div class="tab-content">
-                        <!-- Tab seleccionar cuenta -->
-                        <div class="tab-pane fade active show" id="navs-pills-top-cuenta" role="tabpanel">
-                            <h1>Seleccionen su cuenta digital</h1>
-
-                            <!-- Tarjeta cuenta -->
-                            <hr>
-                            <div class="row cuenta" id="cuenta-1" onclick="datoActivo('cuenta','cuenta-1')">
-                                <div class="col datos">
-                                    <div class="nombre-cuenta">
-                                        <h4>Alimentos</h4>
+                                    <!-- Tarjeta cuenta -->
+                                    <hr>
+                                    <div class="row cuenta" id="cuenta-1" onclick="datoActivo('cuenta','cuenta-1')">
+                                        <div class="col datos">
+                                            <div class="nombre-cuenta">
+                                                <h4>Alimentos</h4>
+                                            </div>
+                                            <div class="mascara-cuenta"><i>************3456</i></div>
+                                        </div>
+                                        <div class="col-auto amount">$235,000.005</div>
                                     </div>
-                                    <div class="mascara-cuenta"><i>************3456</i></div>
-                                </div>
-                                <div class="col-auto amount">$235,000.005</div>
-                            </div>
-                            <hr>
-                            <!-- /Tarjeta cuenta -->
+                                    <hr>
+                                    <!-- /Tarjeta cuenta -->
 
-                            <!-- Tarjeta cuenta -->
-                            <hr>
-                            <div class="row cuenta" id="cuenta-2" onclick="datoActivo('cuenta','cuenta-2')">
-                                <div class="col datos">
-                                    <div class="nombre-cuenta">
-                                        <h4>Metales</h4>
+                                    <!-- Tarjeta cuenta -->
+                                    <hr>
+                                    <div class="row cuenta" id="cuenta-2" onclick="datoActivo('cuenta','cuenta-2')">
+                                        <div class="col datos">
+                                            <div class="nombre-cuenta">
+                                                <h4>Metales</h4>
+                                            </div>
+                                            <div class="mascara-cuenta"><i>************9012</i></div>
+                                        </div>
+                                        <div class="col-auto amount">$1,850,110.010</div>
                                     </div>
-                                    <div class="mascara-cuenta"><i>************9012</i></div>
-                                </div>
-                                <div class="col-auto amount">$1,850,110.010</div>
-                            </div>
-                            <hr>
-                            <!-- /Tarjeta cuenta -->
+                                    <hr>
+                                    <!-- /Tarjeta cuenta -->
 
-                            <!-- Tarjeta cuenta -->
-                            <hr>
-                            <div class="row cuenta" id="cuenta-3" onclick="datoActivo('cuenta','cuenta-3')">
-                                <div class="col datos">
-                                    <div class="nombre-cuenta">
-                                        <h4>Autopartes</h4>
+                                    <!-- Tarjeta cuenta -->
+                                    <hr>
+                                    <div class="row cuenta" id="cuenta-3" onclick="datoActivo('cuenta','cuenta-3')">
+                                        <div class="col datos">
+                                            <div class="nombre-cuenta">
+                                                <h4>Autopartes</h4>
+                                            </div>
+                                            <div class="mascara-cuenta"><i>************5678</i></div>
+                                        </div>
+                                        <div class="col-auto amount">$700,000.000</div>
                                     </div>
-                                    <div class="mascara-cuenta"><i>************5678</i></div>
-                                </div>
-                                <div class="col-auto amount">$700,000.000</div>
-                            </div>
-                            <hr>
-                            <!-- /Tarjeta cuenta -->
+                                    <hr>
+                                    <!-- /Tarjeta cuenta -->
 
-                            <!-- Tarjeta cuenta -->
-                            <hr>
-                            <div class="row cuenta" id="cuenta-4" onclick="datoActivo('cuenta','cuenta-4')">
-                                <div class="col datos">
-                                    <div class="nombre-cuenta">
-                                        <h4>Mantenimiento</h4>
+                                    <!-- Tarjeta cuenta -->
+                                    <hr>
+                                    <div class="row cuenta" id="cuenta-4" onclick="datoActivo('cuenta','cuenta-4')">
+                                        <div class="col datos">
+                                            <div class="nombre-cuenta">
+                                                <h4>Mantenimiento</h4>
+                                            </div>
+                                            <div class="mascara-cuenta"><i>************1234</i></div>
+                                        </div>
+                                        <div class="col-auto amount">$100,500.99</div>
                                     </div>
-                                    <div class="mascara-cuenta"><i>************1234</i></div>
+                                    <hr>
+                                    <!-- /Tarjeta cuenta -->
+
+                                    <p class="mb-0">
+                                        Seleccione la cuenta desde la cual desee hacer la transferencia
+                                    </p>
+
+                                    <!-- Boton sig -->
+                                    <div class="text-end">
+                                        <button class="btn btn-info"
+                                            onclick="siguiente('#btn-cuenta','#btn-destino'); updateProgreso('50');">Siguiente</button>
+                                    </div>
+                                    <!-- /Boton sig -->
+
                                 </div>
-                                <div class="col-auto amount">$100,500.99</div>
-                            </div>
-                            <hr>
-                            <!-- /Tarjeta cuenta -->
+                                <!-- /Tab seleccionar cuenta -->
 
-                            <p class="mb-0">
-                                Seleccione la cuenta desde la cual desee hacer la transferencia
-                            </p>
+                                <!-- Tab seleccionar destino -->
+                                <div class="tab-pane fade" id="navs-pills-top-destino" role="tabpanel">
+                                    <h1>Ingrese al Beneficiario</h1>
 
-                            <!-- Boton sig -->
-                            <div class="text-end">
-                                <button class="btn btn-info"
-                                    onclick="siguiente('#btn-cuenta','#btn-destino')">Siguiente</button>
+                                    <!-- Datos del Beneficiario -->
+                                    <div class="card mb-4">
+                                        <h5 class="card-header">Cuenta</h5>
+                                        <div class="card-body">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control editables"
+                                                    id="floatingInputCuenta" placeholder="CUENTA"
+                                                    aria-describedby="floatingInputHelpCUENTA">
+                                                <label for="floatingInputCuenta">No.Cuenta o CLABE</label>
+                                                <div id="floatingInputHelpCUENTA" class="form-text">
+                                                    Asegúrese de escribirlo correctamente.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-header">Nombre del Beneficiario</h5>
+                                        <div class="card-body">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control editables" id="floatingInputUSER"
+                                                    placeholder="BASE" aria-describedby="floatingInputHelpUSER">
+                                                <label for="floatingInputUSER">Beneficiario</label>
+                                                <div id="floatingInputHelpUSER" class="form-text">
+                                                    Nombre de la empresa o proveedor.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /Datos del Beneficiario -->
+
+                                    <p class="mb-3">
+                                        Revise los datos del destinatario antes de continuar
+                                    </p>
+
+                                    <!-- Botones ant sig -->
+                                    <div class="row justify-content-center">
+                                        <div class="col text-start">
+                                            <button class="btn btn-outline-info"
+                                                onclick="siguiente('#btn-destino','#btn-cuenta'); updateProgreso('25');">Anterior</button>
+                                        </div>
+                                        <div class="col text-end">
+                                            <button class="btn btn-info"
+                                                onclick="siguiente('#btn-destino','#btn-razon'); updateProgreso('75');">Siguiente</button>
+                                        </div>
+                                    </div>
+                                    <!-- /Botones ant sig -->
+                                </div>
+                                <!-- /Tab seleccionar destino -->
+
+                                <!-- Tab razón -->
+                                <div class="tab-pane fade" id="navs-pills-top-razon" role="tabpanel">
+
+                                    <!-- Datos de razon -->
+                                    <div class="card mb-4">
+                                        <h5 class="card-header">Referencia</h5>
+                                        <div class="card-body">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control editables"
+                                                    id="floatingInputRazon" placeholder="0103180"
+                                                    aria-describedby="floatingInputHelpRAZON" value="1234567">
+                                                <label for="floatingInputRazon">Ref:</label>
+                                                <div id="floatingInputHelpRAZON" class="form-text">
+                                                    No modificar de ser necesario.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="card-header">Concepto</h5>
+                                        <div class="card-body">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control editables"
+                                                    id="floatingInputConcepto" placeholder="Concepto"
+                                                    aria-describedby="floatingInputHelpCONCEPTO">
+                                                <label for="floatingInputConcepto">Detalles</label>
+                                                <div id="floatingInputHelpCONCEPTO" class="form-text">
+                                                    Sea honesto y breve.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /Datos de razon -->
+
+                                    <p class="mb-3">
+                                        De esta manera puede llevar un registro de sus movimientos de forma clara
+                                    </p>
+
+                                    <!-- Botones ant sig -->
+                                    <div class="row justify-content-center">
+                                        <div class="col text-start">
+                                            <button class="btn btn-outline-info"
+                                                onclick="siguiente('#btn-razon','#btn-destino'); updateProgreso('50');">Anterior</button>
+                                        </div>
+                                        <div class="col text-end">
+                                            <button class="btn btn-info"
+                                                onclick="siguiente('#btn-razon','#btn-resumen'); mostrarResumen(); validar(); updateProgreso('100');">Siguiente</button>
+                                        </div>
+                                    </div>
+                                    <!-- /Botones ant sig -->
+                                </div>
+                                <!-- /Tab razón -->
+
+                                <!-- Tab resumen -->
+                                <div class="tab-pane fade" id="navs-pills-top-resumen" role="tabpanel">
+
+                                    <form action="" method="post">
+                                        <div class="card mb-4">
+                                            <h5 class="card-header">Resumen</h5>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="Rcuenta" class="form-label">Cuenta</label>
+                                                    <input class="form-control solo-lectura" type="text" id="Rcuenta"
+                                                        placeholder="Cuenta" readonly="" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Rdestino" class="form-label">Destino</label>
+                                                    <input class="form-control solo-lectura" type="text" id="Rdestino"
+                                                        placeholder="Destino" readonly="" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Rbeneficiario" class="form-label">Beneficiario</label>
+                                                    <input class="form-control solo-lectura" type="text"
+                                                        id="Rbeneficiario" placeholder="Beneficiario" readonly=""
+                                                        required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Rreferencia" class="form-label">Referencia</label>
+                                                    <input class="form-control solo-lectura" type="text"
+                                                        id="Rreferencia" placeholder="Ref" readonly="" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="Rconcepto" class="form-label">Concepto</label>
+                                                    <input class="form-control solo-lectura" type="text" id="Rconcepto"
+                                                        placeholder="Concepto" readonly="" required>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Botones ant sig -->
+                                        <div class="row justify-content-center">
+                                            <div class="col text-start">
+                                                <button type="button" class="btn btn-outline-info"
+                                                    onclick="siguiente('#btn-resumen','#btn-razon'); updateProgreso('75');">Anterior</button>
+                                            </div>
+                                            <div class="col text-end">
+                                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmarC" id="confirmarT">Transferir</button>
+                                            </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="confirmarC" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Por
+                                                                favor
+                                                                confirme su contraseña</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-password-toggle">
+                                                                <label class="form-label"
+                                                                    for="basic-default-password12">Password</label>
+                                                                <div class="input-group">
+                                                                    <input type="password" class="form-control"
+                                                                        id="basic-default-password12"
+                                                                        placeholder="············"
+                                                                        aria-describedby="basic-default-password2"
+                                                                        required>
+                                                                    <span id="basic-default-password2"
+                                                                        class="input-group-text cursor-pointer"><i
+                                                                            class="bx bx-hide"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancelar</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Confirmar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Modal -->
+                                        </div>
+                                        <!-- /Botones ant sig -->
+                                    </form>
+                                    <div class="alert alert-danger mt-3" role="alert" id="alertaIncompleto" hidden>
+                                        Complete
+                                        todos los datos antes de continuar</div>
+                                </div>
+                                <!-- /Tab resumen -->
+
                             </div>
-                            <!-- /Boton sig -->
 
                         </div>
-                        <!-- /Tab seleccionar cuenta -->
-
-                        <!-- Tab seleccionar destino -->
-                        <div class="tab-pane fade" id="navs-pills-top-destino" role="tabpanel">
-                            <h1>Ingrese al Beneficiario</h1>
-
-                            <!-- Datos del Beneficiario -->
-                            <div class="card mb-4">
-                                <h5 class="card-header">Cuenta</h5>
-                                <div class="card-body">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control editables" id="floatingInputCuenta"
-                                            placeholder="CUENTA" aria-describedby="floatingInputHelpCUENTA">
-                                        <label for="floatingInputCuenta">No.Cuenta o CLABE</label>
-                                        <div id="floatingInputHelpCUENTA" class="form-text">
-                                            Asegúrese de escribirlo correctamente.
-                                        </div>
-                                    </div>
-                                </div>
-                                <h5 class="card-header">Nombre del Beneficiario</h5>
-                                <div class="card-body">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control editables" id="floatingInputUSER"
-                                            placeholder="BASE" aria-describedby="floatingInputHelpUSER">
-                                        <label for="floatingInputUSER">Beneficiario</label>
-                                        <div id="floatingInputHelpUSER" class="form-text">
-                                            Nombre de la empresa o proveedor.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Datos del Beneficiario -->
-
-                            <p class="mb-3">
-                                Revise los datos del destinatario antes de continuar
-                            </p>
-
-                            <!-- Botones ant sig -->
-                            <div class="row justify-content-center">
-                                <div class="col text-start">
-                                    <button class="btn btn-outline-info"
-                                        onclick="siguiente('#btn-destino','#btn-cuenta')">Anterior</button>
-                                </div>
-                                <div class="col text-end">
-                                    <button class="btn btn-info"
-                                        onclick="siguiente('#btn-destino','#btn-razon')">Siguiente</button>
-                                </div>
-                            </div>
-                            <!-- /Botones ant sig -->
-                        </div>
-                        <!-- /Tab seleccionar destino -->
-
-                        <!-- Tab razón -->
-                        <div class="tab-pane fade" id="navs-pills-top-razon" role="tabpanel">
-
-                            <!-- Datos de razon -->
-                            <div class="card mb-4">
-                                <h5 class="card-header">Referencia</h5>
-                                <div class="card-body">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control editables" id="floatingInputRazon"
-                                            placeholder="0103180" aria-describedby="floatingInputHelpRAZON"
-                                            value="1234567">
-                                        <label for="floatingInputRazon">Ref:</label>
-                                        <div id="floatingInputHelpRAZON" class="form-text">
-                                            No modificar de ser necesario.
-                                        </div>
-                                    </div>
-                                </div>
-                                <h5 class="card-header">Concepto</h5>
-                                <div class="card-body">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control editables" id="floatingInputConcepto"
-                                            placeholder="Concepto" aria-describedby="floatingInputHelpCONCEPTO">
-                                        <label for="floatingInputConcepto">Detalles</label>
-                                        <div id="floatingInputHelpCONCEPTO" class="form-text">
-                                            Sea honesto y breve.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Datos de razon -->
-
-                            <p class="mb-3">
-                                De esta manera puede llevar un registro de sus movimientos de forma clara
-                            </p>
-
-                            <!-- Botones ant sig -->
-                            <div class="row justify-content-center">
-                                <div class="col text-start">
-                                    <button class="btn btn-outline-info"
-                                        onclick="siguiente('#btn-razon','#btn-destino')">Anterior</button>
-                                </div>
-                                <div class="col text-end">
-                                    <button class="btn btn-info"
-                                        onclick="siguiente('#btn-razon','#btn-resumen'); mostrarResumen();">Siguiente</button>
-                                </div>
-                            </div>
-                            <!-- /Botones ant sig -->
-                        </div>
-                        <!-- /Tab razón -->
-
-                        <!-- Tab resumen -->
-                        <div class="tab-pane fade" id="navs-pills-top-resumen" role="tabpanel">
-
-                            <form action="" method="post">
-                                <div class="card mb-4">
-                                    <h5 class="card-header">Resumen</h5>
-                                    <div class="card-body">
-                                        <div class="mb-3">
-                                            <label for="Rcuenta" class="form-label">Cuenta</label>
-                                            <input class="form-control solo-lectura" type="text" id="Rcuenta"
-                                                placeholder="Cuenta" readonly="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="Rdestino" class="form-label">Destino</label>
-                                            <input class="form-control solo-lectura" type="text" id="Rdestino"
-                                                placeholder="Destino" readonly="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="Rbeneficiario" class="form-label">Beneficiario</label>
-                                            <input class="form-control solo-lectura" type="text" id="Rbeneficiario"
-                                                placeholder="Beneficiario" readonly="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="Rreferencia" class="form-label">Referencia</label>
-                                            <input class="form-control solo-lectura" type="text" id="Rreferencia"
-                                                placeholder="Ref" readonly="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="Rconcepto" class="form-label">Concepto</label>
-                                            <input class="form-control solo-lectura" type="text" id="Rconcepto"
-                                                placeholder="Concepto" readonly="">
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <!-- Botones ant sig -->
-                                <div class="row justify-content-center">
-                                    <div class="col text-start">
-                                        <button type="button" class="btn btn-outline-info"
-                                            onclick="siguiente('#btn-resumen','#btn-razon')">Anterior</button>
-                                    </div>
-                                    <div class="col text-end">
-                                        <button type="submit" class="btn btn-info">Confirmar</button>
-                                    </div>
-                                </div>
-                                <!-- /Botones ant sig -->
-                            </form>
-                        </div>
-                        <!-- /Tab resumen -->
-
+                        <!-- /Contenido Tabs -->
                     </div>
-
                 </div>
-                <!-- /Contenido Tabs -->
             </div>
-        </div>
-    </div>
-    <!-- /Proseso de transacciones -->
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+            <!-- /Proseso de transacciones -->
+         <!-- scripts -->
+         <%- include('layouts/scripts'); -%>
 
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="../assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <!-- Cambio de tab -->
+         <!-- Cambio de tab -->
     <script type="text/javascript">
         // Pasa tabs
         function siguiente(act, paso) {
@@ -510,7 +443,8 @@
             const cuenta = document.querySelector('.datoActivo .mascara-cuenta > i');
             const datosAdicionales = document.querySelectorAll(".form-control.editables");
             const datosCompletar = document.querySelectorAll(".form-control.solo-lectura");
-            datosCompletar[0].value = cuenta.textContent;
+            if (cuenta !== null)
+                datosCompletar[0].value = cuenta.textContent;
             for (let i = 1; i < datosCompletar.length; i++) {
                 const dato = datosAdicionales[i - 1];
                 const datoIns = datosCompletar[i];
@@ -518,6 +452,53 @@
             }
         }
 
+        //Validar
+        function validar() {
+            const inputs = document.querySelectorAll('.form-control.solo-lectura')
+            var faltantes = [];
+            var completo = true;
+
+            for (let i = 0; i < inputs.length; i++) {
+                const input = inputs[i];
+                if (input.value == "") {
+                    switch (i) {
+                        case 0:
+                            faltantes.push("Cuenta de origen");
+                            completo = false;
+                            break;
+
+                        case 1:
+                            faltantes.push("Cuenta de destino");
+                            completo = false;
+                            break;
+
+                        case 2:
+                            faltantes.push("Nombre completo del beneficiario");
+                            completo = false;
+                            break;
+
+                        case 3:
+                            faltantes.push("Referencia");
+                            completo = false;
+                            break;
+                        default: break;
+                    }
+                }
+            }
+            if (!completo) {
+                var faltan = "Falta:";
+                faltantes.forEach(falta => {
+                    faltan = faltan + "\n-" + falta;
+                });
+                alert(faltan);
+                document.getElementById("alertaIncompleto").removeAttribute("hidden");
+                document.getElementById("confirmarT").setAttribute("disabled", "");
+            }
+            else {
+                document.getElementById("alertaIncompleto").setAttribute("hidden", "");
+                document.getElementById("confirmarT").removeAttribute("disabled");
+            }
+        }
     </script>
     <!-- /Cambio de tab -->
 
@@ -538,8 +519,13 @@
     </script>
     <!-- /datos seleccionados -->
 
-    <!-- script del loader -->
-    <script src="../assets/js/loader.js" type="text/javascript"></script>
+     <!-- barra de progreso -->
+     <script> 
+        function updateProgreso(porcentaje){
+            document.getElementById("progreso").style.width = porcentaje+"%";
+        }
+    </script>
+    <!-- /barra de progreso -->
 
 </body>
 
