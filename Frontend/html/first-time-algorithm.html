@@ -58,16 +58,11 @@
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-              <a href="index.html" class="app-brand-link">
-                  <span class="app-brand-logo demo">
-                      <span class="app-brand-text demo menu-text fw-bolder ms-2">Scalon by</span>
-                      <img src="../assets/img/favicon/base.png" height="25" alt="">
-
-              </a>
-
-              <a href="#" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-                  <i class="bx bx-chevron-left bx-sm align-middle"></i>
-              </a>
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <img src="../../Sketches/ScalonR.png" height="50" alt="">
+             
+            </a>
           </div>
 
           <div class="menu-inner-shadow"></div>
@@ -346,74 +341,74 @@
 
 
     <script>
-        var currentTab = 0;
-        document.addEventListener("DOMContentLoaded", function (event) {
+      var currentTab = 0;
+      document.addEventListener("DOMContentLoaded", function (event) {
 
 
-            showTab(currentTab);
+        showTab(currentTab);
 
-        });
+      });
 
-        function showTab(n) {
-            var x = document.getElementsByClassName("tab");
-            x[n].style.display = "block";
-            if (n == 0) {
-                document.getElementById("prevBtn").style.display = "none";
-            } else {
-                document.getElementById("prevBtn").style.display = "inline";
-            }
-            if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
-            } else {
-                document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
-            }
-            fixStepIndicator(n)
+      function showTab(n) {
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        if (n == 0) {
+          document.getElementById("prevBtn").style.display = "none";
+        } else {
+          document.getElementById("prevBtn").style.display = "inline";
         }
-
-        function nextPrev(n) {
-            var x = document.getElementsByClassName("tab");
-            if (n == 1 && !validateForm()) return false;
-            x[currentTab].style.display = "none";
-            currentTab = currentTab + n;
-            if (currentTab >= x.length) {
-
-                document.getElementById("nextprevious").style.display = "none";
-                document.getElementById("all-steps").style.display = "none";
-                document.getElementById("register").style.display = "none";
-                document.getElementById("text-message").style.display = "block";
-
-
-
-
-            }
-            showTab(currentTab);
+        if (n == (x.length - 1)) {
+          document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+        } else {
+          document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
         }
+        fixStepIndicator(n)
+      }
 
-        function validateForm() {
-            var x, y, i, valid = true;
-            x = document.getElementsByClassName("tab");
-            y = x[currentTab].getElementsByTagName("input");
-            for (i = 0; i < y.length; i++) {
-                if (y[i].value == "") {
-                    y[i].className += " invalid";
-                    valid = false;
-                }
+      function nextPrev(n) {
+        var x = document.getElementsByClassName("tab");
+        if (n == 1 && !validateForm()) return false;
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        if (currentTab >= x.length) {
+
+          document.getElementById("nextprevious").style.display = "none";
+          document.getElementById("all-steps").style.display = "none";
+          document.getElementById("register").style.display = "none";
+          document.getElementById("text-message").style.display = "block";
 
 
-            }
-            if (valid) {
-                document.getElementsByClassName("step")[currentTab].className += " finish";
-            }
-            return valid;
+
+
         }
+        showTab(currentTab);
+      }
 
-        function fixStepIndicator(n) {
-            var i, x = document.getElementsByClassName("step");
-            for (i = 0; i < x.length; i++) {
-                x[i].className = x[i].className.replace(" active", "");
-            }
-            x[n].className += " active";
+      function validateForm() {
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        for (i = 0; i < y.length; i++) {
+          if (y[i].value == "") {
+            y[i].className += " invalid";
+            valid = false;
+          }
+
+
         }
+        if (valid) {
+          document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid;
+      }
+
+      function fixStepIndicator(n) {
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+          x[i].className = x[i].className.replace(" active", "");
+        }
+        x[n].className += " active";
+      }
     </script>
     <style>
         body {

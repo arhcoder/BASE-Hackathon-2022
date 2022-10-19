@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+    data-template="vertical-menu-template-free">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Scalon by BASE</title>
+
+    <meta name="description" content="Realizacion de transacciones" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+    <style>
+        .nombre-cuenta h4 {
+            color: #feb913;
+        }
+
+        .cuenta {
+            padding: 10px 0px;
+            cursor: pointer;
+            transition: background-color 0.3s linear;
+        }
+
+        .cuenta.datoActivo {
+            background-color: #feb913;
+            border-radius: 5px;
+        }
+
+        .datoActivo h4 {
+            color: ghostwhite;
+            text-decoration: underline;
+        }
+
+        .mascara-cuenta {
+            margin-left: 20px;
+        }
+
+        .amount {
+            margin: auto 10px;
+            font-size: 20px;
+        }
+    </style>
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!-- Include html inside of html -->
+    <script src="https://unpkg.com/htmlincludejs"></script>
+
+    <!-- jquery -->
+    <script src="../js/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
+
+    <!-- css loader -->
+    <link rel="stylesheet" href="../assets/css/loader.css">
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+</head>
+
+<body>
+    <!-- Pantalla de carga -->
+    <div id="loader">
+        <div class="spinner-grow text-warning ajuste" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Menu -->
+
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+                <span class="app-brand-logo demo">
+                    <span class="app-brand-text demo menu-text fw-bolder ms-2">Scalon by</span>
+                    <img src="../assets/img/favicon/base.png" height="25" alt="">
+
+            </a>
+
+            <a href="#" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+        </div>
+
+        <div class="menu-inner-shadow"></div>
+
+        <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item active">
+                <a href="index.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Menu</div>
+                </a>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Transacciones</span>
+            </li>
+
+            <li class="menu-item">
+                <a href="hacer-Transacciones.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Realizar Transferencias</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="ver-movimientos.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Ver Movimientos</div>
+                </a>
+            </li>
+
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Sugerencias</span></li>
+            <!-- Cards -->
+            <li class="menu-item">
+                <a href="sugerencias-compra.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Compras</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="sugerencias-venta.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Ventas</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="divisas.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Divisas</div>
+                </a>
+            </li>
+
+            <!-- Forms & Tables -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mi cuenta</span></li>
+            <!-- Forms -->
+            <li class="menu-item">
+                <a href="cuentas.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Cuentas Digitales</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="notificaciones.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Notificaciones</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="log-accesos.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Accesos</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="autoricaciones-equipos.html" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Autorizaciones</div>
+                </a>
+            </li>
+
+
+        </ul>
+    </aside>
+    <!-- / Menu -->
+
+    <!-- Proseso de transacciones -->
+
+    <!-- Formato de division entre barra lateral y contenido -->
+    <div class="layout-page">
+        <!-- Divisior del contenido -->
+        <div class="content-wrapper">
+            <!-- Contenido 1 y único en este caso -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Usuario /</span> Cuentas Digitales</h4>
+
+                <div class="nav-align-top mb-4">
+                    <!-- Contenido Tabs -->
+                    <div class="tab-content">
+                        <!-- Tab seleccionar cuenta -->
+                        <div class="tab-pane fade active show" id="navs-pills-top-cuenta" role="tabpanel">
+                            <h1>Seleccionen su cuenta digital</h1>
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-1" onclick="datoActivo('cuenta','cuenta-1')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Cuenta de Inversiones</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************3456</i></div>
+                                </div>
+                                <div class="col-auto amount">$235,000.005</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-2" onclick="datoActivo('cuenta','cuenta-2')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Cuenta Gastos Venta</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************9012</i></div>
+                                </div>
+                                <div class="col-auto amount">$1,850,110.010</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-3" onclick="datoActivo('cuenta','cuenta-3')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Cuenta Caja</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************5678</i></div>
+                                </div>
+                                <div class="col-auto amount">$700,000.000</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <!-- Tarjeta cuenta -->
+                            <hr>
+                            <div class="row cuenta" id="cuenta-4" onclick="datoActivo('cuenta','cuenta-4')">
+                                <div class="col datos">
+                                    <div class="nombre-cuenta">
+                                        <h4>Cuenta Prooverdores</h4>
+                                    </div>
+                                    <div class="mascara-cuenta"><i>************1234</i></div>
+                                </div>
+                                <div class="col-auto amount">$100,500.99</div>
+                            </div>
+                            <hr>
+                            <!-- /Tarjeta cuenta -->
+
+                            <p class="mb-0">
+                                Seleccione la cuenta para ver detalles
+                            </p>
+
+                            <!-- Boton sig -->
+                            <div class="text-end">
+                                <button class="btn btn-primary d-grid w-100">Ir a detalles de cuenta</button>
+                            </div>
+                            <!-- /Boton sig -->
+
+                        </div>
+                        <!-- /Tab seleccionar cuenta -->
+
+
+                    </div>
+
+                </div>
+                <!-- /Contenido Tabs -->
+            </div>
+        </div>
+    </div>
+    <!-- /Proseso de transacciones -->
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../assets/js/dashboards-analytics.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Cambio de tab -->
+    <script type="text/javascript">
+        // Pasa tabs
+        function siguiente(act, paso) {
+            $(act).addClass("disabled");
+            $(paso).removeClass("disabled");
+            $(paso).click();
+        }
+
+        // Rellena los datos del resume
+        function mostrarResumen() {
+            const cuenta = document.querySelector('.datoActivo .mascara-cuenta > i');
+            const datosAdicionales = document.querySelectorAll(".form-control.editables");
+            const datosCompletar = document.querySelectorAll(".form-control.solo-lectura");
+            datosCompletar[0].value = cuenta.textContent;
+            for (let i = 1; i < datosCompletar.length; i++) {
+                const dato = datosAdicionales[i - 1];
+                const datoIns = datosCompletar[i];
+                datoIns.value = dato.value;
+            }
+        }
+
+    </script>
+    <!-- /Cambio de tab -->
+
+    <!-- datos seleccionados -->
+    <script>
+        //Remueve la clase datoActivo de un conjunto determinado y agrega dicha clase a un elemento especifico
+        function datoActivo(clase, dato) {
+            const datos = document.getElementsByClassName(clase);
+
+            for (let i = 0; i < datos.length; i++) {
+                const element = datos[i];
+                element.classList.remove("datoActivo");
+            }
+
+            const elemento = document.getElementById(dato);
+            elemento.classList.add("datoActivo");
+        }
+    </script>
+    <!-- /datos seleccionados -->
+
+    <!-- script del loader -->
+    <script src="../assets/js/loader.js" type="text/javascript"></script>
+
+</body>
+
+</html>

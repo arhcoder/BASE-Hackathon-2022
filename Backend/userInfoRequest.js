@@ -1,6 +1,5 @@
-//FALTA GET DE PARAMETROS DEK USUARIO QUE ESTÁ INICIANDO SESIÓN
 var USER = "";
-var API_KEY = "";
+var API_KEY = "L0hCHKgnm8ajjIEYXuHmO9iWanPESgiI7PQlcZ1L";
 var JWTOKEN;
 const axios = require('axios');
 let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/ValidateAccount";
