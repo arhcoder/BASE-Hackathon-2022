@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <%- include('layouts/header'); -%>
 
   <body>
@@ -9,11 +9,13 @@
       <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
 
+          <!-- Menu -->
           <%- include('layouts/navbar'); -%>
+          <!-- /Menu -->
+
             <!-- Layout container -->
             <div class="layout-page">
               <!-- Navbar -->
-
 
               <nav
                 class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -147,7 +149,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="cuentas.html">View More</a>
                                     <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                   </div>
                                 </div>
@@ -171,13 +173,12 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                    <a class="dropdown-item" href="ver-movimientos.html">View More</a>
                                     <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                   </div>
                                 </div>
                               </div>
-                              <span class="fw-semibold d-block mb-1">Ir a
-                                Movimientos</span>
+                              <span class="fw-semibold d-block mb-1">Ir a Movimientos</span>
                               <h3 class="card-title mb-2">Mis movimientos</h3>
                             </div>
                           </div>
@@ -195,13 +196,16 @@
               </div>
               <!-- / Layout page -->
             </div>
+            <!-- /layautcontainer -->
 
             <!-- Overlay -->
             <div class="layout-overlay layout-menu-toggle"></div>
         </div>
+
         <!-- / Layout wrapper -->
-        <%- include('layouts/footer'); -%>
       </div>
+
+      <!-- scripts -->
       <%- include('layouts/scripts'); -%>
 
   </body>
