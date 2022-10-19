@@ -1,3 +1,9 @@
+
+const User = require('../models/User')
+
 module.exports = (req, res) =>{
-    res.render('login')
-    }
+    let frase=User.phrase;
+    let image=User.imagePath;
+    res.render('login'), {
+        frase,image
+    }};
