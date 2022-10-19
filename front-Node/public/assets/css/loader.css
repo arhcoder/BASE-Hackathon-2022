@@ -1,0 +1,14 @@
+#loader{
+    background: #262626;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000000;
+}
+.ajuste{
+    width: 15vw;
+    height: 15vw;
+}
