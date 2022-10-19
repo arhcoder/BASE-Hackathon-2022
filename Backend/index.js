@@ -116,36 +116,39 @@ app.get("/getPurchases/:invoiceID", (request, response) =>
     // else response.send("Nop :3");
 });
 
-app.post("/validate",(request,response)=>{
-//Recibe el dato USERNAME 
-//BODY del request
-//{
-//"username":"el nombre de usuario que se envia"
-//}
-var API_KEY = process.env["API_KEY"];
-var username = requess.body.userName;
-let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/ValidateAccount";
-let dataLogin = {
-     "userName": username,
-};
-let headersLogin = {
-  "x-api-key": API_KEY,
-  "Content-Type": "application/json"
-};
-var responseLogIn = axios.post(urlLogin,dataLogin,{headers: headersLogin}).then(response =>{
-    var respuestaValidate = {
-        "fullName": responseLogIn.data.fullName,
-        "idStatus": responseLogIn.data.idStatus,
-        "roleName": responseLogIn.data.roleName,
-        "isBasic": responseLogIn.data.isBasic,
-        "phrase": responseLogIn.data.phrase,
-        "imagePath": responseLogIn.data.imagePath
-      }
-      response.send(respuestaValidate);
-});
+app.post("/validate", (request, response) =>
+{
+    //Recibe el dato USERNAME 
+    //BODY del request
+    //{
+    //"username":"el nombre de usuario que se envia"
+    //}
+    var API_KEY = process.env["API_KEY"];
+    var username = requess.body.userName;
+    let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/ValidateAccount";
+    let dataLogin =
+    {
+        "userName": username,
+    };
+    let headersLogin =
+    {
+        "x-api-key": API_KEY,
+        "Content-Type": "application/json"
+    };
 
-  
-
+    var responseLogIn = axios.post(urlLogin,dataLogin, {headers: headersLogin}).then(response =>
+    {
+        var respuestaValidate =
+        {
+            "fullName": responseLogIn.data.fullName,
+            "idStatus": responseLogIn.data.idStatus,
+            "roleName": responseLogIn.data.roleName,
+            "isBasic": responseLogIn.data.isBasic,
+            "phrase": responseLogIn.data.phrase,
+            "imagePath": responseLogIn.data.imagePath
+        };
+        response.send(respuestaValidate);
+    });
 });
 
 // [POST] Recibe datos de login y retorna respuesta de inicio de sesión
