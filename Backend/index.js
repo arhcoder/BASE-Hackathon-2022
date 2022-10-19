@@ -260,6 +260,9 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
         intelligentSuggestor.stdout.on("data", function(data)
         {
             suggestions = data.toString();
+            suggestions = suggestions.replace(/"/g,"");
+            suggestions = suggestions.replace(/'/g,"\"");
+            suggestions = JSON.parse(suggestions);
         });
 
         intelligentSuggestor.on("close", (code) =>
