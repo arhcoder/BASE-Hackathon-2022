@@ -24,6 +24,14 @@ def getAllPurchases():
 	GENÉRICO SE PUEDAN CATEGORIZAR A UN MISMO TIPO, SE UTILIZARÁ
 	EL DATO DE UNA FACTURA QUE DESIGNA EL SAT ().
 
+    * NOTA PARA FUTURAS IMPLEMENTACIONES:
+        Las facturas expedidas por el SAT tienen formato XML; este
+        formato es perfecto para ser analizado con scraping.
+        Utilizando el lenguaje de expresiones "XPATH", es posible
+        extraer cualquier dato de un XML o HTML. TAL COMO SE HIZO
+        EN EL ALGORITMO "images-scraper.py"; PERO CON IMÁGENES
+        EXTRAÍDAS DE IMÁGENES GOOGLE.
+
 	* Teniendo una lista con los productos comprados, obtiene su
 	precio unitario.
 
