@@ -9,5 +9,5 @@ let headersrefresh = {
 };
 
 var responseLogIn = axios.get(urlLogin,{headers: headersrefresh}).then(response =>{
-  console.log(response.data);
+
 });
