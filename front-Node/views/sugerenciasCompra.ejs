@@ -186,7 +186,14 @@
                         <!-- / Navbar -->
 
                         <br>
-
+                        <% for (var i = 0; i < sugerenciasList.length; i++) { %>
+                            <%= sugerenciasList[i].claveProducto %>
+                            <%= sugerenciasList[i].nombreProducto %>
+                               <%= sugerenciasList[i].precioUnitario %>
+                               <%= sugerenciasList[i].nombreProveedor %>
+                               <%= sugerenciasList[i].imagenProducto %>
+                               
+                        <% } %>
 
 
                         <!-- Horizontal -->
