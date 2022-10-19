@@ -1,3 +1,4 @@
+from imagesScraper import scrapImage
 import pandas as pd
 import sys
 
@@ -51,11 +52,15 @@ def intelligentSuggestor(clientID):
         # print(clientPurchases)
         # productsDataFrame = clientPurchases["nombreProducto"]
 
+        # Obtiene imágen del producto; desde internet:
+        productImage = scrapImage(str(clientPurchases["nombreProducto"].values[0]))
+
         bestOption = dict({
             "claveProducto": str(bestOption["claveProducto"].values[0]),
             "nombreProducto": str(clientPurchases["nombreProducto"].values[0]),
             "precioUnitario": int(bestOption["precioUnitario"].values[0]),
-            "nombreProveedor": str(bestOption["nombreProveedor"].values[0])
+            "nombreProveedor": str(bestOption["nombreProveedor"].values[0]),
+            "imagenProducto": str(productImage)
         })
         suggestions.append(bestOption)
 
@@ -77,4 +82,3 @@ if __name__ == "__main__":
     '''
 
     print(intelligentSuggestor(str(sys.argv[1])))
-    # sys.stdout.flush()
