@@ -125,7 +125,7 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
     // {
         // Ejecuta el script de Python que obtiene las mejores sugerencias del cliente actual:
         // const suggestorCommand = "python ..\\Algorithms\\intelligent-suggestor.py \""+request.params.idClientUnique+"\"";
-        const intelligentSuggestor = spawn("python", ["../Algorithms/intelligent-suggestor.py", ""+request.params.idClientUnique]);
+        const intelligentSuggestor = spawn("python3", ["../Algorithms/intelligent-suggestor.py", ""+request.params.idClientUnique]);
         intelligentSuggestor.stdout.on("data", function(data)
         {
             suggestions = data.toString();
@@ -153,13 +153,15 @@ app.post("/validate", (request, response) =>
     let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/ValidateAccount";
     let dataLogin =
     {
-        "userName": request.body.username
+        "userName": ""+request.body.username
     };
     let headersLogin =
     {
         "x-api-key": API_KEY,
         "Content-Type": "application/json"
     };
+	console.log(request);
+	// console.log(API_KEY);
 
     var responseLogIn = axios.post(urlLogin,dataLogin, {headers: headersLogin}).then(myResponse =>
     {
@@ -201,8 +203,8 @@ app.post("/login", (request, response) =>
     let urlLogin = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignIn";
     let dataLogin =
     {
-        "account": request.body.account,
-        "password": request.body.password,
+        "account": ""+request.body.account,
+        "password": ""+request.body.password,
         "token": request.body.token
     };
     let headersLogin =
@@ -216,7 +218,9 @@ app.post("/login", (request, response) =>
         try
         {
             // Se obtiene el JWTOKEN:
-            JWTOKEN = responseLogIn.data.jwt;
+            var JWTOKEN = xresponse.data.jwt;
+		console.log(xresponse.data);
+		console.log(dataLogin)
             // console.log(response.data);
 
             // Si el inicio de sesión retorna un OK...
@@ -224,27 +228,27 @@ app.post("/login", (request, response) =>
             {
                 // Se hace la petición de validar cuenta para obtener los
                 // datos de seguridad como la frase e imágen especiales...
-                fullName = response.data.fullName;
-                roleName = response.data.roleName;
-                phrase = response.data.phrase;
-                imagePath = response.data.imagePath;
+                var fullName = xresponse.data.name;
+                var roleName = xresponse.data.roleName;
+                var phrase = xresponse.data.phrase;
+                var imagePath = xresponse.data.imagePath;
 
                 // Responde con:
                 let ok =
                 {
                     "permission": true,
-                    "name": xresponse.content.name,
-                    "userName": xresponse.content.userName,
-                    "firstLastName": xresponse.content.firstLastName,
-                    "secondLastName": xresponse.content.secondLastName,
-                    "email": xresponse.content.email,
-                    "companyName": xresponse.content.companyName,
-                    "rfc": xresponse.content.rfc,
+                    "name": xresponse.data.name,
+                    "userName": xresponse.data.userName,
+                    "firstLastName": xresponse.data.firstLastName,
+                    "secondLastName": xresponse.data.secondLastName,
+                    "email": xresponse.data.email,
+                    "companyName": xresponse.data.companyName,
+                    "rfc": xresponse.data.rfc,
                     "idClientUnique": 0,
                     "idGroup": 0,
-                    "jwt": xresponse.content.jwt,
+                    "jwt": xresponse.data.jwt,
                     "jwtExpiredTime": 0,
-                    "jwtRefresh": xresponse.content.jwtRefresh,
+                    "jwtRefresh": xresponse.data.jwtRefresh,
                     "specialData":
                     {
                         "fullName": fullName,
@@ -271,5 +275,6 @@ app.post("/login", (request, response) =>
             response.send(notOk);
         }
     });
+    
     // response.send("Inicio de sesión solicitado :3");
 });
