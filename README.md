@@ -3,7 +3,7 @@
 
 ------------
 # Tecnologias usadas
-##NodeJS (javascript)
+## NodeJS (javascript)
 EL uso de javascript fue y es importante en este proyecto ya que nos permite instalar modulos importantes, como:
 - Express
 - mysql
@@ -20,7 +20,7 @@ Estos modulos son importantes ya que nos permite conectarnos a una base de datos
 ejs nos permite incrustar código JavaScript en un lenguaje de plantillas que luego se utiliza para generar HTML.
 
 ------------
-##Python y algoritmos de busqueda
+## Python y algoritmos de busqueda
 Python nos permitio desarrollar nuestros algoritmos inteligentes, ya que es un lenguaje bastante usado para aplicar los métodos de ciencias de datos gracias a la gran cantidad de librerías disponibles
 
 ------------
