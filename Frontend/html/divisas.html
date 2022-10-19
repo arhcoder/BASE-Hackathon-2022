@@ -34,7 +34,8 @@
 
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
+    <!-- css loader -->
+    <link rel="stylesheet" href="../assets/css/loader.css">
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -45,6 +46,14 @@
 </head>
 
 <body>
+    <!-- Pantalla de carga -->
+    <div id="loader">
+        <div class="spinner-grow text-warning ajuste" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!-- /Pantalla de carga -->
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -303,6 +312,8 @@
 
         <!-- Page JS -->
         <script src="../assets/js/dashboards-analytics.js"></script>
+        <!-- script del loader -->
+        <script src="../assets/js/loader.js" type="text/javascript"></script>
 
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
