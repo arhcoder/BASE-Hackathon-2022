@@ -108,7 +108,7 @@ app.get('/cuentas', cuentasController)
 app.get('/backend/validarCredenciales', validarCredencialesController)
 
 app.post('/usuario/iniciarSesion', loginController)
-app.get('/backend/iniciarSesion', loginUserController)
+app.post('/backend/iniciarSesion', loginUserController)
 
 
 app.get('/usuario/cerrarSesion', logoutController)
