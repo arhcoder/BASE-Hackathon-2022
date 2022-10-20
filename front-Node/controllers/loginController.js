@@ -7,6 +7,8 @@ module.exports = async (req, res) => {
     console.log(userName.user)
     let url = "http://34.227.231.244:80/validate";
 
+    User.userName=userName.user
+    
     let datos = {
         'username': userName.user
     }
