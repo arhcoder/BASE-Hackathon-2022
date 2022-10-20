@@ -285,3 +285,42 @@ app.post("/login", (request, response) =>
     
     // response.send("Inicio de sesión solicitado :3");
 });
+
+
+//METODO PARA CERRAR SESIÓN
+app.post("/logout", (request, response) =>
+{
+    let urlLogOut = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Login/SignOut";
+    let dataLogOut =
+    {
+        "account": ""+request.body.account,
+        "password": ""+request.body.password,
+        "token": request.body.token
+    };
+    let headersLogOut =
+    {
+        "x-api-key": API_KEY,
+        "Content-Type": "application/json",
+        "Authorization": "Bearer "+request.body.jwt
+    };
+
+    var responseLogIn = axios.put(urlLogOut, dataLogOut, {headers: headersLogOut}).then(xresponse =>
+    {
+        console.log(xresponse.data);
+    });
+});
+//METODO PARA REFRESCAR TOKEN
+app.post("/keepToken", (request, response) =>
+{
+    let urlLogOut = "https://25hi3sjce7.execute-api.us-east-1.amazonaws.com/marketplace/v1/Accounts/GetAccounts";
+    let headersLogOut =
+    {
+        "x-api-key": API_KEY,
+        "Authorization": "Bearer "+request.body.jwt
+    };
+
+    var responseLogIn = axios.get(urlLogOut,{headers: headersLogOut}).then(xresponse =>
+    {
+        console.log("done :)s") 
+    });
+});
