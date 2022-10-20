@@ -1,10 +1,10 @@
-   ![](https://raw.githubusercontent.com/arhcoder/BASE-Hackathon-2022/master/Sketches/ScalonR.png)
-
-
-
-
+  
 # BASE-Hackathon-2022
-💸 Sistema que analiza las facturas de compraventa de una empresa de importaciones y exportaciones, y crea una base de conocimiento con la que crea sugerencias de abastecimiento para las empresas clientes de Banco BASE, con el fin de ahorrarles dinero.
+Sistema que analiza las facturas de compraventa de una empresa de importaciones y exportaciones, y crea una base de conocimiento con la que crea sugerencias de abastecimiento para las empresas clientes de Banco BASE, con el fin de ahorrarles dinero.
+
+![](https://raw.githubusercontent.com/arhcoder/BASE-Hackathon-2022/master/Sketches/ScalonR.png)
+
+------------
 
 ## Nuestros algoritmos
 
