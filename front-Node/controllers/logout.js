@@ -18,6 +18,7 @@
             if (response.data) {
                 req.session.destroy()
                 res.redirect('/')
+                res.render('logout')
             }
         });
     };

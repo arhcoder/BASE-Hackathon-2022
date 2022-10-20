@@ -59,7 +59,12 @@ CONTROLADORES
 */
 
 let Usuario = require('./models/User')
-Usuario.companyName='bimbo'
+Usuario.companyName = 'bimbo'
+
+
+
+
+
 
 
 const indexController = require('./controllers/index')
@@ -88,31 +93,31 @@ const validarCredencialesController = require('./controllers/validarCredenciales
 RUTAS
 */
 
-app.get('/', indexController)
-app.get('/dashboard', dashboardController)
-app.get('/sugerencias/compra', sugerenciasCompraController)
-app.get('/sugerencias/venta', sugerenciasVentaController)
-app.get('/sugerencias/divisas', sugerenciasDivisasController)
-app.get('/notificaciones', notificacionesController)
-app.get('/accesos', accesosController)
-app.get('/autorizaciones', autorizacionesController)
+app.get('/',  indexController)
+app.get('/dashboard', authMiddleware, dashboardController)
+app.get('/sugerencias/compra', authMiddleware, sugerenciasCompraController)
+app.get('/sugerencias/venta', authMiddleware, sugerenciasVentaController)
+app.get('/sugerencias/divisas', authMiddleware, sugerenciasDivisasController)
+app.get('/notificaciones', authMiddleware, notificacionesController)
+app.get('/accesos', authMiddleware, accesosController)
+app.get('/autorizaciones', authMiddleware, autorizacionesController)
 
-app.get('/movimientos', movimientosController)
-app.get('/sugerencias/busqueda', busquedaController)
-app.get('/transaccion', transaccionController)
-app.get('/sugerencias/primeraVez', primeraVezSugerenciaController)
-app.get('/cuentas', cuentasController)
-
-
-
-app.get('/backend/validarCredenciales', validarCredencialesController)
-
-app.post('/usuario/iniciarSesion', loginController)
-app.post('/backend/iniciarSesion', loginUserController)
+app.get('/movimientos', authMiddleware, movimientosController)
+app.get('/sugerencias/busqueda', authMiddleware, busquedaController)
+app.get('/transaccion', authMiddleware, transaccionController)
+app.get('/sugerencias/primeraVez', authMiddleware, primeraVezSugerenciaController)
+app.get('/cuentas', authMiddleware, cuentasController)
 
 
-app.post('/usuario/cerrarSesion', logoutController)
-app.get('/user/credencialOlvidada', credencialOlvidadaController)
+
+app.get('/backend/validarCredenciales', redirectIfAuthenticatedMiddleware, validarCredencialesController)
+
+app.post('/usuario/iniciarSesion', redirectIfAuthenticatedMiddleware, loginController)
+app.post('/backend/iniciarSesion', redirectIfAuthenticatedMiddleware, loginUserController)
+
+
+app.post('/usuario/cerrarSesion', redirectIfAuthenticatedMiddleware, logoutController)
+app.get('/user/credencialOlvidada', redirectIfAuthenticatedMiddleware, credencialOlvidadaController)
 
 //Error
 app.use((req, res) => res.render('notfound'));
