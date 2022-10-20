@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
 module.exports = (req, res, next) => {
-    if (User.permission) {
+    if (req.session.idClientUnique) {
         return res.redirect('/dashboard')
     }
     next()

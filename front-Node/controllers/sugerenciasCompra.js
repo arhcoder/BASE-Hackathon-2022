@@ -117,16 +117,19 @@ module.exports = async (req, res) => {
             "imagenProducto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK8AbKrZLsmdIHLCJylyBtwWKfdjADF71oaxUgVtSfUt__U_Evp3XkPQ2Qil0&s"
         }
     ];
-/*
-     let usuario = '31170'
 
+     let usuario = String(User.idClientUnique)
+     console.log(usuario)
+/*
     let url = "http://34.227.231.244:80/suggestions/" + usuario;
     let sugerenciasList
     var responseLogIn = axios.get(url, {}).then(response => {
         sugerenciasList = response.data
         console.log(response.data)
     });
-   */
+    */
+   
+
     res.render('sugerenciasCompra', {
         sugerenciasListAll,
     });

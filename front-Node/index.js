@@ -7,6 +7,8 @@ const authMiddleware = require('./middleware/authMiddleware');
 //
 const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware')
 
+const tokenMiddleware = require('./middleware/tokenMiddleware')
+
 global.loggedIn = null;
 
 const ejs = require('ejs')
@@ -41,11 +43,14 @@ app.use(expressSession({
     store: false,
     proxy: true,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie:{
+        expires: 240000
+    }
 }))
 
 app.use("*", (req, res, next) => {
-    loggedIn = req.session.userId;
+    loggedIn = req.session.idClientUnique;
     next()
 });
 
@@ -80,25 +85,26 @@ const loginUserController = require('./controllers/loginUser')
 const logoutController = require('./controllers/logout')
 const credencialOlvidadaController = require('./controllers/credencialOlvidadaController')
 
-const validarCredencialesController = require('./controllers/validarCredencialesController')
+const validarCredencialesController = require('./controllers/validarCredencialesController');
+const { Cookie } = require('express-session');
 /*
 RUTAS
 */
 
 app.get('/', indexController)
-app.get('/dashboard', authMiddleware, tokenMiddleware, dashboardController)
-app.get('/sugerencias/compra', authMiddleware, tokenMiddleware, sugerenciasCompraController)
-app.get('/sugerencias/venta', authMiddleware, tokenMiddleware, sugerenciasVentaController)
-app.get('/sugerencias/divisas', authMiddleware, tokenMiddleware, sugerenciasDivisasController)
-app.get('/notificaciones', authMiddleware, tokenMiddleware, notificacionesController)
-app.get('/accesos', authMiddleware, tokenMiddleware, accesosController)
-app.get('/autorizaciones', authMiddleware, tokenMiddleware, autorizacionesController)
+app.get('/dashboard',authMiddleware, dashboardController)
+app.get('/sugerencias/compra', sugerenciasCompraController)
+app.get('/sugerencias/venta', authMiddleware,  sugerenciasVentaController)
+app.get('/sugerencias/divisas', authMiddleware,  sugerenciasDivisasController)
+app.get('/notificaciones', authMiddleware,  notificacionesController)
+app.get('/accesos', authMiddleware,  accesosController)
+app.get('/autorizaciones', authMiddleware,  autorizacionesController)
 
-app.get('/movimientos', authMiddleware, tokenMiddleware, movimientosController)
-app.get('/sugerencias/busqueda', authMiddleware, tokenMiddleware, busquedaController)
-app.get('/transaccion', authMiddleware, tokenMiddleware, transaccionController)
-app.get('/sugerencias/primeraVez', authMiddleware, tokenMiddleware, primeraVezSugerenciaController)
-app.get('/cuentas', authMiddleware, tokenMiddleware, cuentasController)
+app.get('/movimientos', authMiddleware,  movimientosController)
+app.get('/sugerencias/busqueda', authMiddleware,  busquedaController)
+app.get('/transaccion', authMiddleware,  transaccionController)
+app.get('/sugerencias/primeraVez', authMiddleware,  primeraVezSugerenciaController)
+app.get('/cuentas', authMiddleware,  cuentasController)
 
 
 
