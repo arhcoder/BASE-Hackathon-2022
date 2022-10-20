@@ -58,14 +58,6 @@ app.listen(process.env.PORT || 8080, function () {
 CONTROLADORES
 */
 
-let Usuario = require('./models/User')
-Usuario.companyName = 'bimbo'
-
-
-
-
-
-
 
 const indexController = require('./controllers/index')
 const sugerenciasVentaController = require('./controllers/sugerenciasVenta')
@@ -93,20 +85,20 @@ const validarCredencialesController = require('./controllers/validarCredenciales
 RUTAS
 */
 
-app.get('/',  indexController)
-app.get('/dashboard', authMiddleware, dashboardController)
-app.get('/sugerencias/compra', authMiddleware, sugerenciasCompraController)
-app.get('/sugerencias/venta', authMiddleware, sugerenciasVentaController)
-app.get('/sugerencias/divisas', authMiddleware, sugerenciasDivisasController)
-app.get('/notificaciones', authMiddleware, notificacionesController)
-app.get('/accesos', authMiddleware, accesosController)
-app.get('/autorizaciones', authMiddleware, autorizacionesController)
+app.get('/', indexController)
+app.get('/dashboard', authMiddleware, tokenMiddleware, dashboardController)
+app.get('/sugerencias/compra', authMiddleware, tokenMiddleware, sugerenciasCompraController)
+app.get('/sugerencias/venta', authMiddleware, tokenMiddleware, sugerenciasVentaController)
+app.get('/sugerencias/divisas', authMiddleware, tokenMiddleware, sugerenciasDivisasController)
+app.get('/notificaciones', authMiddleware, tokenMiddleware, notificacionesController)
+app.get('/accesos', authMiddleware, tokenMiddleware, accesosController)
+app.get('/autorizaciones', authMiddleware, tokenMiddleware, autorizacionesController)
 
-app.get('/movimientos', authMiddleware, movimientosController)
-app.get('/sugerencias/busqueda', authMiddleware, busquedaController)
-app.get('/transaccion', authMiddleware, transaccionController)
-app.get('/sugerencias/primeraVez', authMiddleware, primeraVezSugerenciaController)
-app.get('/cuentas', authMiddleware, cuentasController)
+app.get('/movimientos', authMiddleware, tokenMiddleware, movimientosController)
+app.get('/sugerencias/busqueda', authMiddleware, tokenMiddleware, busquedaController)
+app.get('/transaccion', authMiddleware, tokenMiddleware, transaccionController)
+app.get('/sugerencias/primeraVez', authMiddleware, tokenMiddleware, primeraVezSugerenciaController)
+app.get('/cuentas', authMiddleware, tokenMiddleware, cuentasController)
 
 
 
