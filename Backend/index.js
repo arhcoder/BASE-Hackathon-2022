@@ -145,6 +145,7 @@ app.get("/suggestions/:idClientUnique", (request, response) =>
 // MANEJO DE SESIONES //
 app.post("/validate", (request, response) =>
 {
+    let resp = request.body
     // Recibe el dato USERNAME:
     //BODY del request:
     //{
@@ -160,7 +161,7 @@ app.post("/validate", (request, response) =>
         "x-api-key": API_KEY,
         "Content-Type": "application/json"
     };
-	console.log(request);
+	console.log(resp);
 	// console.log(API_KEY);
 
     var responseLogIn = axios.post(urlLogin,dataLogin, {headers: headersLogin}).then(myResponse =>
@@ -215,17 +216,20 @@ app.post("/login", (request, response) =>
 
     var responseLogIn = axios.post(urlLogin, dataLogin, {headers: headersLogin}).then(xresponse =>
     {
+        console.log(xresponse.data)
         try
         {
             // Se obtiene el JWTOKEN:
             var JWTOKEN = xresponse.data.jwt;
-		console.log(xresponse.data);
+		//console.log(xresponse.data);
 		console.log(dataLogin)
             // console.log(response.data);
 
             // Si el inicio de sesión retorna un OK...
             if (JWTOKEN)
             {
+
+                console.log("Correcto")
                 // Se hace la petición de validar cuenta para obtener los
                 // datos de seguridad como la frase e imágen especiales...
                 var fullName = xresponse.data.name;
@@ -263,16 +267,19 @@ app.post("/login", (request, response) =>
                 JWT_REFRESH = ok.jwtRefresh;
 
                 response.send(ok);
-            }
-        }
-        catch (error)
-        {
-            console.log(error);
+            }else{
+                console.log("Incorrecto")
             let notOk =
             {
                 "permission": false
             };
             response.send(notOk);
+        }
+        }
+        catch (error)
+        {
+            console.log(error);
+         
         }
     });
     
