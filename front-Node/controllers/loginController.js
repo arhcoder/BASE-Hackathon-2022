@@ -28,11 +28,12 @@ module.exports = async (req, res) => {
         User.fullName=fullName
 
         console.log(User.phrase)
-        
+        let error=req.session.error
         res.render('login', {
             frase,
             image,
-            fullName
+            fullName,
+            error
         })
  
     });

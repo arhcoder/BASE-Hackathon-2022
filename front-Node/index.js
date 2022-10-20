@@ -58,9 +58,6 @@ app.listen(process.env.PORT || 8080, function () {
 CONTROLADORES
 */
 
-let Usuario = require('./models/User')
-Usuario.companyName='bimbo'
-
 
 const indexController = require('./controllers/index')
 const sugerenciasVentaController = require('./controllers/sugerenciasVenta')
@@ -89,30 +86,30 @@ RUTAS
 */
 
 app.get('/', indexController)
-app.get('/dashboard', dashboardController)
-app.get('/sugerencias/compra', sugerenciasCompraController)
-app.get('/sugerencias/venta', sugerenciasVentaController)
-app.get('/sugerencias/divisas', sugerenciasDivisasController)
-app.get('/notificaciones', notificacionesController)
-app.get('/accesos', accesosController)
-app.get('/autorizaciones', autorizacionesController)
+app.get('/dashboard', authMiddleware, tokenMiddleware, dashboardController)
+app.get('/sugerencias/compra', authMiddleware, tokenMiddleware, sugerenciasCompraController)
+app.get('/sugerencias/venta', authMiddleware, tokenMiddleware, sugerenciasVentaController)
+app.get('/sugerencias/divisas', authMiddleware, tokenMiddleware, sugerenciasDivisasController)
+app.get('/notificaciones', authMiddleware, tokenMiddleware, notificacionesController)
+app.get('/accesos', authMiddleware, tokenMiddleware, accesosController)
+app.get('/autorizaciones', authMiddleware, tokenMiddleware, autorizacionesController)
 
-app.get('/movimientos', movimientosController)
-app.get('/sugerencias/busqueda', busquedaController)
-app.get('/transaccion', transaccionController)
-app.get('/sugerencias/primeraVez', primeraVezSugerenciaController)
-app.get('/cuentas', cuentasController)
-
-
-
-app.get('/backend/validarCredenciales', validarCredencialesController)
-
-app.post('/usuario/iniciarSesion', loginController)
-app.post('/backend/iniciarSesion', loginUserController)
+app.get('/movimientos', authMiddleware, tokenMiddleware, movimientosController)
+app.get('/sugerencias/busqueda', authMiddleware, tokenMiddleware, busquedaController)
+app.get('/transaccion', authMiddleware, tokenMiddleware, transaccionController)
+app.get('/sugerencias/primeraVez', authMiddleware, tokenMiddleware, primeraVezSugerenciaController)
+app.get('/cuentas', authMiddleware, tokenMiddleware, cuentasController)
 
 
-app.get('/usuario/cerrarSesion', logoutController)
-app.get('/user/credencialOlvidada', credencialOlvidadaController)
+
+app.get('/backend/validarCredenciales', redirectIfAuthenticatedMiddleware, validarCredencialesController)
+
+app.post('/usuario/iniciarSesion', redirectIfAuthenticatedMiddleware, loginController)
+app.post('/backend/iniciarSesion', redirectIfAuthenticatedMiddleware, loginUserController)
+
+
+app.post('/usuario/cerrarSesion', redirectIfAuthenticatedMiddleware, logoutController)
+app.get('/user/credencialOlvidada', redirectIfAuthenticatedMiddleware, credencialOlvidadaController)
 
 //Error
 app.use((req, res) => res.render('notfound'));

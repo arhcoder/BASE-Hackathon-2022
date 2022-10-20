@@ -1,5 +1,5 @@
 let User = {
-  name1: '',
+  name: '',
   userName: '',
   permission: false,
   firstLastName: '',
