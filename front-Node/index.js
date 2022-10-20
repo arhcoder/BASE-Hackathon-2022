@@ -111,7 +111,7 @@ app.post('/usuario/iniciarSesion', loginController)
 app.post('/backend/iniciarSesion', loginUserController)
 
 
-app.get('/usuario/cerrarSesion', logoutController)
+app.post('/usuario/cerrarSesion', logoutController)
 app.get('/user/credencialOlvidada', credencialOlvidadaController)
 
 //Error

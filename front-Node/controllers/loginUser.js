@@ -32,10 +32,11 @@ module.exports = async (req, res) => {
             User.idGroup=response.data.idGroup
             User.jwtExpiredTime=response.data.jwtExpiredTime
             User.jwtRefresh=response.data.jwtRefresh
+            User.token=request.token
             res.redirect('/dashboard')
         }else{
             req.session.error = 'Error de Credenciales'
-            res.redirect('/')
+            res.redirect('/usuario/iniciarSesion')
             console.log("no ingresado")
         }
         
