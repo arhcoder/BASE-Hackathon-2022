@@ -1,8 +1,13 @@
-  
+
 # BASE-Hackathon-2022
-Sistema que analiza las facturas de compraventa de una empresa de importaciones y exportaciones, y crea una base de conocimiento con la que crea sugerencias de abastecimiento para las empresas clientes de Banco BASE, con el fin de ahorrarles dinero.
+💸 Sistema que analiza las facturas de compraventa de una empresa de importaciones y exportaciones, y crea una base de conocimiento con la que crea sugerencias de abastecimiento para las empresas clientes de Banco BASE, con el fin de ahorrarles dinero.
 
 ![](https://raw.githubusercontent.com/arhcoder/BASE-Hackathon-2022/master/Sketches/ScalonR.png)
+
+### NOTA: La aplicación está corriendo en: (34.227.231.244:8080)[http://34.227.231.244:8080];
+Se prevee (por mera) cuestión estética cambiar al puerto 80; además de
+que se planea la integración de llaves de autenticación para agregar una
+capa extra de seguridad a las peticiones y la recuperación de datos.
 
 ------------
 
