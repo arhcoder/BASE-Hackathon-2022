@@ -18,6 +18,7 @@ const bodyParser = require('body-parser')
 const flash = require('connect-flash');
 
 
+
 global.loggedIn = null;
 
 app.set('view engine', 'ejs')
@@ -49,7 +50,7 @@ app.use("*", (req, res, next) => {
 });
 
 
-app.listen(process.env.PORT || 5500, function () {
+app.listen(process.env.PORT || 8080, function () {
     console.log('App listening...');
 });
 
@@ -87,7 +88,7 @@ const validarCredencialesController = require('./controllers/validarCredenciales
 RUTAS
 */
 
-app.get('/',redirectIfAuthenticatedMiddleware, indexController)
+app.get('/', indexController)
 app.get('/dashboard', dashboardController)
 app.get('/sugerencias/compra', sugerenciasCompraController)
 app.get('/sugerencias/venta', sugerenciasVentaController)
@@ -100,18 +101,18 @@ app.get('/movimientos', movimientosController)
 app.get('/sugerencias/busqueda', busquedaController)
 app.get('/transaccion', transaccionController)
 app.get('/sugerencias/primeraVez', primeraVezSugerenciaController)
-app.get('/cuentas', authMiddleware, cuentasController)
+app.get('/cuentas', cuentasController)
 
 
 
-app.post('/backend/validarCredenciales', redirectIfAuthenticatedMiddleware, validarCredencialesController)
+app.get('/backend/validarCredenciales', validarCredencialesController)
 
-app.get('/usuario/iniciarSesion', redirectIfAuthenticatedMiddleware, loginController)
-app.post('/backend/iniciarSesion', redirectIfAuthenticatedMiddleware, loginUserController)
+app.post('/usuario/iniciarSesion', loginController)
+app.get('/backend/iniciarSesion', loginUserController)
 
 
 app.get('/usuario/cerrarSesion', logoutController)
-app.get('/user/credencialOlvidada', redirectIfAuthenticatedMiddleware, credencialOlvidadaController)
+app.get('/user/credencialOlvidada', credencialOlvidadaController)
 
 //Error
 app.use((req, res) => res.render('notfound'));

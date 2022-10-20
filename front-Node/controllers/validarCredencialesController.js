@@ -1,13 +1,16 @@
-const bcrypt = require('bcrypt');
+
 //const { response } = require('express');
 const User = require('../models/User')
 
-module.exports = (req, res) => {
+
+module.exports = (req, res) => 
+{
+    
     const {
         user
     } = req.body;
 
-    if (!user||user==null){
+    if (!user || user == null) {
         res.redirect('/')
     }
 
@@ -17,26 +20,19 @@ module.exports = (req, res) => {
         username: user
     };
 
-    fetch('http://34.227.231.244:3000/validate', {
+
+    fetch('http://34.227.231.244:80/validate', {
             method: 'POST',
-            body: JSON.stringify(body),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'
-            }
+            },
+            body: JSON.stringify(body),
         })
-        .then(response => response.json())
-        .then(json => {
-            console.log(json);
-            if(json){
-                User.fullName=json.fullName;
-                User.idStatus=json.idStatus;
-                User.roleName=json.roleName;
-                User.isBasic=json.isBasic;
-                User.phrase=json.phrase;
-                User.imagePath=json.imagePath;
-                res.redirect('/usuario/iniciarSesion')
-            }else{
-                res.redirect('/')
-            }
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
         });
 }

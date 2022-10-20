@@ -1,237 +1,231 @@
 <!DOCTYPE html>
 
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+<html lang="es" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
     data-template="vertical-menu-template-free">
 
-    <%- include('layouts/header'); -%>
+<!-- Cabezera -->
+<%- include('layouts/header'); -%>
+    <!-- /Cabezera -->
 
-<body>
-    <!-- Pantalla de carga -->
-    <%- include('layouts/loader'); -%>
+    <body>
+        <!-- Pantalla de carga -->
+        <%- include('layouts/loader'); -%>
 
-    <!-- /Pantalla de carga -->
+            <!-- Layout wrapper -->
+            <div class="layout-wrapper layout-content-navbar">
+                <div class="layout-container">
+                    <!-- Menu -->
+                    <%- include('layouts/navbar'); -%>
+                        <!-- / Menu -->
 
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu -->
-            <%- include('layouts/navbar'); -%>
-
-            <!-- / Menu -->
-
-            <!-- Layout container -->
-            <div class="layout-page">
-
-
-                <!-- Content wrapper -->
-                <div class="content-wrapper">
-                    <!-- Content -->
-
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Recomendaciones /</span> Compras
-                        </h4>
-                        <!-- Navbar -->
-
-                        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                            id="layout-navbar">
-                            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                                    <i class="bx bx-menu bx-sm"></i>
-                                </a>
-                            </div>
-
-                            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                                <!-- Search -->
-                                <div class="navbar-nav align-items-center">
-                                    <div class="nav-item d-flex align-items-center">
-                                        <i class="bx bx-search fs-4 lh-0"></i>
-                                        <input type="text" class="form-control border-0 shadow-none"
-                                            placeholder="Buscar..." aria-label="Buscar..." />
-                                    </div>
-                                </div>
-                                <!-- /Search -->
-                            </div>
-                        </nav>
-
-                        <!-- / Navbar -->
-
-                        <br>
+                        <!-- Layout container -->
+                        <div class="layout-page">
 
 
+                            <!-- Content wrapper -->
+                            <div class="content-wrapper">
 
-                        <!-- Horizontal -->
-                        <h5 class="pb-1 mb-4">Compras que ya haces...</h5>
-                        <div class="row mb-5">
-                            <div class="col-md">
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img class="card-img card-img-left" src="../assets/img/elements/12.jpg"
-                                                alt="Card image" />
+                                <!-- Content -->
+                                <div class="container-xxl flex-grow-1 container-p-y">
+                                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sugerencias /</span>
+                                        Compras
+                                    </h4>
+
+                                    <!-- Navbar -->
+                                    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                                        id="layout-navbar">
+                                        <div
+                                            class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                                            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                                                <i class="bx bx-menu bx-sm"></i>
+                                            </a>
                                         </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Leche Entera</h5>
-                                                <p class="card-text">
-                                                <ul>
-                                                    <li>Está al precio de $ por litro.</li>
-                                                    <li>Comprando con “Empresa”.</li>
-                                                    <li>De cuenta 022234023248..</li>
-                                                </ul>
-                                                </p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                                        ago</small></p>
+
+                                        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                                            <!-- Search -->
+                                            <div class="navbar-nav align-items-center">
+                                                <div class="nav-item d-flex align-items-center">
+                                                    <i class="bx bx-search fs-4 lh-0"></i>
+                                                    <input type="text" class="form-control border-0 shadow-none"
+                                                        placeholder="Buscar..." aria-label="Buscar..." />
+                                                </div>
+                                            </div>
+                                            <!-- /Search -->
+                                        </div>
+                                    </nav>
+                                    <!-- / Navbar -->
+
+                                    <br>
+
+
+
+                                    <!-- Tus productos -->
+                                    <h5 class="pb-1 mb-4">Productos que compras...</h5>
+                                    <!-- tarjetas de ventas actuales -->
+                                    <div class="row mb-5">
+                                        <div class="col-md">
+                                            <div class="card mb-3">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img class="card-img card-img-left"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReGPrQkQ0nILQjJw23L-HCiAXHt4T80gRAzJkv9m_JdS5FcqJt3ghbtX6dLpc&s"
+                                                            alt="Card image" />
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Ciruela angeleno</h5>
+                                                            <p class="card-text">
+                                                                Precio de venta promedio en $30 por kg.<br>
+                                                                <!--Manejo de medidad-->
+                                                                Mejor postor "empresa", en "país" "lugar".
+                                                            </p>
+                                                            <p class="card-text"><small class="text-muted">Last updated
+                                                                    3
+                                                                    mins
+                                                                    ago</small></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md">
+                                            <div class="card mb-3">
+                                                <div class="row g-0">
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Durazno klondike</h5>
+                                                            <p class="card-text">
+                                                                Precio de venta promedio en $25 por kg.<br>
+                                                                Mejor postor "empresa", en "país" "lugar".
+                                                            </p>
+                                                            <p class="card-text"><small class="text-muted">Ver
+                                                                    detalles</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <img class="card-img card-img-right"
+                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgLtvfZIj-DpyclcwblfeoVu-4rpFHrxhzmqX4xmJNmEe1CxVxpVWlmf1lUw&s" alt="Card image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /tarjetas de ventas actuales -->
+
+                                    <!--/ Horizontal -->
+
+                                    <!-- Card layout,| Sección 2 -->
+                                    <h5 class="pb-1 my-5">Porductos de mayor valor actual en el marcado...</h5>
+
+                                    <!-- Productos top -->
+                                    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/1.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Teléfonos antiguos</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $5,000 por unidad.<br>
+                                                        <!--Manejo de unidades-->
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/17.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Aguacates</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $80 por kg.<br>
+                                                        <!--Manejo de pesos-->
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/19.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Cajas fuertes</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $20,000 por unidad.<br>
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/4.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Calzado moderno</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $1,000 por unidad.<br>
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/21.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Conservas</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $15 por unidad.<br>
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img class="card-img-top" src="../assets/img/elements/3.jpg"
+                                                    alt="Card image cap" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Piña rosa</h5>
+                                                    <p class="card-text">
+                                                        Precio de venta promedio en $1,000,000 por unidad.<br>
+                                                        Mejor postor "empresa", en "país" "lugar".
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Aguacate</h5>
-                                                <p class="card-text">
-                                                <ul>
-                                                    <li>Está al precio de $ por litro.</li>
-                                                    <li>Comprando con “Empresa”.</li>
-                                                    <li>De cuenta 022234023248..</li>
-                                                </ul>
-                                                </p>
-                                                <p class="card-text"><small class="text-muted">Ver detalles</small></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="card-img card-img-right" src="../assets/img/elements/17.jpg"
-                                                alt="Card image" />
-                                        </div>
-                                    </div>
-                                </div>
+                                    <!-- /Productos top -->
 
+                                    <div class="content-backdrop fade"></div>
+                                </div>
+                                <!-- Content wrapper -->
                             </div>
-                            <!---->
-
+                            <!-- / Layout page -->
                         </div>
 
-                        <!--/ Horizontal -->
-
-                        <!-- Card layout -->
-                        <h5 class="pb-1 my-5">Podría Interesarte...</h5>
-
-                        <!-- Grid Card -->
-                        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Glúten de trigo</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/13.jpg"
-                                        alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Azúcar procesada</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/4.jpg" alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Levadura</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/18.jpg"
-                                        alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/19.jpg"
-                                        alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="../assets/img/elements/20.jpg"
-                                        alt="Card image cap" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">
-                                        <ul>
-                                            <li>Está al precio de $ por litro.</li>
-                                            <li>Comprando con “Empresa”.</li>
-                                            <li>De cuenta 022234023248</li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="content-backdrop fade"></div>
-                    </div>
-                    <!-- Content wrapper -->
+                        <!-- Overlay -->
+                        <div class="layout-overlay layout-menu-toggle"></div>
                 </div>
-                <!-- / Layout page -->
-            </div>
+                <!-- / Layout wrapper -->
 
-            <!-- Overlay -->
-            <div class="layout-overlay layout-menu-toggle"></div>
-        </div>
-        <!-- / Layout wrapper -->
-
-        <!-- Core JS -->
-        <%- include('layouts/scripts'); -%>
-
-</body>
+                <!-- scripts -->
+                <%- include('layouts/scripts'); -%>
+    </body>
 
 </html>

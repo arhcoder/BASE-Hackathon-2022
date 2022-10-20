@@ -66,21 +66,21 @@
                             <div class="row g-0">
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Juan Perez</h5>
+                                        <h5 class="card-title"><%= fullName %></h5>
                                         <p class="card-text">
-                                            La vida es un Reloj.
+                                            <%= frase %>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <img class="card-img card-img-right" src="../assets/img/elements/17.jpg"
+                                    <img class="card-img card-img-right" src="<%= image %>"
                                         alt="Card image" />
                                 </div>
                             </div>
                         </div>
 
 
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="/dashboard" >
                             <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="password">Contraseña</label>
                                 <div class="input-group input-group-merge">
@@ -103,8 +103,11 @@
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Iniciar sesión.</button>
-                        </form>
+                            <a href="/dashboard">
+                                <button class="btn btn-primary d-grid w-100">Iniciar sesión.</button>
+                      
+                            </a>
+                              </form>
 
                         <p class="text-center">
                             <a href="auth-forgot-password-basic.html">
