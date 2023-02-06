@@ -4,7 +4,7 @@
 
 ![](https://raw.githubusercontent.com/arhcoder/BASE-Hackathon-2022/master/Sketches/ScalonR.png)
 
-### Aplicación accesible en [34.227.231.244:8080](http://34.227.231.244:8080);
+### Aplicación accesible en: [ya no está disponible](https://github.com/arhcoder/BASE-Hackathon-2022);
 Se prevee (por mera) cuestión estética cambiar al puerto 80; además de
 que se planea la integración de llaves de autenticación para agregar una
 capa extra de seguridad a las peticiones y la recuperación de datos.
